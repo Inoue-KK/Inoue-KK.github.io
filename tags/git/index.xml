@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>https://inoue-kk.github.io/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Git on My New Hugo Site</title>
+    <link>https://inoue-kk.github.io/tags/git/</link>
+    <description>Recent content in Git on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Jul 2022 00:34:07 +0900</lastBuildDate><atom:link href="https://inoue-kk.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 00:34:07 +0900</lastBuildDate><atom:link href="https://inoue-kk.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GitHubってなあに？</title>
       <link>https://inoue-kk.github.io/2022/07/github%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%82%E3%81%AB/</link>
       <pubDate>Wed, 20 Jul 2022 00:34:07 +0900</pubDate>
       
       <guid>https://inoue-kk.github.io/2022/07/github%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%82%E3%81%AB/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hello World!</title>
-      <link>https://inoue-kk.github.io/2022/07/hello-world/</link>
-      <pubDate>Sat, 16 Jul 2022 12:35:25 +0000</pubDate>
-      
-      <guid>https://inoue-kk.github.io/2022/07/hello-world/</guid>
       <description></description>
     </item>
     
