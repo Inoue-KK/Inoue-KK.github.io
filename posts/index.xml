@@ -6,49 +6,58 @@
     <description>Recent content in Posts on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Jul 2022 14:34:17 +0000</lastBuildDate><atom:link href="https://inoue-kk.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Aug 2022 05:28:05 +0000</lastBuildDate><atom:link href="https://inoue-kk.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Microsoft Azure アカウント作成方法</title>
+      <link>https://inoue-kk.github.io/2022/08/21/</link>
+      <pubDate>Sun, 21 Aug 2022 05:28:05 +0000</pubDate>
+      
+      <guid>https://inoue-kk.github.io/2022/08/21/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Docker を使ってみたかった話</title>
-      <link>https://inoue-kk.github.io/2022/07/docker-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</link>
+      <link>https://inoue-kk.github.io/2022/07/29/</link>
       <pubDate>Fri, 29 Jul 2022 14:34:17 +0000</pubDate>
       
-      <guid>https://inoue-kk.github.io/2022/07/docker-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</guid>
+      <guid>https://inoue-kk.github.io/2022/07/29/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitHub 初回pushまでの操作メモ</title>
-      <link>https://inoue-kk.github.io/2022/07/github-%E5%88%9D%E5%9B%9Epush%E3%81%BE%E3%81%A7%E3%81%AE%E6%93%8D%E4%BD%9C%E3%83%A1%E3%83%A2/</link>
+      <link>https://inoue-kk.github.io/2022/07/26/</link>
       <pubDate>Tue, 26 Jul 2022 11:33:46 +0000</pubDate>
       
-      <guid>https://inoue-kk.github.io/2022/07/github-%E5%88%9D%E5%9B%9Epush%E3%81%BE%E3%81%A7%E3%81%AE%E6%93%8D%E4%BD%9C%E3%83%A1%E3%83%A2/</guid>
+      <guid>https://inoue-kk.github.io/2022/07/26/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitHub 初回のリポジトリクローン操作メモ</title>
-      <link>https://inoue-kk.github.io/2022/07/github-%E5%88%9D%E5%9B%9E%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E6%93%8D%E4%BD%9C%E3%83%A1%E3%83%A2/</link>
+      <link>https://inoue-kk.github.io/2022/07/23/</link>
       <pubDate>Sat, 23 Jul 2022 13:53:08 +0000</pubDate>
       
-      <guid>https://inoue-kk.github.io/2022/07/github-%E5%88%9D%E5%9B%9E%E3%81%AE%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E6%93%8D%E4%BD%9C%E3%83%A1%E3%83%A2/</guid>
+      <guid>https://inoue-kk.github.io/2022/07/23/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GitHubってなあに？</title>
-      <link>https://inoue-kk.github.io/2022/07/github%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%82%E3%81%AB/</link>
+      <link>https://inoue-kk.github.io/2022/07/20/</link>
       <pubDate>Wed, 20 Jul 2022 00:34:07 +0900</pubDate>
       
-      <guid>https://inoue-kk.github.io/2022/07/github%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%82%E3%81%AB/</guid>
+      <guid>https://inoue-kk.github.io/2022/07/20/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Hello World!</title>
-      <link>https://inoue-kk.github.io/2022/07/hello-world/</link>
+      <link>https://inoue-kk.github.io/2022/07/16/</link>
       <pubDate>Sat, 16 Jul 2022 12:35:25 +0000</pubDate>
       
-      <guid>https://inoue-kk.github.io/2022/07/hello-world/</guid>
+      <guid>https://inoue-kk.github.io/2022/07/16/</guid>
       <description></description>
     </item>
     
