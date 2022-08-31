@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～",
+  
+  "datePublished": "2022-08-17T04:51:18Z",
+  "dateModified": "2022-08-17T04:51:18Z",
+  "author": {
+    "@type": "Person",
+    "name": "イノウエ",
+    
+    "image": "https://inoue-kk.github.io/images/aichan.jpg"
+    
+  },
+  "mainEntityOfPage": { 
+    "@type": "WebPage",
+    "@id": "https:\/\/inoue-kk.github.io\/2022\/08\/17\/" 
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ほっそりイノウエのマッチョエンジニアへの道",
+    
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://inoue-kk.github.io/images/aichan.jpg"
+    }
+    
+  },
+  "description": "",
+  "keywords": []
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.85.0 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="イノウエ">
+<meta name="keywords" content="">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～">
+<meta name="twitter:title" content="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～">
+<meta property="og:url" content="https://inoue-kk.github.io/2022/08/17/">
+<meta property="twitter:url" content="https://inoue-kk.github.io/2022/08/17/">
+<meta property="og:site_name" content="ほっそりイノウエのマッチョエンジニアへの道">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2022-08-17T04:51:18">
+  
+  
+    <meta property="article:modified_time" content="2022-08-17T04:51:18">
+  
+  
+  
+    
+      <meta property="article:section" content="Docker">
+    
+  
+  
+    
+      <meta property="article:tag" content="Docker">
+    
+      <meta property="article:tag" content="github-pages">
+    
+      <meta property="article:tag" content="VM">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://inoue-kk.github.io/images/aichan.jpg">
+  <meta property="twitter:image" content="https://inoue-kk.github.io/images/aichan.jpg">
+
+
+
+
+
+
+    <title>[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</title>
+
+    <link rel="icon" href="https://inoue-kk.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://inoue-kk.github.io/2022/08/17/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://inoue-kk.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://inoue-kk.github.io/" aria-label="Go to homepage">ほっそりイノウエのマッチョエンジニアへの道</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://inoue-kk.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://inoue-kk.github.io/images/aichan.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://inoue-kk.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://inoue-kk.github.io/images/aichan.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">イノウエ</h4>
+        
+          <h5 class="sidebar-profile-bio">初心者エンジニア。ハンバーグとオムライスが好きです。</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://inoue-kk.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://inoue-kk.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://inoue-kk.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://inoue-kk.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://inoue-kk.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Inoue-KK" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" id="top">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title">
+      [Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2022-08-17T04:51:18Z">
+        
+  August 17, 2022
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://inoue-kk.github.io/categories/docker">Docker</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <p>前回の続きです☟☟<br>
+<a href="https://inoue-kk.github.io/2022/07/29/">Docker を使ってみたかった話</a></p>
+<hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#ToDo">やりたいこと</a></li>
+<li><a href="#VM">VMware インストール</a></li>
+<li><a href="#SSH_set">Ubuntu に SSH をインストール</a></li>
+<li><a href="#SSH">Ubuntu と Windows を SSH 接続する</a></li>
+<li><a href="#InsSoft">Ubuntu に git や gh コマンド、Docker をインストールする</a></li>
+<li><a href="#clone">作業用リポジトリの作成、クローン</a></li>
+<li><a href="#do">動かしてみる</a></li>
+<li><a href="#Fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="ToDo"></a></p>
+<h2 id="div-stylebackground-colore5e5ffやりたいことdiv"><div style="background-color:#e5e5ff;">やりたいこと</div></h2>
+<p>タイトルに色々詰め込んだらロングロング意味わからん文を生成してしまったので、以下に現状等を記載します。</p>
+<h5 id="問題点">問題点</h5>
+<p>GitHub Pages を利用して本サイトを公開しているが、 Push までしないとページに反映されないのが不便。どのように画面が出来上がっているか確認しながらブログを作成したい。</p>
+<hr>
+<h5 id="やったこと失敗">やったこと（失敗）</h5>
+<p>ブログのリポジトリをコピーした作業用リポジトリを作成。Docker を利用してコンテナを立てて、作業用リポジトリのデータをブラウザに表示できるようにした。<br>
+→ ファイル保存の度にブラウザに反映されるはずが、なぜか Commit までしないと反映されなかった。<br>
+※詳しくは<a href="https://inoue-kk.github.io/2022/07/29/">前回の記事</a>へ</p>
+<hr>
+<h5 id="失敗の原因">失敗の原因</h5>
+<p>詳しい原因は突き止められなかったが、恐らく OS (Windows) の仕様によるものだと思われる。<br>
+→ OS を仮想マシンで Windows から Linux に変更したらできる？？</p>
+<hr>
+<h4 id="今回やること">今回やること</h4>
+<ol>
+<li>仮想マシンを使用し、Windows 上で Linux (Ubuntu) を起動</li>
+<li>Windows と Ubuntu を SSH 接続</li>
+<li>git や gh コマンド、Docker を Ubuntu にインストール</li>
+<li>「[アカウント名].github.io」のリポジトリと同一の内容のリポジトリ（作業用）を作成 → Ubuntu に clone</li>
+<li>Docker を利用して Web サーバを立て、作業用リポジトリ（ローカル）のデータをブラウザに表示できるようにする</li>
+</ol>
+<p>こちらを実践してみたところ、私の環境では意図通りに「ファイルを保存する度にブラウザに変更が反映される」ようになったので、詳しい作業内容をこれから説明していきます。</p>
+<p>※ Windows 側の操作は VS Code 内の Git Bash で行っているのでご承知おきください。</p>
+<p><a id="VM"></a></p>
+<h2 id="div-stylebackground-colore5e5ffvm-インストールdiv"><div style="background-color:#e5e5ff;">VM インストール</div></h2>
+<p>Windows 上で Linux を動かしたいので、それに必要な仮想化ソフトウェアを入れていきます。<br>
+今回は VMware を使用します。（VirtualBox はインストールが上手くいかなかった…なぜ…。）</p>
+<ol>
+<li>
+<p>下記サイトからインストーラーをダウンロード。<br>
+<a href="https://www.vmware.com/jp/products/workstation-player/workstation-player-evaluation.html">VMware Workstation 16 Player</a></p>
+ <img src="VMwp_install00.png" style="display:block; margin:auto;" height="400px">
+<p>手順に沿ってインストールする。</p>
+</li>
+</ol>
+<br>
+<ol start="2">
+<li>
+<p>新規仮想マシンを作成していく。<br>
+VMware Workstation 16 Player を起動すると下記画面が表示されるので、「新規仮想マシンの作成」を選択。</p>
+ <img src="VMwp_install01.png" style="display:block; margin:auto;" height="300px">
+</li>
+</ol>
+<br>
+<ol start="3">
+<li>
+<p>Ubuntu の ISO を下記サイトでダウンロード。<br>
+<a href="https://ubuntu.com/download/desktop">Download Ubuntu Desktop</a></p>
+<p>ダウンロードしたISOイメージファイルを「インストーラディスクイメージファイル」に指定する。</p>
+ <img src="VMwp_install02.png" style="display:block; margin:auto;" height="400px">
+</li>
+</ol>
+<br>
+<ol start="4">
+<li>
+<p>ユーザ名などを設定していく。</p>
+ <img src="VMwp_install03.png" style="display:block; margin:auto;" height="400px">
+ <br>
+ <img src="VMwp_install04.png" style="display:block; margin:auto;" height="400px">
+</li>
+</ol>
+<br>
+<ol start="5">
+<li>
+<p>仮想マシンのディスクサイズを設定。<br>
+こちらは使用している PC のスペックに会わせて調整してください。</p>
+ <img src="VMwp_install05.png" style="display:block; margin:auto;" height="400px">
+ <br>
+</li>
+<li>
+<p>仮想マシンの設定完了！
+問題がなければ「完了」ボタンをクリックしましょう。<br>
+Ubuntu が起動します。
+<img src="VMwp_install06.png" style="display:block; margin:auto;" height="400px">
+<br></p>
+</li>
+</ol>
+<p><a id="SSH_set"></a></p>
+<h2 id="div-stylebackground-colore5e5ffubuntu-に-ssh-をインストールdiv"><div style="background-color:#e5e5ff;">Ubuntu に SSH をインストール</div></h2>
+<p>初期設定が諸々完了したら、早速 Ubuntu のターミナルを開いてソフトウェアをインストールしていきます。</p>
+<br>
+<ol>
+<li>パッケージリストを最新にする。<br>
+apt （Advanced Package Tool）はパッケージ管理をするコマンドである。<br>
+sodo をつけて root ユーザ = 管理者 として実行する。
+<pre><code>$ sodo apt-get update
+</code></pre></li>
+</ol>
+<br>
+<ol start="2">
+<li>
+<p>SSH をインストール</p>
+<pre><code>$ sudo apt-get install openssh-server
+</code></pre><p>これでインストール完了！</p>
+<p>以下のコマンドで SSH がインストールされていることを確認できます。</p>
+<pre><code>$ systemctl status ssh
+</code></pre></li>
+</ol>
+<p><a id="SSH"></a></p>
+<h2 id="div-stylebackground-colore5e5ffubuntu-と-windows-を-ssh-接続するdiv"><div style="background-color:#e5e5ff;">Ubuntu と Windows を SSH 接続する</div></h2>
+<p>ここからは作業環境が Ubuntu なのか Windows なのか、ごちゃごちゃになりやすいので、気をつけながら説明していきます。<br>
+分かりにくかったらすみません。</p>
+<br>
+<ol>
+<li>
+<p>Windows 側にインストールされている VS Code に Remote-SSH をインストールする。</p>
+<p><code>Ctrl + Shift + X</code> で Extentions が開くので、検索窓に「remote-ssh」と入力し、Remote-SSH をインストールする。</p>
+ <img src="ssh01.png" style="display:block; margin:auto;" height="450px">
+ <br>
+</li>
+<li>
+<p>対象のローカルリポジトリに移動し、Remote-SSH をインストールして現れた左下の緑色のマークをクリック。
+すると画面上部にポップアップが表示されるので、「Connect to Host…」→「新規 SSH ホストを追加する」を選択する。</p>
+ <img src="ssh02.png" style="display:block; margin:auto;" height="200px">
+</li>
+</ol>
+<br>
+<ol start="3">
+<li>
+<p>SSH 接続コマンドを入力する。</p>
+<pre><code>ssh [Ubuntu の IPアドレス] -l [Ubuntu の User名]
+</code></pre> <img src="ssh03.png" style="display:block; margin:auto;" height="200px">
+ <br>
+ Ubuntu の IP アドレスは、Ubuntu のターミナルに以下のコマンドを入力することで確認できます。
+<pre><code>$ ip addr show
+</code></pre></li>
+</ol>
+<br>
+<ol start="4">
+<li>更新する SSH 構成ファイルを選択する。<br>
+私の場合は<code>~/.ssh/config</code>のファイルを選択しました。
+<img src="ssh04.png" style="display:block; margin:auto;" height="200px">
+<br>
+すると、右下にポップアップが表示されます。
+<img src="ssh05.png" style="display:block; margin:auto;" height="150px">
+<br>
+これで新規 SSH ホストの追加が完了しました！</li>
+</ol>
+<br>
+<ol start="5">
+<li>
+<p>画面左下の緑色のボタンをクリックし、「Connect to Host…」を選択、3 で設定した Ubuntu の SSH ホストを選択する。<br>
+（<code>Ctrl + Shift + P</code> または View タブの Command Palatte を開き、<code>Remote-SSH:Connect to Host…</code> を選択しても同様の画面が表示されますよ～）
+<img src="ssh06.png" style="display:block; margin:auto;" height="200px">
+<br></p>
+</li>
+<li>
+<p>接続先の OS の選択を求められるので、今回は Ubuntu と接続したいため Linux を選択する。</p>
+ <img src="ssh07.png" style="display:block; margin:auto;" height="200px">
+</li>
+</ol>
+<br>
+<ol start="7">
+<li>
+<p>Ubuntu にログインする際のパスワードを入力する。</p>
+ <img src="ssh08.png" style="display:block; margin:auto;" height="170px">
+ <br>
+<p>SSH 接続完了！！</p>
+</li>
+</ol>
+<br>
+<p><a id="InsSoft"></a></p>
+<h2 id="div-stylebackground-colore5e5ffubuntu-に-git-や-gh-コマンドdocker-をインストールするdiv"><div style="background-color:#e5e5ff;">Ubuntu に git や gh コマンド、Docker をインストールする</div></h2>
+<p>SSH 接続が完了したところで、Ubuntu に戻って作業に必要なものをインストールしていきましょう。<br>
+以下の作業は全て Ubuntu の ターミナルで行っております。</p>
+<h4 id="span-stylebackground-colorcfe6fcgit-コマンドインストールspan"><span style="background-color:#cfe6fc;">git コマンドインストール</span></h4>
+<ol>
+<li>リストの更新
+<pre><code>$ sudo apt update
+</code></pre></li>
+</ol>
+<br>
+<ol start="2">
+<li>git をインストール
+<pre><code>$ sudo apt install git
+</code></pre></li>
+</ol>
+<br>
+<h4 id="span-stylebackground-colorcfe6fcgh-コマンドインストールspan"><span style="background-color:#cfe6fc;">gh コマンドインストール</span></h4>
+<pre><code>$ sudo apt install gh
+</code></pre><br>
+<h4 id="span-stylebackground-colorcfe6fcdocker-インストールspan"><span style="background-color:#cfe6fc;">Docker インストール</span></h4>
+<pre><code>$ sudo snap install docker
+</code></pre><br>
+<p><a id="clone"></a></p>
+<h2 id="div-stylebackground-colore5e5ff作業用リポジトリの作成クローンdiv"><div style="background-color:#e5e5ff;">作業用リポジトリの作成、クローン</div></h2>
+<p>Ubuntu と SSH 接続した、Windows 側の VS Code で以下の操作をしていきます。</p>
+<p>「[アカウント名].github.io」と同じ内容のリポジトリを作業用リポジトリとして作成し、その作業用リポジトリを Ubuntu にクローンします。</p>
+<pre><code>$ gh repo clone [アカウント名]/[作業用リポジトリ名]
+</code></pre><p>静的サイトジェネレータで HUGO を使用しているので、サブモジュール（HUGO のテーマ）を入れるために以下のコマンドを実行します。</p>
+<pre><code>$ git submodule update --init --recursive
+</code></pre><p>そして Docker でコンテナを立てるために、<code>docker-compose.yml</code>に Ubuntu の IPアドレスを設定しておきます。<br>
+（Ubuntu の IPアドレスは環境によって変わるので、<code>.gitignore</code> （Git の管理対象外とするファイル）で設定した方が便利かもしれません。）</p>
+<p>これで作業環境構築完了！長かった！！</p>
+<br>
+<p><a id="do"></a></p>
+<h2 id="div-stylebackground-colore5e5ff動かしてみるdiv"><div style="background-color:#e5e5ff;">動かしてみる</div></h2>
+<p>環境が構築できたので、実際に意図通りの動きをするか確認です。</p>
+<p>Ubuntu と SSH 接続した、Windows 側の VS Code のターミナル（bash）で Docker コンテナを立ち上げます。</p>
+<pre><code>$ docker-compose up
+</code></pre><p>※バージョンによっては<code>docker-compose</code> ではなく <code>docker compose</code> の場合もある。（docker コマンドに統一する動きがあるらしい）</p>
+<p>次に ブラウザの検索欄に<code>docker-compose.yml</code>で指定したアドレス、ポートを張り付けて通信します。</p>
+<pre><code>[IPアドレス]:[ポート]
+</code></pre><p>これでサイトが表示されると思います。<br>
+作業用リポジトリの内容を編集して保存をしたタイミングで、サイトも更新されます。</p>
+<p>作業がひと段落したら、以下のコマンドで Docker コンテナを落としましょう。</p>
+<pre><code>$ docker-compose down
+</code></pre><p>Docker の状況は<code>docker-compose ps</code> で確認できます。</p>
+<br>
+<a id="Fin"></a>
+<h2 id="div-stylebackground-colore5e5ffまとめー終わらない環境構築ーdiv"><div style="background-color:#e5e5ff;">まとめ　ー終わらない環境構築ー</div></h2>
+<p>今回は、GitHub Pages で作成されたサイトについて、仮想マシンとコンテナを使用して開発環境を構築しました。</p>
+<p>ただこれで終わりではありません…。<br>
+作業用リポジトリの変更内容をメインの「[アカウント名].github.io」リポジトリに反映させる作業が残っています。<br>
+そちらは GitHub Actions を利用して行う予定ですので、この内容もいずれブログ記事に残したいと思っております。</p>
+<p>ひとまずお疲れ様でした🍵</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/docker/">Docker</a>
+
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/github-pages/">github-pages</a>
+
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/vm/">VM</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/08/21/" data-tooltip="Microsoft Azure アカウント作成方法" aria-label="NEXT: Microsoft Azure アカウント作成方法">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/07/29/" data-tooltip="Docker を使ってみたかった話" aria-label="PREVIOUS: Docker を使ってみたかった話">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/08/17/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/08/17/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/08\/17\/';
+        
+          this.page.identifier = '\/2022\/08\/17\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = '';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2022 <a href="https://github.com/Inoue-KK">Inoue-KK</a>. Hugo theme tranquilpeak. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/08/21/" data-tooltip="Microsoft Azure アカウント作成方法" aria-label="NEXT: Microsoft Azure アカウント作成方法">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/07/29/" data-tooltip="Docker を使ってみたかった話" aria-label="PREVIOUS: Docker を使ってみたかった話">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/08/17/" title="Share on Facebook" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+      <li class="post-action hide-xs">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/08/17/" title="Share on Twitter" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+        </a>
+      </li>
+    
+  
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+<div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-times"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F08%2F17%2F" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F08%2F17%2F" aria-label="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://inoue-kk.github.io/images/aichan.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">イノウエ</h4>
+    
+      <div id="about-card-bio">初心者エンジニア。ハンバーグとオムライスが好きです。</div>
+    
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        Japan
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://inoue-kk.github.io/images/cover.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://inoue-kk.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
