@@ -2,10 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://inoue-kk.github.io/tags/azure/</loc>
-    <lastmod>2022-08-21T05:28:05+00:00</lastmod>
-  </url><url>
     <loc>https://inoue-kk.github.io/categories/</loc>
+    <lastmod>2022-09-14T13:34:51+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/github/</loc>
+    <lastmod>2022-09-14T13:34:51+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/categories/github/</loc>
+    <lastmod>2022-09-14T13:34:51+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/2022/09/14/</loc>
+    <lastmod>2022-09-14T13:34:51+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/posts/</loc>
+    <lastmod>2022-09-14T13:34:51+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/</loc>
+    <lastmod>2022-09-14T13:34:51+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/</loc>
+    <lastmod>2022-09-14T13:34:51+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/azure/</loc>
     <lastmod>2022-08-21T05:28:05+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/tags/cloud/</loc>
@@ -15,15 +33,6 @@
     <lastmod>2022-08-21T05:28:05+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/2022/08/21/</loc>
-    <lastmod>2022-08-21T05:28:05+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/posts/</loc>
-    <lastmod>2022-08-21T05:28:05+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/tags/</loc>
-    <lastmod>2022-08-21T05:28:05+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/</loc>
     <lastmod>2022-08-21T05:28:05+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/2022/08/17/</loc>
@@ -45,12 +54,6 @@
     <lastmod>2022-07-29T14:34:17+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/tags/git/</loc>
-    <lastmod>2022-07-26T11:33:46+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/tags/github/</loc>
-    <lastmod>2022-07-26T11:33:46+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/categories/github/</loc>
     <lastmod>2022-07-26T11:33:46+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/2022/07/26/</loc>

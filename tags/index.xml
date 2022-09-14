@@ -6,7 +6,16 @@
     <description>Recent content in Tags on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Aug 2022 05:28:05 +0000</lastBuildDate><atom:link href="https://inoue-kk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Sep 2022 13:34:51 +0000</lastBuildDate><atom:link href="https://inoue-kk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub</title>
+      <link>https://inoue-kk.github.io/tags/github/</link>
+      <pubDate>Wed, 14 Sep 2022 13:34:51 +0000</pubDate>
+      
+      <guid>https://inoue-kk.github.io/tags/github/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Azure</title>
       <link>https://inoue-kk.github.io/tags/azure/</link>
@@ -58,15 +67,6 @@
       <pubDate>Tue, 26 Jul 2022 11:33:46 +0000</pubDate>
       
       <guid>https://inoue-kk.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GitHub</title>
-      <link>https://inoue-kk.github.io/tags/github/</link>
-      <pubDate>Tue, 26 Jul 2022 11:33:46 +0000</pubDate>
-      
-      <guid>https://inoue-kk.github.io/tags/github/</guid>
       <description></description>
     </item>
     
