@@ -7,10 +7,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "GitHub の導入を会社に提案してみた話",
+  "headline": "[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～",
   
-  "datePublished": "2022-09-14T13:34:51Z",
-  "dateModified": "2022-09-14T13:34:51Z",
+  "datePublished": "2022-09-01T08:12:58Z",
+  "dateModified": "2022-09-01T08:12:58Z",
   "author": {
     "@type": "Person",
     "name": "イノウエ",
@@ -20,7 +20,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/inoue-kk.github.io\/2022\/09\/14\/" 
+    "@id": "https:\/\/inoue-kk.github.io\/2022\/09\/01\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -48,20 +48,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitHub の導入を会社に提案してみた話">
-<meta name="twitter:title" content="GitHub の導入を会社に提案してみた話">
-<meta property="og:url" content="https://inoue-kk.github.io/2022/09/14/">
-<meta property="twitter:url" content="https://inoue-kk.github.io/2022/09/14/">
+<meta property="og:title" content="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～">
+<meta name="twitter:title" content="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～">
+<meta property="og:url" content="https://inoue-kk.github.io/2022/09/01/">
+<meta property="twitter:url" content="https://inoue-kk.github.io/2022/09/01/">
 <meta property="og:site_name" content="ほっそりイノウエのマッチョエンジニアへの道">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-09-14T13:34:51">
+    <meta property="article:published_time" content="2022-09-01T08:12:58">
   
   
-    <meta property="article:modified_time" content="2022-09-14T13:34:51">
+    <meta property="article:modified_time" content="2022-09-01T08:12:58">
   
   
   
@@ -72,6 +72,8 @@
   
     
       <meta property="article:tag" content="github">
+    
+      <meta property="article:tag" content="github-actions">
     
   
 
@@ -92,14 +94,14 @@
 
 
 
-    <title>GitHub の導入を会社に提案してみた話</title>
+    <title>[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</title>
 
     <link rel="icon" href="https://inoue-kk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://inoue-kk.github.io/2022/09/14/">
+    <link rel="canonical" href="https://inoue-kk.github.io/2022/09/01/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -239,15 +241,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      GitHub の導入を会社に提案してみた話
+      [Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-09-14T13:34:51Z">
+      <time datetime="2022-09-01T08:12:58Z">
         
-  September 14, 2022
+  September 1, 2022
 
       </time>
     
@@ -266,142 +268,140 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>お久しぶりになってしまいました。イノウエです。</p>
-<p>もっとコンスタントにブログを書きたかったのですが、アウトプットが遅くなってしまいました。<br>
-言い訳っぽくなってしまうのですが、本ブログのタイトルに記載した通り GitHub を会社で提案する機会がもらえたので、そちらに注力していたのです。</p>
-<p>熱量のあるうちにこちらの話を今日は記録します。</p>
-<h2 id="div-stylebackground-colore5e5ffgithub-ってすごいよねdiv"><div style="background-color:#e5e5ff;">GitHub ってすごいよね</div></h2>
-<p>GitHub ってとっても便利ですよね。<br>
-何を当たり前のことを、と言われてしまうと思いますが…。<br>
-今年 7月に GitHub に出会って以来、少しずつ色んな機能を開拓していっているのですが、あまりの便利さに感動する日々です。</p>
-<p>そしてふと思いました。<br>
-こんなに便利なのになぜ弊社では使ってないんだろう？<br>
-GitHub 使ったら業務効率向上するし、何より仕事の仕方が変わるよなぁ、と。</p>
-<p>誤解を防ぐために申し上げますが、決して今の会社のやり方を否定するつもりは一切ありません。<br>
-歴史の長い会社なので長年にわたって培ってきたものが沢山あり、それ自体は素晴らしいと思っております。<br>
-ただGitHub を取り入れたらもっと仕事環境がよくなるのでは、と思った次第です。</p>
-<h2 id="div-stylebackground-colore5e5ffgithub-の導入を提案div"><div style="background-color:#e5e5ff;">GitHub の導入を提案</div></h2>
-<p>上司とお話する機会があり、仕事環境の課題についての話題になったときに<br>
-『今だ！』<br>
-と突然体内の全細胞が大騒ぎ。ﾜｱﾜｱ</p>
-<p>チャンスが来たと思って<br>
-「GitHub という便利なものがあるのですが、それなら改善できるかもしれません…」<br>
-とお話してみました。</p>
-<p>ありがたいことにその話に耳を傾けて下さり、GitHub の導入の提案をする機会をいただきました。<br>
-嬉しい！！</p>
-<p>現状の課題を洗い出し、改善策をまとめた提案資料を作成しました。</p>
-<p>Speaker Deck に提案資料を載せているので、宜しければご覧ください ☟☟<br>
-<a href="https://speakerdeck.com/inouekk/proposal-of-projects-improvement-with-github">バージョン管理システムによる開発環境の課題改善検討案</a><br>
-（勤務先の情報を一切含まないように一部修正しております）</p>
-<h2 id="div-stylebackground-colore5e5ffgithub-で何がどう変わるdiv"><div style="background-color:#e5e5ff;">GitHub で何がどう変わる？</div></h2>
-<p>資料にもまとめたのですが、GitHub でどう課題を改善できるかについて、こちらにもつらつらと書いてみます。</p>
-<h3 id="span-stylebackground-colord5e8fdバージョン管理ができるspan"><span style="background-color:#d5e8fd;">バージョン管理ができる</span></h3>
-<h4 id="現状">現状</h4>
-<p><strong>ソースコードはバージョン毎にファイルサーバ上に保存</strong></p>
-<pre><code>project1  
-　├ project1_ver1.0.0  
-　├ project1_ver1.0.1  
-　└ project1_ver1.0.2  
-</code></pre><p>といった感じですね。</p>
+              <p>このブログの後編です☟☟<br>
+<a href="https://inoue-kk.github.io/2022/08/17/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</a></p>
 <hr>
-<h5 id="課題">課題</h5>
-<ul>
-<li><strong>ファイルサーバで書き換えできる権限のある人は容易に変更・削除が可能</strong><br>
-更に変更・削除してしまった場合の復旧が困難な場合も十分考えられます<br>
-複数人で作業することが多いので、他の人の変更に気づかずにうっかり上書きしてしまったりも…<br>
-上書きしてしまったことにすら気づけなかった場合はもう言葉がありませんよね…怖い話…！</li>
-</ul>
-<br>
-<ul>
-<li><strong>命名ルールの一貫性が損なわれると変更の把握が困難</strong><br>
-一貫した命名則に基づいて名称が付けられているときは問題ないですが、例えば以下のように
-<pre><code>project1  
-　├ project1_ver1.0.1_最新  
-　├ project1_ver1.0.1  
-　├ project1_ver1.0.1_1  
-　└ project1_ver1.0.1_2  
-</code></pre><p>となっていたら何が何だか分からないですよね。<br>
-これは少し大袈裟かもしれません（もはやバージョンが機能していない）が、複数人で編集する以上、後から履歴の把握が難しい変更をしてしまうこともあります。</p>
-</li>
-</ul>
-<hr>
-<h5 id="改善案">改善案</h5>
-<ul>
-<li><strong>GitHub の Release 機能と Tag 機能で容易にバージョン変更できないように</strong><br>
-Tag でバージョンなどの名称を付けることができ、Release 機能で Tag を付けたソース等を公開できます。<br>
-リリースノートでコメントも追加できるので、前回のバージョンからの変更点などが記載できる点もとても便利だと思います。<br>
-GitHub の画面上では Release や Tag の変更はできないので、うっかり削除の心配も少ないです。</li>
-</ul>
-<br>
-<ul>
-<li><strong>監査ログで操作履歴を追跡</strong><br>
-オーナー権限のある方のみ、Organization メンバーの操作履歴を閲覧することができるようです。<br>
-変なことするとバレちゃいますね。</li>
-</ul>
-<br>
-<h3 id="span-stylebackground-colord5e8fdソースコード結合作業の改善span"><span style="background-color:#d5e8fd;">ソースコード結合作業の改善</span></h3>
-<h4 id="現状-1">現状</h4>
-<p><strong>マージツールで比較をかけて手作業でソースの結合</strong></p>
+<h2 id="目次">目次</h2>
 <ol>
-<li>対象ソースコードを複製して開発者に渡す</li>
-<li>開発者が対象ソースコードを変更</li>
-<li>開発者が変更後のソースコードを一式をファイルサーバの指定フォルダに配置</li>
-<li>マージ担当者が変更内容をマージツールで確認しながらマージ</li>
-<li>マージ担当者がマージ結果を検証</li>
-<li>マージ担当者がマージされたソースコード一式をファイルサーバの指定フォルダに配置</li>
+<li><a href="#ToDo">やりたいこと</a></li>
+<li><a href="#outline">GitHub Actionsとは</a></li>
+<li><a href="#imple">GitHub Actionsで他リポジトリにpushする</a></li>
+<li><a href="#Fin">まとめ</a></li>
 </ol>
 <hr>
-<h5 id="課題-1">課題</h5>
-<ul>
-<li><strong>作業に時間がかかり、ミスが生じやすい</strong><br>
-もうこれに尽きますね。現状の手順書くのもちょっと疲れちゃいました。<br>
-作業が増えるとその分ミスも発生しやすくなるので、できるだけ簡単に済ませたいところですよね。<br>
-何しろ時間を割くべき作業ではないと思っているので、こういった事務的な作業はどんどん減らしたいです。</li>
-</ul>
+<p><a id="ToDo"></a></p>
+<h2 id="div-stylebackground-colore5e5ffやりたいことdiv"><div style="background-color:#e5e5ff;">やりたいこと</div></h2>
+<h4 id="問題点">問題点</h4>
+<p>GitHub Pages を利用して本サイトを公開しているが、 Push までしないとページに反映されないのが不便。どのように画面が出来上がっているか確認しながらブログを作成したい。</p>
+<h4 id="やったこと">やったこと</h4>
+<ol>
+<li>仮想マシンを使用し、Windows 上で Linux (Ubuntu) を起動</li>
+<li>Windows と Ubuntu を SSH 接続</li>
+<li>git や gh コマンド、Docker を Ubuntu にインストール</li>
+<li>「[アカウント名].github.io」のリポジトリと同一の内容のリポジトリ（作業用）を作成 → Ubuntu に clone</li>
+<li>Docker を利用して Web サーバを立て、作業用リポジトリ（ローカル）のデータをブラウザに表示できるようにする</li>
+</ol>
+<h4 id="今回やること">今回やること</h4>
+<p>作業用のリポジトリの変更を、メインのリポジトリに反映（push）させる作業を自動化したい。<br>
+→ GitHub Actionsを利用して、作業用のリポジトリに push したらメインのリポジトリにも同様の変更が push されるようにする。</p>
+<p><a id="outline"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffgithub-actionsとはdiv"><div style="background-color:#e5e5ff;">GitHub Actionsとは</div></h2>
+<p>今回初めて使用する <strong>GitHub Actions</strong> とは何なのかを調べてみました。</p>
+<p>公式ドキュメントの文章を引用すると</p>
+<blockquote>
+<p>GitHub Actions は、ビルド、テスト、デプロイのパイプラインを自動化できる継続的インテグレーションと継続的デリバリー (CI/CD) のプラットフォームです。 リポジトリに対するすべての pull request をビルドしてテストしたり、マージされた pull request を運用環境にデプロイしたりするワークフローを作成できます。<br>
+引用元：<a href="https://docs.github.com/ja/actions/learn-github-actions/understanding-github-actions">GitHub Actions を理解する</a></p>
+</blockquote>
+<p>とあります。</p>
+<p>CI/CD とは、Continuous Integration / Continuous Delivery の略称で、テストやリリースなどの従来手作業で行っていたものを自動化して行うシステム開発の仕組みのことです。</p>
+<p>GitHub Actions では、リポジトリへの Push や Pull request などのイベントをトリガーとして、YAML ファイルに定義されたプロセス（=ワークフロー）を実行してくれます。<br>
+（手動でトリガーしたり、定刻でトリガーしたりも可能）</p>
+<p>ワークフローの実行には GitHub のサーバ上にある仮想マシン(Linux, Windows, macOS)が提供されるので、ユーザが環境を準備する必要がない点もメリットの1つです。</p>
+<p>Free の GitHub アカウントの場合は１か月当たりのワークフロー実行時間 2000分まで、Pro アカウントなら3000分まで無料で使用できます。<br>
+時間のかかる処理を何度も行う人でない限り、無料枠で十分利用可能なのでは？と思います🤔</p>
+<p><a id="imple"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffgithub-actionsで他リポジトリにpushするdiv"><div style="background-color:#e5e5ff;">GitHub Actionsで他リポジトリにpushする</div></h2>
+<p>今回、自動化したい処理は以下の通りです。</p>
+<p><strong>トリガー</strong> … 作業用リポジトリへの Push</p>
+<p><strong>実行処理</strong> … メインリポジトリに作業用リポジトリの変更が Push される</p>
+<p>早速、GitHub Actions を使って上記処理の自動化に挑戦してみましょう！</p>
 <br>
-<ul>
-<li><strong>マージ作業が複雑、分担が困難</strong><br>
-総じてマージ担当者の負担が大きいですよね。<br>
-ソースコードを編集する人数が増えれば、その人数分マージをかけなければならないので、規模の大きなプロジェクトだと大変なことになりそうです。<br>
-全員がバラバラのバージョンからの修正をしていたら…と考えたら胃が痛くなってきました。</li>
-</ul>
-<hr>
-<h5 id="改善案-1">改善案</h5>
-<ul>
-<li><strong>GitHub の Pull requests 機能により、視認性の高いレビューと安全なマージが可能</strong><br>
-レビューとマージが流れで行えるって凄くないですか…。<br>
-GitHub と出会ってから個人的に一番驚いた機能かもしれません。（まだまだ機能は開拓中ですが）<br>
-ファイル同士比較をかけながらレビューして、問題がなければ自動でマージしてくれるなんて、私はなんて素晴らしい時代に生まれたのでしょうか。</li>
-</ul>
+<ol>
+<li>
+<p><strong>トークンの作成</strong><br>
+下記のサイトでトークンを新規作成 (Generate new token)<br>
+<a href="https://github.com/settings/tokens">GitHub/Personal access tokens</a></p>
+<p>設定項目は以下の通り</p>
+ <div style="background-color:#fffff5; border-style:dotted; border-width:4px; border-color:#afeeee;">
+ <b>Note</b>: お好みのトークンの名前を付けてあげてね<br>
+ <b>Expiration</b>（有効期限）: トークンの有効期限（No expiration = 無期限）<br>
+ <b>Select scopes</b>: repo にチェック☑
+ </div>
+<p>→ Generate token ボタンポチでトークン作成完了</p>
+</li>
+</ol>
 <br>
-<ul>
-<li><strong>経過をプロジェクトメンバー間で共有できるため、分担や再修正が効率的に</strong><br>
-改善案の1点目に挙げた Pull requests の状況が全て記録されており、いつでも確認可能なので、誰がどのような作業をしているのかが把握しやすくなります。<br>
-手動マージの時のような、マージ担当者1人への負担が大きいといったことはなくなるでしょう。</li>
-</ul>
+<ol start="2">
+<li><strong>作業用リポジトリにトークン情報を登録</strong><br>
+GitHub の作業用リポジトリのページより、Actions secretsの画面を表示<br>
+Settings &gt; Secrets &gt; Actions
+<img src="ActionsSecrets.png" style="display:block; margin:auto;" height="400px">
 <br>
-<h3 id="span-stylebackground-colord5e8fdバグやタスクが管理しやすくなるspan"><span style="background-color:#d5e8fd;">バグやタスクが管理しやすくなる</span></h3>
-<h4 id="現状-2">現状</h4>
-<p><strong>ソースコードやドキュメント、タスクやバグの一覧をそれぞれ独立して管理</strong><br>
-ソースコードやドキュメントはそれぞれ指定のファイルサーバに、追加のタスクやバグは Excel 上に一覧でまとめており、こちらも同じくファイルサーバに置いて管理しています。</p>
+<code>New repository secret</code> ボタンをクリックし、1で作成したトークンの情報を登録する</li>
+</ol>
+<br>
+<ol start="3">
+<li><strong>作業用リポジトリにフォルダ・YAML ファイルを作成</strong>
+<code>.github/workflows/[任意のファイル名].yml</code><br>
+ここで作成した YAML ファイルに、Push 時に実行する処理を記載していく</li>
+</ol>
+<br>
+<ol start="4">
+<li>
+<p><strong>YAML ファイルに処理を記載</strong><br>
+YAML ファイルに処理を設定していく</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">
+<span style="color:#f92672">name</span>: [<span style="color:#ae81ff">workflow name]                              </span> <span style="color:#75715e">#ワークフローの名前</span>
+
+<span style="color:#f92672">on</span>: <span style="color:#ae81ff">push                                           </span> <span style="color:#75715e">#ワークフロー実行のトリガーとなるイベントを定義（ここではpush）</span>
+
+<span style="color:#f92672">jobs</span>:                                               <span style="color:#75715e">#ワークフローで実行するジョブを以下に定義</span>
+<span style="color:#f92672">[job name]</span>:                                         <span style="color:#75715e">#任意の名称のジョブを定義</span>
+    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest                         </span> <span style="color:#75715e">#ジョブを実行するマシンのタイプ(今回はUbuntuを使用)</span>
+    <span style="color:#f92672">container</span>:                                      <span style="color:#75715e">#コンテナの設定</span>
+    <span style="color:#f92672">image</span>: [<span style="color:#ae81ff">docker image]                          </span> <span style="color:#75715e">#コンテナのDockerイメージの定義</span>
+    <span style="color:#f92672">steps</span>:                                          <span style="color:#75715e">#ステップ実行するアクションを定義</span>
+    - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3                    </span> <span style="color:#75715e">#作業用リポジトリからチェックアウト</span>
+        <span style="color:#f92672">with</span>:                                       <span style="color:#75715e">#アクションで定義される入力パラメータ</span>
+        <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>                            <span style="color:#75715e">#サブモジュールもクローン対象にする</span>
+    - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v3                    </span> <span style="color:#75715e">#メインリポジトリからチェックアウト</span>
+        <span style="color:#f92672">with</span>:                                       <span style="color:#75715e">#アクションで定義される入力パラメータ</span>
+        <span style="color:#f92672">repository</span>: [<span style="color:#ae81ff">user name]/[repository name]  </span> <span style="color:#75715e">#チェックアウトするリポジトリを定義 = メインリポジトリ</span>
+        <span style="color:#f92672">token</span>: <span style="color:#ae81ff">${{ secrets.[token name] }}         </span> <span style="color:#75715e">#トークン</span>
+        <span style="color:#f92672">path</span>: <span style="color:#ae81ff">public                               </span> <span style="color:#75715e">#アクションの実行結果を置く場所を指定</span>
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">git rm -rf .                            </span> <span style="color:#75715e">#実行コマンド</span>
+        <span style="color:#f92672">working-directory</span>: <span style="color:#ae81ff">public                  </span> <span style="color:#75715e">#コマンドが実行されるディレクトリ</span>
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo                                    </span> <span style="color:#75715e">#実行コマンド</span>
+    - <span style="color:#f92672">run</span>: |<span style="color:#e6db74">
+</span><span style="color:#e6db74">        git config --global user.email [mail address]
+</span><span style="color:#e6db74">        git config --global user.name [name]
+</span><span style="color:#e6db74">        git add --all
+</span><span style="color:#e6db74">        git commit --message \
+</span><span style="color:#e6db74">        &#34;[commit message]&#34; \ 
+</span><span style="color:#e6db74">        || true
+</span><span style="color:#e6db74">        working-directory: public                   #コマンドが実行されるディレクトリ</span>        
+    - <span style="color:#f92672">run</span>: <span style="color:#ae81ff">git push https://${token}@github.com/[user name]/[user name].github.io.git main || true </span> <span style="color:#75715e">#実行コマンド</span>
+        <span style="color:#f92672">env</span>:                                        <span style="color:#75715e">#ランナー環境で使う環境変数の定義</span>
+        <span style="color:#f92672">token</span>: <span style="color:#ae81ff">${{ secrets.[token name] }}         </span> <span style="color:#75715e">#トークン</span>
+        <span style="color:#f92672">working-directory</span>: <span style="color:#ae81ff">public                  </span> <span style="color:#75715e">#コマンドが実行されるディレクトリ</span>
+        <span style="color:#f92672">if</span>: <span style="color:#ae81ff">github.ref == &#39;refs/heads/main&#39;        </span> <span style="color:#75715e">#ブランチが main のときのみ実行</span>
+
+</code></pre></div><p>[]で囲まれている箇所は、個々人の環境に合わせた値を入力してください</p>
+</li>
+</ol>
+<br>
 <hr>
-<h4 id="課題-2">課題</h4>
-<p><strong>タスクやバグの資料からソースコードやドキュメントの変更が辿れない</strong><br>
-ファイルサーバでそれぞれ管理しているとこれは当たり前だと思いますが、Excel の一覧表からはソースコードやドキュメントをどのように修正したのか辿ることは難しいです。<br>
-タスクが複雑になってくると、修正したのかしていないのか把握しきれない事案が発生し、本当に修正済みになっているか2、3度チェックし直したりなど、手間と時間がかかる羽目に。</p>
-<hr>
-<h4 id="改善案-2">改善案</h4>
-<p><strong>GitHub の Issue 機能や Milestone 機能により、タスク・バグ管理や進捗把握の効率化</strong><br>
-Issue にタスク等を書き出し、Milestone を各 Issue に設定することで、効率的にタスク管理が行えます。<br>
-Issue のほかに Pull request にも Milestone を設定できます。
-Milestoneではタスクの進捗率がバーで表示されるのですが、こちらは一目で進捗状況が分かりやすくて便利です。<br>
-また commit と Issue を紐づけられるので、タスクからソースコードの確認が容易になります。</p>
+<p>これで必要な作業は完了！</p>
+<p>作業用リポジトリに Push すると、無事にメインリポジトリにも自動的に Push されました。<br>
+処理の実行状況は Actions のページで確認できます。</p>
+<img src="Actions.png" style="display:block; margin:auto;" height="400px">
+<p><a id="Fin"></a><br></p>
 <h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
-<p>今回は、とある会社への GitHub の導入の提案について記録いたしました。<br>
-きっと同じような環境の会社は一定数存在すると思うので、そういった方に向けて何か参考になるものがあれば幸いです。</p>
-<p>実際に導入に踏み込んでくれるかは会社の判断なので分かりませんが、少しでも今の環境が変わるきっかけになればと願っております。</p>
-<p>これからもどんどん不要な作業を減らして、時間をかけるべきところにかけられる職場環境にしたい！です！</p>
-<p>がんばるぞう🐘</p>
+<p>GitHub Actions を利用して、作業用リポジトリの変更内容を別のメインリポジトリへ反映させる作業の自動化を行いました。</p>
+<p>これでやっと、Push までせずともブラウザで逐一確認しながら ブログを書けるようになりました。<br>
+今では作業が段違いに楽になりましたよ～やっほ～！！</p>
+<p>GitHub Actions がとっても便利なのも分かったので、これからも取り入れていきたいです！<br>
+どんどん自動化で便利になっていきますね 👀✨</p>
 <br>
 <br>
 <br>
@@ -429,6 +429,8 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
                     
   <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/github/">github</a>
 
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/github-actions/">github-actions</a>
+
                   </div>
                 
               
@@ -440,7 +442,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/14/" data-tooltip="GitHub の導入を会社に提案してみた話" aria-label="NEXT: GitHub の導入を会社に提案してみた話">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -448,7 +450,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/01/" data-tooltip="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～" aria-label="PREVIOUS: [Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/08/21/" data-tooltip="Microsoft Azure アカウント作成方法" aria-label="PREVIOUS: Microsoft Azure アカウント作成方法">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -466,13 +468,13 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/14/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/01/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/14/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/01/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -497,9 +499,9 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/09\/14\/';
+        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/09\/01\/';
         
-          this.page.identifier = '\/2022\/09\/14\/'
+          this.page.identifier = '\/2022\/09\/01\/'
         
       };
       (function() {
@@ -535,7 +537,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/14/" data-tooltip="GitHub の導入を会社に提案してみた話" aria-label="NEXT: GitHub の導入を会社に提案してみた話">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -543,7 +545,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/01/" data-tooltip="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～" aria-label="PREVIOUS: [Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/08/21/" data-tooltip="Microsoft Azure アカウント作成方法" aria-label="PREVIOUS: Microsoft Azure アカウント作成方法">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -561,13 +563,13 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/14/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/01/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/14/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/01/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -592,13 +594,13 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F14%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F01%2F" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F14%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F01%2F" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
