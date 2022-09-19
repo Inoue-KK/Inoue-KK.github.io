@@ -7,10 +7,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "GitHub の導入を会社に提案してみた話",
+  "headline": "tarコマンドでSSH接続先に画像を送る",
   
-  "datePublished": "2022-09-14T13:34:51Z",
-  "dateModified": "2022-09-14T13:34:51Z",
+  "datePublished": "2022-09-18T02:51:19Z",
+  "dateModified": "2022-09-18T02:51:19Z",
   "author": {
     "@type": "Person",
     "name": "イノウエ",
@@ -20,7 +20,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/inoue-kk.github.io\/2022\/09\/14\/" 
+    "@id": "https:\/\/inoue-kk.github.io\/2022\/09\/18\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -48,30 +48,34 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GitHub の導入を会社に提案してみた話">
-<meta name="twitter:title" content="GitHub の導入を会社に提案してみた話">
-<meta property="og:url" content="https://inoue-kk.github.io/2022/09/14/">
-<meta property="twitter:url" content="https://inoue-kk.github.io/2022/09/14/">
+<meta property="og:title" content="tarコマンドでSSH接続先に画像を送る">
+<meta name="twitter:title" content="tarコマンドでSSH接続先に画像を送る">
+<meta property="og:url" content="https://inoue-kk.github.io/2022/09/18/">
+<meta property="twitter:url" content="https://inoue-kk.github.io/2022/09/18/">
 <meta property="og:site_name" content="ほっそりイノウエのマッチョエンジニアへの道">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-09-14T13:34:51">
+    <meta property="article:published_time" content="2022-09-18T02:51:19">
   
   
-    <meta property="article:modified_time" content="2022-09-14T13:34:51">
+    <meta property="article:modified_time" content="2022-09-18T02:51:19">
   
-  
-  
-    
-      <meta property="article:section" content="GitHub">
-    
   
   
     
-      <meta property="article:tag" content="github">
+      <meta property="article:section" content="お役立ちコマンド">
+    
+  
+  
+    
+      <meta property="article:tag" content="command">
+    
+      <meta property="article:tag" content="ssh">
+    
+      <meta property="article:tag" content="vm">
     
   
 
@@ -92,14 +96,14 @@
 
 
 
-    <title>GitHub の導入を会社に提案してみた話</title>
+    <title>tarコマンドでSSH接続先に画像を送る</title>
 
     <link rel="icon" href="https://inoue-kk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://inoue-kk.github.io/2022/09/14/">
+    <link rel="canonical" href="https://inoue-kk.github.io/2022/09/18/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -239,15 +243,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      GitHub の導入を会社に提案してみた話
+      tarコマンドでSSH接続先に画像を送る
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-09-14T13:34:51Z">
+      <time datetime="2022-09-18T02:51:19Z">
         
-  September 14, 2022
+  September 18, 2022
 
       </time>
     
@@ -256,7 +260,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://inoue-kk.github.io/categories/github">GitHub</a>
+      <a class="category-link" href="https://inoue-kk.github.io/categories/%e3%81%8a%e5%bd%b9%e7%ab%8b%e3%81%a1%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89">お役立ちコマンド</a>
     
   
 
@@ -266,142 +270,110 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <p>お久しぶりになってしまいました。イノウエです。</p>
-<p>もっとコンスタントにブログを書きたかったのですが、アウトプットが遅くなってしまいました。<br>
-言い訳っぽくなってしまうのですが、本ブログのタイトルに記載した通り GitHub を会社で提案する機会がもらえたので、そちらに注力していたのです。</p>
-<p>熱量のあるうちにこちらの話を今日は記録します。</p>
-<h2 id="div-stylebackground-colore5e5ffgithub-ってすごいよねdiv"><div style="background-color:#e5e5ff;">GitHub ってすごいよね</div></h2>
-<p>GitHub ってとっても便利ですよね。<br>
-何を当たり前のことを、と言われてしまうと思いますが…。<br>
-今年 7月に GitHub に出会って以来、少しずつ色んな機能を開拓していっているのですが、あまりの便利さに感動する日々です。</p>
-<p>そしてふと思いました。<br>
-こんなに便利なのになぜ弊社では使ってないんだろう？<br>
-GitHub 使ったら業務効率向上するし、何より仕事の仕方が変わるよなぁ、と。</p>
-<p>誤解を防ぐために申し上げますが、決して今の会社のやり方を否定するつもりは一切ありません。<br>
-歴史の長い会社なので長年にわたって培ってきたものが沢山あり、それ自体は素晴らしいと思っております。<br>
-ただGitHub を取り入れたらもっと仕事環境がよくなるのでは、と思った次第です。</p>
-<h2 id="div-stylebackground-colore5e5ffgithub-の導入を提案div"><div style="background-color:#e5e5ff;">GitHub の導入を提案</div></h2>
-<p>上司とお話する機会があり、仕事環境の課題についての話題になったときに<br>
-『今だ！』<br>
-と突然体内の全細胞が大騒ぎ。ﾜｱﾜｱ</p>
-<p>チャンスが来たと思って<br>
-「GitHub という便利なものがあるのですが、それなら改善できるかもしれません…」<br>
-とお話してみました。</p>
-<p>ありがたいことにその話に耳を傾けて下さり、GitHub の導入の提案をする機会をいただきました。<br>
-嬉しい！！</p>
-<p>現状の課題を洗い出し、改善策をまとめた提案資料を作成しました。</p>
-<p>Speaker Deck に提案資料を載せているので、宜しければご覧ください ☟☟<br>
-<a href="https://speakerdeck.com/inouekk/proposal-of-projects-improvement-with-github">バージョン管理システムによる開発環境の課題改善検討案</a><br>
-（勤務先の情報を一切含まないように一部修正しております）</p>
-<h2 id="div-stylebackground-colore5e5ffgithub-で何がどう変わるdiv"><div style="background-color:#e5e5ff;">GitHub で何がどう変わる？</div></h2>
-<p>資料にもまとめたのですが、GitHub でどう課題を改善できるかについて、こちらにもつらつらと書いてみます。</p>
-<h3 id="span-stylebackground-colord5e8fdバージョン管理ができるspan"><span style="background-color:#d5e8fd;">バージョン管理ができる</span></h3>
-<h4 id="現状">現状</h4>
-<p><strong>ソースコードはバージョン毎にファイルサーバ上に保存</strong></p>
-<pre><code>project1  
-　├ project1_ver1.0.0  
-　├ project1_ver1.0.1  
-　└ project1_ver1.0.2  
-</code></pre><p>といった感じですね。</p>
-<hr>
-<h5 id="課題">課題</h5>
-<ul>
-<li><strong>ファイルサーバで書き換えできる権限のある人は容易に変更・削除が可能</strong><br>
-更に変更・削除してしまった場合の復旧が困難な場合も十分考えられます<br>
-複数人で作業することが多いので、他の人の変更に気づかずにうっかり上書きしてしまったりも…<br>
-上書きしてしまったことにすら気づけなかった場合はもう言葉がありませんよね…怖い話…！</li>
-</ul>
-<br>
-<ul>
-<li><strong>命名ルールの一貫性が損なわれると変更の把握が困難</strong><br>
-一貫した命名則に基づいて名称が付けられているときは問題ないですが、例えば以下のように
-<pre><code>project1  
-　├ project1_ver1.0.1_最新  
-　├ project1_ver1.0.1  
-　├ project1_ver1.0.1_1  
-　└ project1_ver1.0.1_2  
-</code></pre><p>となっていたら何が何だか分からないですよね。<br>
-これは少し大袈裟かもしれません（もはやバージョンが機能していない）が、複数人で編集する以上、後から履歴の把握が難しい変更をしてしまうこともあります。</p>
-</li>
-</ul>
-<hr>
-<h5 id="改善案">改善案</h5>
-<ul>
-<li><strong>GitHub の Release 機能と Tag 機能で容易にバージョン変更できないように</strong><br>
-Tag でバージョンなどの名称を付けることができ、Release 機能で Tag を付けたソース等を公開できます。<br>
-リリースノートでコメントも追加できるので、前回のバージョンからの変更点などが記載できる点もとても便利だと思います。<br>
-GitHub の画面上では Release や Tag の変更はできないので、うっかり削除の心配も少ないです。</li>
-</ul>
-<br>
-<ul>
-<li><strong>監査ログで操作履歴を追跡</strong><br>
-オーナー権限のある方のみ、Organization メンバーの操作履歴を閲覧することができるようです。<br>
-変なことするとバレちゃいますね。</li>
-</ul>
-<br>
-<h3 id="span-stylebackground-colord5e8fdソースコード結合作業の改善span"><span style="background-color:#d5e8fd;">ソースコード結合作業の改善</span></h3>
-<h4 id="現状-1">現状</h4>
-<p><strong>マージツールで比較をかけて手作業でソースの結合</strong></p>
+              <hr>
+<h2 id="目次">目次</h2>
 <ol>
-<li>対象ソースコードを複製して開発者に渡す</li>
-<li>開発者が対象ソースコードを変更</li>
-<li>開発者が変更後のソースコードを一式をファイルサーバの指定フォルダに配置</li>
-<li>マージ担当者が変更内容をマージツールで確認しながらマージ</li>
-<li>マージ担当者がマージ結果を検証</li>
-<li>マージ担当者がマージされたソースコード一式をファイルサーバの指定フォルダに配置</li>
+<li><a href="#ToDo">問題点とやりたいこと</a></li>
+<li><a href="#send">Windows から Ubuntu (VM) にフォルダ転送</a></li>
+<li><a href="#tar">tar コマンドの解説</a></li>
+<li><a href="#Fin">まとめ</a></li>
 </ol>
 <hr>
-<h5 id="課題-1">課題</h5>
+<p><a id="ToDo"></a></p>
+<h2 id="div-stylebackground-colore5e5ff問題点とやりたいことdiv"><div style="background-color:#e5e5ff;">問題点とやりたいこと</div></h2>
+<p>このブログの開発環境は Ubuntu の仮想マシン上にブログのリポジトリを置いて、Windows 上の VSCode で Ubuntu と Remote SSH で接続して記事を書いている状態です。</p>
+<p>ちょっと説明が下手すぎますね…すみません。<br>
+詳しくは以下のブログにて開発環境構築手順を記載しています。</p>
 <ul>
-<li><strong>作業に時間がかかり、ミスが生じやすい</strong><br>
-もうこれに尽きますね。現状の手順書くのもちょっと疲れちゃいました。<br>
-作業が増えるとその分ミスも発生しやすくなるので、できるだけ簡単に済ませたいところですよね。<br>
-何しろ時間を割くべき作業ではないと思っているので、こういった事務的な作業はどんどん減らしたいです。</li>
+<li>
+<p><a href="https://inoue-kk.github.io/2022/08/17/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</a></p>
+</li>
+<li>
+<p><a href="https://inoue-kk.github.io/2022/09/01/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</a></p>
+</li>
 </ul>
+<p>基本的に Windows の PC で作業を行っていて、Ubuntu (VM) には SSH 接続するだけなのですが、作業を進めるうちやりたいことが出てきました。</p>
+<p><strong>「ブログに Windows PC でキャプチャした画像を貼りたい…！！」</strong></p>
+<p>困りましたわ。</p>
+<p>ブログのソースコードを Ubuntu 上に置いているものですから、画像も Ubuntu 上で引用できる状態でないとだめですの。</p>
+<p>Ubuntu 上でキャプチャ撮ればいいやんみたいな無粋なことは言わないでくださる？？</p>
+<p>Windows で作業するというスタイルはこんなことでは崩せませんことよ！<br>
+絶対に Windows の作業だけで Ubuntu に持っていってやりますわ👸</p>
+<br>
+<p>結論いきます。</p>
+<p><a id="send"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffwindows-から-ubuntu-vm-にフォルダ転送div"><div style="background-color:#e5e5ff;">Windows から Ubuntu (VM) にフォルダ転送</div></h2>
+<ol>
+<li>
+<p>Windows 上の任意のフォルダに SSH 接続先に送りたいファイルを入れる。<br>
+（このフォルダをコピーして送ることになります。）</p>
+ <br>
+</li>
+<li>
+<p>Windows 上で ターミナルを開く。<br>
+（私の場合は VSCode で新しいウィンドウを開き、bash のターミナルを開きました。）</p>
+ <br>
+</li>
+<li>
+<p>以下のコマンドを実行。</p>
+<pre><code>$ tar c [Windows側のフォルダパス] | ssh [SSH接続先のIPアドレス] -l [Ubuntuのユーザ名] 'tar x -C [Ubuntu側の送信先フォルダパス]'
+</code></pre> <br>
+ 例えば
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 側のフォルダパス</td>
+<td>Documents/files_toUbuntu</td>
+</tr>
+<tr>
+<td>SSH接続先のIPアドレス</td>
+<td>192.168.XXX.XXX</td>
+</tr>
+<tr>
+<td>Ubuntuのユーザ名</td>
+<td>Ubuntu01</td>
+</tr>
+<tr>
+<td>Ubuntu側の送信先フォルダパス</td>
+<td>Documents</td>
+</tr>
+</tbody>
+</table>
+ <br>
+ という条件であればこんな感じ。
+<pre><code>$ tar c Documents/files_toUbuntu/ | ssh 192.168.XXX.XXX -l ubuntu01 'tar x -C ~/Documents/'
+</code></pre><p>実行すると、Ubuntu 側の Documents フォルダ内に files_toUbuntu フォルダが置かれます。</p>
+ <img src="ubuntu_image.png" style="display:block; margin:auto; max-width:600px;">
+</li>
+</ol>
+<p><a id="tar"></a><br></p>
+<h2 id="div-stylebackground-colore5e5fftar-コマンドの解説div"><div style="background-color:#e5e5ff;">tar コマンドの解説</div></h2>
+<p>ここで、使用したコマンドの解説を少し行います。</p>
 <br>
 <ul>
-<li><strong>マージ作業が複雑、分担が困難</strong><br>
-総じてマージ担当者の負担が大きいですよね。<br>
-ソースコードを編集する人数が増えれば、その人数分マージをかけなければならないので、規模の大きなプロジェクトだと大変なことになりそうです。<br>
-全員がバラバラのバージョンからの修正をしていたら…と考えたら胃が痛くなってきました。</li>
+<li>
+<p><code>tar c</code> : ファイルのアーカイブを作成</p>
+</li>
+<li>
+<p><code>tar x</code> : 指定の場所（ -C で指定）にファイルを展開</p>
+</li>
 </ul>
-<hr>
-<h5 id="改善案-1">改善案</h5>
-<ul>
-<li><strong>GitHub の Pull requests 機能により、視認性の高いレビューと安全なマージが可能</strong><br>
-レビューとマージが流れで行えるって凄くないですか…。<br>
-GitHub と出会ってから個人的に一番驚いた機能かもしれません。（まだまだ機能は開拓中ですが）<br>
-ファイル同士比較をかけながらレビューして、問題がなければ自動でマージしてくれるなんて、私はなんて素晴らしい時代に生まれたのでしょうか。</li>
-</ul>
-<br>
-<ul>
-<li><strong>経過をプロジェクトメンバー間で共有できるため、分担や再修正が効率的に</strong><br>
-改善案の1点目に挙げた Pull requests の状況が全て記録されており、いつでも確認可能なので、誰がどのような作業をしているのかが把握しやすくなります。<br>
-手動マージの時のような、マージ担当者1人への負担が大きいといったことはなくなるでしょう。</li>
-</ul>
-<br>
-<h3 id="span-stylebackground-colord5e8fdバグやタスクが管理しやすくなるspan"><span style="background-color:#d5e8fd;">バグやタスクが管理しやすくなる</span></h3>
-<h4 id="現状-2">現状</h4>
-<p><strong>ソースコードやドキュメント、タスクやバグの一覧をそれぞれ独立して管理</strong><br>
-ソースコードやドキュメントはそれぞれ指定のファイルサーバに、追加のタスクやバグは Excel 上に一覧でまとめており、こちらも同じくファイルサーバに置いて管理しています。</p>
-<hr>
-<h4 id="課題-2">課題</h4>
-<p><strong>タスクやバグの資料からソースコードやドキュメントの変更が辿れない</strong><br>
-ファイルサーバでそれぞれ管理しているとこれは当たり前だと思いますが、Excel の一覧表からはソースコードやドキュメントをどのように修正したのか辿ることは難しいです。<br>
-タスクが複雑になってくると、修正したのかしていないのか把握しきれない事案が発生し、本当に修正済みになっているか2、3度チェックし直したりなど、手間と時間がかかる羽目に。</p>
-<hr>
-<h4 id="改善案-2">改善案</h4>
-<p><strong>GitHub の Issue 機能や Milestone 機能により、タスク・バグ管理や進捗把握の効率化</strong><br>
-Issue にタスク等を書き出し、Milestone を各 Issue に設定することで、効率的にタスク管理が行えます。<br>
-Issue のほかに Pull request にも Milestone を設定できます。
-Milestoneではタスクの進捗率がバーで表示されるのですが、こちらは一目で進捗状況が分かりやすくて便利です。<br>
-また commit と Issue を紐づけられるので、タスクからソースコードの確認が容易になります。</p>
+<p>→ これらを SSH を通して実行しています</p>
+<p>シングルクォーテーション<code>''</code> でくくることによって、Windows 側のディレクトリにアクセスしてしまうことを回避できます。</p>
+<p><code>''</code> の中身を丸ごと SSH に持っていく感じです。</p>
+<p><a id="Fin"></a><br></p>
 <h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
-<p>今回は、とある会社への GitHub の導入の提案について記録いたしました。<br>
-きっと同じような環境の会社は一定数存在すると思うので、そういった方に向けて何か参考になるものがあれば幸いです。</p>
-<p>実際に導入に踏み込んでくれるかは会社の判断なので分かりませんが、少しでも今の環境が変わるきっかけになればと願っております。</p>
-<p>これからもどんどん不要な作業を減らして、時間をかけるべきところにかけられる職場環境にしたい！です！</p>
-<p>がんばるぞう🐘</p>
+<p>SSH 接続元から接続先にフォルダを送るには</p>
+<pre><code>$ tar c [SSH接続元のフォルダパス] | ssh [SSH接続先のIPアドレス] -l [SSH接続先のユーザ名] 'tar x -C [SSH接続先のフォルダパス]'
+</code></pre><p>が便利だよ、というお話でした。</p>
+<p>これで毎回 Windows 側で Google Drive に画像を上げて、Ubuntu 側で受け取る作業がなくなりました。</p>
+<p>もっと色んなコマンドを勉強して、効率よく作業が行えるようになりたいです🐢</p>
 <br>
 <br>
 <br>
@@ -427,7 +399,11 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/github/">github</a>
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/command/">command</a>
+
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/ssh/">ssh</a>
+
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/vm/">vm</a>
 
                   </div>
                 
@@ -440,7 +416,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/18/" data-tooltip="tarコマンドでSSH接続先に画像を送る" aria-label="NEXT: tarコマンドでSSH接続先に画像を送る">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -448,7 +424,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/01/" data-tooltip="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～" aria-label="PREVIOUS: [Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/14/" data-tooltip="GitHub の導入を会社に提案してみた話" aria-label="PREVIOUS: GitHub の導入を会社に提案してみた話">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -466,13 +442,13 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/14/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/18/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/14/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/18/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -497,9 +473,9 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/09\/14\/';
+        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/09\/18\/';
         
-          this.page.identifier = '\/2022\/09\/14\/'
+          this.page.identifier = '\/2022\/09\/18\/'
         
       };
       (function() {
@@ -535,7 +511,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/18/" data-tooltip="tarコマンドでSSH接続先に画像を送る" aria-label="NEXT: tarコマンドでSSH接続先に画像を送る">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -543,7 +519,7 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/01/" data-tooltip="[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～" aria-label="PREVIOUS: [Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/14/" data-tooltip="GitHub の導入を会社に提案してみた話" aria-label="PREVIOUS: GitHub の導入を会社に提案してみた話">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -561,13 +537,13 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/14/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/18/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/14/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/18/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -592,13 +568,13 @@ Milestoneではタスクの進捗率がバーで表示されるのですが、�
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F14%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F18%2F" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F14%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F18%2F" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
