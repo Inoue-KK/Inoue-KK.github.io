@@ -7,10 +7,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "tarコマンドでSSH接続先に画像を送る",
+  "headline": "[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた",
   
-  "datePublished": "2022-09-18T02:51:19Z",
-  "dateModified": "2022-09-18T02:51:19Z",
+  "datePublished": "2022-09-21T10:11:34Z",
+  "dateModified": "2022-09-21T10:11:34Z",
   "author": {
     "@type": "Person",
     "name": "イノウエ",
@@ -20,7 +20,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/inoue-kk.github.io\/2022\/09\/18\/" 
+    "@id": "https:\/\/inoue-kk.github.io\/2022\/09\/21\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -48,34 +48,34 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tarコマンドでSSH接続先に画像を送る">
-<meta name="twitter:title" content="tarコマンドでSSH接続先に画像を送る">
-<meta property="og:url" content="https://inoue-kk.github.io/2022/09/18/">
-<meta property="twitter:url" content="https://inoue-kk.github.io/2022/09/18/">
+<meta property="og:title" content="[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた">
+<meta name="twitter:title" content="[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた">
+<meta property="og:url" content="https://inoue-kk.github.io/2022/09/21/">
+<meta property="twitter:url" content="https://inoue-kk.github.io/2022/09/21/">
 <meta property="og:site_name" content="ほっそりイノウエのマッチョエンジニアへの道">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-09-18T02:51:19">
+    <meta property="article:published_time" content="2022-09-21T10:11:34">
   
   
-    <meta property="article:modified_time" content="2022-09-18T02:51:19">
+    <meta property="article:modified_time" content="2022-09-21T10:11:34">
   
-  
-  
-    
-      <meta property="article:section" content="お役立ちコマンド">
-    
   
   
     
-      <meta property="article:tag" content="command">
+      <meta property="article:section" content="cloud">
+    
+  
+  
+    
+      <meta property="article:tag" content="cloud">
+    
+      <meta property="article:tag" content="google-cloud">
     
       <meta property="article:tag" content="ssh">
-    
-      <meta property="article:tag" content="vm">
     
   
 
@@ -96,14 +96,14 @@
 
 
 
-    <title>tarコマンドでSSH接続先に画像を送る</title>
+    <title>[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた</title>
 
     <link rel="icon" href="https://inoue-kk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://inoue-kk.github.io/2022/09/18/">
+    <link rel="canonical" href="https://inoue-kk.github.io/2022/09/21/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -243,15 +243,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      tarコマンドでSSH接続先に画像を送る
+      [Google Cloud] CLI で Web サーバ(NGINX)を構築してみた
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-09-18T02:51:19Z">
+      <time datetime="2022-09-21T10:11:34Z">
         
-  September 18, 2022
+  September 21, 2022
 
       </time>
     
@@ -260,7 +260,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://inoue-kk.github.io/categories/%e3%81%8a%e5%bd%b9%e7%ab%8b%e3%81%a1%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89">お役立ちコマンド</a>
+      <a class="category-link" href="https://inoue-kk.github.io/categories/cloud">cloud</a>
     
   
 
@@ -270,110 +270,187 @@
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <hr>
+              <div class="alert info ">
+  <p>大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨</p>
+</div>
+<p><a href="https://inoue-kk.github.io/2022/09/19/">【AWS EC2】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<p><a href="https://inoue-kk.github.io/2022/09/20/">【Azure】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<hr>
 <h2 id="目次">目次</h2>
 <ol>
-<li><a href="#ToDo">問題点とやりたいこと</a></li>
-<li><a href="#send">Windows から Ubuntu (VM) にフォルダ転送</a></li>
-<li><a href="#tar">tar コマンドの解説</a></li>
-<li><a href="#Fin">まとめ</a></li>
+<li><a href="#todo">やること</a></li>
+<li><a href="#create">インスタンス 構築手順</a></li>
+<li><a href="#nginx">NGINX による Web サーバ構築設定手順</a></li>
+<li><a href="#200">HTTP Status Code の確認方法</a></li>
+<li><a href="#log">AccessLog の確認方法</a></li>
+<li><a href="#delete">インスタンス 削除手順</a></li>
+<li><a href="#fin">まとめ・感想</a></li>
 </ol>
 <hr>
-<p><a id="ToDo"></a></p>
-<h2 id="div-stylebackground-colore5e5ff問題点とやりたいことdiv"><div style="background-color:#e5e5ff;">問題点とやりたいこと</div></h2>
-<p>このブログの開発環境は Ubuntu の仮想マシン上にブログのリポジトリを置いて、Windows 上の VSCode で Ubuntu と Remote SSH で接続して記事を書いている状態です。</p>
-<p>ちょっと説明が下手すぎますね…すみません。<br>
-詳しくは以下のブログにて開発環境構築手順を記載しています。</p>
-<ul>
-<li>
-<p><a href="https://inoue-kk.github.io/2022/08/17/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</a></p>
+<p><a id="todo"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffやることdiv"><div style="background-color:#e5e5ff;">やること</div></h2>
+<ol>
+<li>Google Cloud 上で Ubuntu の VM を立てる</li>
+<li>VM に NGINX をインストールし、Web サーバとして設定
+<ol>
+<li>OS 起動時に NGINX が自動起動するように設定</li>
+<li>AccessLog が記録されていることを確認</li>
+<li>HTTP Status Code: 200 が返ることを確認</li>
+</ol>
 </li>
-<li>
-<p><a href="https://inoue-kk.github.io/2022/09/01/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</a></p>
-</li>
-</ul>
-<p>基本的に Windows の PC で作業を行っていて、Ubuntu (VM) には SSH 接続するだけなのですが、作業を進めるうちやりたいことが出てきました。</p>
-<p><strong>「ブログに Windows PC でキャプチャした画像を貼りたい…！！」</strong></p>
-<p>困りましたわ。</p>
-<p>ブログのソースコードを Ubuntu 上に置いているものですから、画像も Ubuntu 上で引用できる状態でないとだめですの。</p>
-<p>Ubuntu 上でキャプチャ撮ればいいやんみたいな無粋なことは言わないでくださる？？</p>
-<p>Windows で作業するというスタイルはこんなことでは崩せませんことよ！<br>
-絶対に Windows の作業だけで Ubuntu に持っていってやりますわ👸</p>
-<br>
-<p>結論いきます。</p>
-<p><a id="send"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffwindows-から-ubuntu-vm-にフォルダ転送div"><div style="background-color:#e5e5ff;">Windows から Ubuntu (VM) にフォルダ転送</div></h2>
+<li>VM を削除する</li>
+</ol>
+<p>これを CLI でやるときの手順を以下に記載していきます。</p>
+<p><a id="create"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffインスタンス-構築手順div"><div style="background-color:#e5e5ff;">インスタンス 構築手順</div></h2>
 <ol>
 <li>
-<p>Windows 上の任意のフォルダに SSH 接続先に送りたいファイルを入れる。<br>
-（このフォルダをコピーして送ることになります。）</p>
+<p><a href="https://console.cloud.google.com/welcome">Google Cloud メイン画面</a> 右上のターミナルマークをクリックして Cloud Shell を開く
+<img src="gc-shell.png" style="display:block; margin:auto; max-width:550px;"></p>
  <br>
 </li>
 <li>
-<p>Windows 上で ターミナルを開く。<br>
-（私の場合は VSCode で新しいウィンドウを開き、bash のターミナルを開きました。）</p>
+<p>インスタンスを新規作成し、VM を起動する</p>
+<pre><code>$ gcloud compute instances create text-instance01 --image-family=ubuntu-2204-lts --image-project=ubuntu-os-cloud --zone=us-central1-a --tags=http-server
+</code></pre><p>今回の設定項目は以下の通り。</p>
+<ul>
+<li>インスタンス名</li>
+<li>OS イメージ（Ubuntu）</li>
+<li>サーバの場所</li>
+<li>HTTP トラフィックの許可</li>
+</ul>
+<p><code>image-family</code>, <code>image-project</code> の値は</p>
+<pre><code>$ gcloud compute images list
+</code></pre><p>から選べる</p>
  <br>
 </li>
 <li>
-<p>以下のコマンドを実行。</p>
-<pre><code>$ tar c [Windows側のフォルダパス] | ssh [SSH接続先のIPアドレス] -l [Ubuntuのユーザ名] 'tar x -C [Ubuntu側の送信先フォルダパス]'
-</code></pre> <br>
- 例えば
-<table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Windows 側のフォルダパス</td>
-<td>Documents/files_toUbuntu</td>
-</tr>
-<tr>
-<td>SSH接続先のIPアドレス</td>
-<td>192.168.XXX.XXX</td>
-</tr>
-<tr>
-<td>Ubuntuのユーザ名</td>
-<td>Ubuntu01</td>
-</tr>
-<tr>
-<td>Ubuntu側の送信先フォルダパス</td>
-<td>Documents</td>
-</tr>
-</tbody>
-</table>
- <br>
- という条件であればこんな感じ。
-<pre><code>$ tar c Documents/files_toUbuntu/ | ssh 192.168.XXX.XXX -l ubuntu01 'tar x -C ~/Documents/'
-</code></pre><p>実行すると、Ubuntu 側の Documents フォルダ内に files_toUbuntu フォルダが置かれます。</p>
- <img src="ubuntu_image.png" style="display:block; margin:auto; max-width:600px;">
+<p>インスタンスが立っているかの確認は以下のコマンドで行う</p>
+<pre><code>$ gcloud compute instances list
+</code></pre><p>これを実行することで、現在立てられているインスタンスの情報を表示することができる</p>
 </li>
 </ol>
-<p><a id="tar"></a><br></p>
-<h2 id="div-stylebackground-colore5e5fftar-コマンドの解説div"><div style="background-color:#e5e5ff;">tar コマンドの解説</div></h2>
-<p>ここで、使用したコマンドの解説を少し行います。</p>
-<br>
-<ul>
+<p><a id="nginx"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffnginx-による-web-サーバ構築設定手順div"><div style="background-color:#e5e5ff;">NGINX による Web サーバ構築設定手順</div></h2>
+<ol>
 <li>
-<p><code>tar c</code> : ファイルのアーカイブを作成</p>
+<p>SSH で VM に接続</p>
+<pre><code>$ gcloud compute ssh --zone &quot;us-central1-a&quot; &quot;text-instance01&quot;  --project &quot;awesome-aurora-362109&quot;
+</code></pre><p>以降、VM での操作。</p>
+ <br>
 </li>
 <li>
-<p><code>tar x</code> : 指定の場所（ -C で指定）にファイルを展開</p>
+<p>VM に NGINX インストール</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install nginx
+</code></pre> <br>
 </li>
-</ul>
-<p>→ これらを SSH を通して実行しています</p>
-<p>シングルクォーテーション<code>''</code> でくくることによって、Windows 側のディレクトリにアクセスしてしまうことを回避できます。</p>
-<p><code>''</code> の中身を丸ごと SSH に持っていく感じです。</p>
-<p><a id="Fin"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
-<p>SSH 接続元から接続先にフォルダを送るには</p>
-<pre><code>$ tar c [SSH接続元のフォルダパス] | ssh [SSH接続先のIPアドレス] -l [SSH接続先のユーザ名] 'tar x -C [SSH接続先のフォルダパス]'
-</code></pre><p>が便利だよ、というお話でした。</p>
-<p>これで毎回 Windows 側で Google Drive に画像を上げて、Ubuntu 側で受け取る作業がなくなりました。</p>
-<p>もっと色んなコマンドを勉強して、効率よく作業が行えるようになりたいです🐢</p>
+<li>
+<p>NGINX 自動起動設定</p>
+<pre><code>$ sudo systemctl enable nginx.service
+</code></pre> <br>
+</li>
+<li>
+<p>VM 再起動</p>
+<pre><code>$ sudo reboot
+</code></pre> <br>
+</li>
+<li>
+<p>VM 再起動により接続が切れるので、SSH 再接続</p>
+<pre><code>$ gcloud compute ssh --zone &quot;us-central1-a&quot; &quot;text-instance01&quot;  --project &quot;awesome-aurora-362109&quot;
+</code></pre> <br>
+</li>
+<li>
+<p>NGINX が自動起動していることを確認</p>
+<pre><code>$ systemctl status nginx.service
+</code></pre><p>→ <code>Active: active (running)</code>という文面が確認できればOK</p>
+</li>
+</ol>
+<p><a id="200"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffhttp-status-code-の確認方法div"><div style="background-color:#e5e5ff;">HTTP Status Code の確認方法</div></h2>
+<ol>
+<li>HTTP Status をリモートで確認（今回は自 PC の bash から確認した）
+<pre><code>$ curl -v [外部IP]
+</code></pre><p>→ 値が返ってくるので以下が確認できればOK</p>
+<pre><code>&lt; HTTP/1.1 200 OK
+</code></pre></li>
+</ol>
+<p><a id="log"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffaccesslog-の確認方法div"><div style="background-color:#e5e5ff;">AccessLog の確認方法</div></h2>
+<ol>
+<li>
+<p>NGINX の設定ファイルの中身を表示し、AccessLog ファイルの位置を調べる</p>
+<pre><code>$ cat /etc/nginx/nginx.conf
+</code></pre><p>ファイル内の以下の文面から確認</p>
+<pre><code>##
+# Logging Settings
+##
+
+access_log /var/log/nginx/access.log;
+</code></pre> <br>
+</li>
+<li>
+<p>AccessLog ファイルを確認</p>
+<pre><code>cat /var/log/nginx/access.log
+</code></pre><p>サーバにアクセスした履歴が残っていることを確認</p>
+</li>
+</ol>
+<p><a id="delete"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffインスタンス-削除手順div"><div style="background-color:#e5e5ff;">インスタンス 削除手順</div></h2>
+<ol>
+<li>
+<p>インスタンス削除</p>
+<pre><code>$ gcloud compute instances delete [instance name] –zone=[zone name]
+</code></pre> <br>
+</li>
+<li>
+<p>インスタンスの状況一覧を表示させ、インスタンスが削除されていることを確認する</p>
+<pre><code>$ gcloud compute instances list
+</code></pre><p>→ 削除したインスタンスが表示されていなければ OK</p>
+</li>
+</ol>
+<p><a id="fin"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffまとめ感想div"><div style="background-color:#e5e5ff;">まとめ・感想</div></h2>
+<p>クラウド CLI での Web サーバ構築第三弾として、Google Cloud Compute Engine での手順をまとめました。</p>
+<p>ここからは各社クラウドを触った感想をつらつら書いていきます～。完全雑談です。</p>
+<p>☁☁☁</p>
+<p>AWS が一番シェア率が高いそうなのですが、個人的には Azure や Google Cloud と比較して1番難しかったです…。<br>
+その理由として、「カスタムの多さ」と「公式ドキュメントの分かりにくさ」の2点を挙げたいと思います。<br>
+AWS は細かい設定まで可能で自由度の高い印象で、おそらくクラウドベテランで慣れてらっしゃる方ならむしろこの点は魅力なのではないかと思います。<br>
+しかし私のようなクラウド超初心者には逆に設定の多さに困惑してしまうことが多々ありました。<br>
+これにより、「公式ドキュメントが分かりにくい」にも繋がってしまっていると思います。</p>
+<p>今回の勉強で調べ物をするにあたり、原則公式ドキュメントを参照しておりました。<br>
+個人の Web サイトは分かりやすくまとめられていることが多く、今まで何度もお世話になっているのですが、公式が出しているものはやはり一番信頼できる情報なので、ここから読み取れるのがベストだと考えました。
+（特に AWS は CLI のバージョンが 1から 2へ変わっているので、情報が古い個人サイトも多々あります。）</p>
+<p>今回使用した IaaS の VM 関連サービスの公式ドキュメント(CLI)をピックアップしてみるとこんな感じです。<br>
+<a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/index.html">AWS EC2</a><br>
+<a href="https://learn.microsoft.com/ja-jp/cli/azure/vm?view=azure-cli-latest">Azure Virtual Machines</a><br>
+<a href="https://cloud.google.com/sdk/gcloud/reference/compute">Google Cloud Compute Engine</a></p>
+<p>AWS はひたすらコマンドが箇条書きで羅列されています。<br>
+「VM 立ててみるぞ～！コマンドは<code>create</code>とかかなぁ？」と調べてみても<code>create</code>から始まるコマンドが何十個もあって…。
+結構「どれが私の求める create？？」となりがちでした。</p>
+<p>Azure はコマンドの一覧に 1行程度の簡潔な説明文も添えられていて、目当てのものが探しやすかったです。</p>
+<p>Google Cloud は 画面左に表示されるリストが見やすいので、こちらも探しやすくて好きでした。</p>
+<figure>
+<img src="gc-cli.png" style="display:block; margin:auto; max-width:600px;">
+<figcaption>「インスタンスを立てたい！」→ 「instances の中に create があるからきっとこれだ！」と直感的に見つけやすい</figcaption>
+</figure>
+<p>これもきっと慣れれば何ともなくなるのかもしれませんが、初心者には難しいかなと思った点でした。</p>
+<p>このままだと AWS の悪口ばかりと思われる可能性があるので、各社触った範囲で感じたクラウドの特徴も記載しておきます。<br>
+（そもそも悪口のつもりはありません…！AWS のメリットである自由度の高さが、初心者にはハードルになり得るかもという話です。）</p>
+<p>AWS の特徴は、何度も書いていますが自由度の高さだと思います。<br>
+クラウドとしての歴史も長いだけあって、多くのサービスがあり、細かくカスタマイズできます。<br>
+普及率が高いことから、関連記事が多くあることも利用者にとってはありがたいですよね。</p>
+<p>Azure は Resource group という考え方が特徴的で良いと感じました。<br>
+今回の場合だと VM を立てるときに、VM だけではなく他の機能も使用されているのですが（これは AWS も Google Cloud も同様です）、それらも含めて 1つの Resource group 内で管理できるので、何が使われているか分かりやすかったです。<br>
+Resource group ごと消せば関連機能もまるっと消せるところが、スッキリ感が強くてお気に入りです！</p>
+<p>Google Cloud は SSH の接続がめちゃくちゃ簡単で、それが今回とってもありがたかったです。<br>
+おそらく Google Cloud 側で自動で処理してくれているようですね。<br>
+同じことを 3社でやりましたが、Google が一番操作が少なくて比較的簡単にできた印象でした。<br>
+他の機能がどうかは分かりませんが、今回やった範囲ではクラウド側で面倒な作業をサポートしてくれたので、個人的には 1番好きなプラットフォームになりました！</p>
+<p>以上、感想でした。<br>
+まとまり皆無で長々とすみません。</p>
+<p>これからも継続して勉強し、少しずつクラウドに慣れていきたいです！</p>
 <br>
 <br>
 <br>
@@ -399,11 +476,11 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/command/">command</a>
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/cloud/">cloud</a>
+
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/google-cloud/">google-cloud</a>
 
   <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/ssh/">ssh</a>
-
-  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/vm/">vm</a>
 
                   </div>
                 
@@ -416,7 +493,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/19/" data-tooltip="[AWS EC2] CLI で Web サーバ(NGINX)を構築してみた" aria-label="NEXT: [AWS EC2] CLI で Web サーバ(NGINX)を構築してみた">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -424,7 +501,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/14/" data-tooltip="GitHub の導入を会社に提案してみた話" aria-label="PREVIOUS: GitHub の導入を会社に提案してみた話">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/20/" data-tooltip="[Azure] CLI で Web サーバ(NGINX)を構築してみた" aria-label="PREVIOUS: [Azure] CLI で Web サーバ(NGINX)を構築してみた">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -442,13 +519,13 @@
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/18/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/21/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/18/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/21/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -473,9 +550,9 @@
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/09\/18\/';
+        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/09\/21\/';
         
-          this.page.identifier = '\/2022\/09\/18\/'
+          this.page.identifier = '\/2022\/09\/21\/'
         
       };
       (function() {
@@ -511,7 +588,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/19/" data-tooltip="[AWS EC2] CLI で Web サーバ(NGINX)を構築してみた" aria-label="NEXT: [AWS EC2] CLI で Web サーバ(NGINX)を構築してみた">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -519,7 +596,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/14/" data-tooltip="GitHub の導入を会社に提案してみた話" aria-label="PREVIOUS: GitHub の導入を会社に提案してみた話">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/20/" data-tooltip="[Azure] CLI で Web サーバ(NGINX)を構築してみた" aria-label="PREVIOUS: [Azure] CLI で Web サーバ(NGINX)を構築してみた">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -537,13 +614,13 @@
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/18/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/21/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/18/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/21/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -568,13 +645,13 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F18%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F21%2F" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F18%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F21%2F" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>

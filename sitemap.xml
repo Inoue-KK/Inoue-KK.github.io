@@ -2,19 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://inoue-kk.github.io/categories/</loc>
-    <lastmod>2022-09-18T02:51:19+00:00</lastmod>
+    <loc>https://inoue-kk.github.io/2022/09/21/</loc>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
   </url><url>
-    <loc>https://inoue-kk.github.io/tags/command/</loc>
-    <lastmod>2022-09-18T02:51:19+00:00</lastmod>
+    <loc>https://inoue-kk.github.io/categories/</loc>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/cloud/</loc>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/categories/cloud/</loc>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/google-cloud/</loc>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/posts/</loc>
-    <lastmod>2022-09-18T02:51:19+00:00</lastmod>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/tags/ssh/</loc>
-    <lastmod>2022-09-18T02:51:19+00:00</lastmod>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/tags/</loc>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/</loc>
+    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/2022/09/20/</loc>
+    <lastmod>2022-09-20T16:04:32+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/azure/</loc>
+    <lastmod>2022-09-20T16:04:32+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/2022/09/19/</loc>
+    <lastmod>2022-09-19T15:57:13+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/aws/</loc>
+    <lastmod>2022-09-19T15:57:13+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/ec2/</loc>
+    <lastmod>2022-09-19T15:57:13+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/command/</loc>
     <lastmod>2022-09-18T02:51:19+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/2022/09/18/</loc>
@@ -24,9 +54,6 @@
     <lastmod>2022-09-18T02:51:19+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/categories/%E3%81%8A%E5%BD%B9%E7%AB%8B%E3%81%A1%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</loc>
-    <lastmod>2022-09-18T02:51:19+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/</loc>
     <lastmod>2022-09-18T02:51:19+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/tags/github/</loc>
@@ -43,15 +70,6 @@
   </url><url>
     <loc>https://inoue-kk.github.io/tags/github-actions/</loc>
     <lastmod>2022-09-01T08:12:58+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/tags/azure/</loc>
-    <lastmod>2022-08-21T05:28:05+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/tags/cloud/</loc>
-    <lastmod>2022-08-21T05:28:05+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/categories/cloud/</loc>
-    <lastmod>2022-08-21T05:28:05+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/2022/08/21/</loc>
     <lastmod>2022-08-21T05:28:05+00:00</lastmod>

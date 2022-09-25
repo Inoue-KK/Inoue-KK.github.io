@@ -6,7 +6,34 @@
     <description>Recent content in cloud on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Aug 2022 05:28:05 +0000</lastBuildDate><atom:link href="https://inoue-kk.github.io/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Sep 2022 10:11:34 +0000</lastBuildDate><atom:link href="https://inoue-kk.github.io/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた</title>
+      <link>https://inoue-kk.github.io/2022/09/21/</link>
+      <pubDate>Wed, 21 Sep 2022 10:11:34 +0000</pubDate>
+      
+      <guid>https://inoue-kk.github.io/2022/09/21/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>[Azure] CLI で Web サーバ(NGINX)を構築してみた</title>
+      <link>https://inoue-kk.github.io/2022/09/20/</link>
+      <pubDate>Tue, 20 Sep 2022 16:04:32 +0000</pubDate>
+      
+      <guid>https://inoue-kk.github.io/2022/09/20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>[AWS EC2] CLI で Web サーバ(NGINX)を構築してみた</title>
+      <link>https://inoue-kk.github.io/2022/09/19/</link>
+      <pubDate>Mon, 19 Sep 2022 15:57:13 +0000</pubDate>
+      
+      <guid>https://inoue-kk.github.io/2022/09/19/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Microsoft Azure アカウント作成方法</title>
       <link>https://inoue-kk.github.io/2022/08/21/</link>
