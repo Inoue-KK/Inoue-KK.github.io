@@ -2,10 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://inoue-kk.github.io/2022/09/21/</loc>
-    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
-  </url><url>
     <loc>https://inoue-kk.github.io/categories/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/iac/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/oreilly/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/2022/10/01/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/posts/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/tags/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/categories/%E6%8A%80%E8%A1%93%E6%9C%AC/</loc>
+    <lastmod>2022-10-01T14:14:09+00:00</lastmod>
+  </url><url>
+    <loc>https://inoue-kk.github.io/2022/09/21/</loc>
     <lastmod>2022-09-21T10:11:34+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/tags/cloud/</loc>
@@ -17,16 +38,7 @@
     <loc>https://inoue-kk.github.io/tags/google-cloud/</loc>
     <lastmod>2022-09-21T10:11:34+00:00</lastmod>
   </url><url>
-    <loc>https://inoue-kk.github.io/posts/</loc>
-    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
-  </url><url>
     <loc>https://inoue-kk.github.io/tags/ssh/</loc>
-    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/tags/</loc>
-    <lastmod>2022-09-21T10:11:34+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/</loc>
     <lastmod>2022-09-21T10:11:34+00:00</lastmod>
   </url><url>
     <loc>https://inoue-kk.github.io/2022/09/20/</loc>

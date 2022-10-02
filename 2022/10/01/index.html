@@ -7,10 +7,10 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた",
+  "headline": "O'Reilly「Infrastructure as Code」を読んでみた",
   
-  "datePublished": "2022-09-21T10:11:34Z",
-  "dateModified": "2022-09-21T10:11:34Z",
+  "datePublished": "2022-10-01T14:14:09Z",
+  "dateModified": "2022-10-01T14:14:09Z",
   "author": {
     "@type": "Person",
     "name": "イノウエ",
@@ -20,7 +20,7 @@
   },
   "mainEntityOfPage": { 
     "@type": "WebPage",
-    "@id": "https:\/\/inoue-kk.github.io\/2022\/09\/21\/" 
+    "@id": "https:\/\/inoue-kk.github.io\/2022\/10\/01\/" 
   },
   "publisher": {
     "@type": "Organization",
@@ -48,34 +48,32 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた">
-<meta name="twitter:title" content="[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた">
-<meta property="og:url" content="https://inoue-kk.github.io/2022/09/21/">
-<meta property="twitter:url" content="https://inoue-kk.github.io/2022/09/21/">
+<meta property="og:title" content="O&#39;Reilly「Infrastructure as Code」を読んでみた">
+<meta name="twitter:title" content="O&#39;Reilly「Infrastructure as Code」を読んでみた">
+<meta property="og:url" content="https://inoue-kk.github.io/2022/10/01/">
+<meta property="twitter:url" content="https://inoue-kk.github.io/2022/10/01/">
 <meta property="og:site_name" content="ほっそりイノウエのマッチョエンジニアへの道">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2022-09-21T10:11:34">
+    <meta property="article:published_time" content="2022-10-01T14:14:09">
   
   
-    <meta property="article:modified_time" content="2022-09-21T10:11:34">
+    <meta property="article:modified_time" content="2022-10-01T14:14:09">
   
-  
-  
-    
-      <meta property="article:section" content="cloud">
-    
   
   
     
-      <meta property="article:tag" content="cloud">
+      <meta property="article:section" content="技術本">
     
-      <meta property="article:tag" content="google-cloud">
+  
+  
     
-      <meta property="article:tag" content="ssh">
+      <meta property="article:tag" content="o&#39;reilly">
+    
+      <meta property="article:tag" content="IaC">
     
   
 
@@ -96,14 +94,14 @@
 
 
 
-    <title>[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた</title>
+    <title>O&#39;Reilly「Infrastructure as Code」を読んでみた</title>
 
     <link rel="icon" href="https://inoue-kk.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://inoue-kk.github.io/2022/09/21/">
+    <link rel="canonical" href="https://inoue-kk.github.io/2022/10/01/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -255,15 +253,15 @@ if (!doNotTrack) {
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title">
-      [Google Cloud] CLI で Web サーバ(NGINX)を構築してみた
+      O&#39;Reilly「Infrastructure as Code」を読んでみた
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2022-09-21T10:11:34Z">
+      <time datetime="2022-10-01T14:14:09Z">
         
-  September 21, 2022
+  October 1, 2022
 
       </time>
     
@@ -272,7 +270,7 @@ if (!doNotTrack) {
   
     <span>in</span>
     
-      <a class="category-link" href="https://inoue-kk.github.io/categories/cloud">cloud</a>
+      <a class="category-link" href="https://inoue-kk.github.io/categories/%e6%8a%80%e8%a1%93%e6%9c%ac">技術本</a>
     
   
 
@@ -282,187 +280,112 @@ if (!doNotTrack) {
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
-              <div class="alert info ">
-  <p>大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨</p>
-</div>
-<p><a href="https://inoue-kk.github.io/2022/09/19/">【AWS EC2】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
-<p><a href="https://inoue-kk.github.io/2022/09/20/">【Azure】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
-<hr>
+              <hr>
 <h2 id="目次">目次</h2>
 <ol>
-<li><a href="#todo">やること</a></li>
-<li><a href="#create">インスタンス 構築手順</a></li>
-<li><a href="#nginx">NGINX による Web サーバ構築設定手順</a></li>
-<li><a href="#200">HTTP Status Code の確認方法</a></li>
-<li><a href="#log">AccessLog の確認方法</a></li>
-<li><a href="#delete">インスタンス 削除手順</a></li>
-<li><a href="#fin">まとめ・感想</a></li>
+<li><a href="#intro">オライリー初見ですよろしくお願いします</a></li>
+<li><a href="#condition">読むときの条件</a></li>
+<li><a href="#review">感想</a></li>
+<li><a href="#fin">まとめ</a></li>
 </ol>
 <hr>
-<p><a id="todo"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffやることdiv"><div style="background-color:#e5e5ff;">やること</div></h2>
-<ol>
-<li>Google Cloud 上で Ubuntu の VM を立てる</li>
-<li>VM に NGINX をインストールし、Web サーバとして設定
-<ol>
-<li>OS 起動時に NGINX が自動起動するように設定</li>
-<li>AccessLog が記録されていることを確認</li>
-<li>HTTP Status Code: 200 が返ることを確認</li>
-</ol>
-</li>
-<li>VM を削除する</li>
-</ol>
-<p>これを CLI でやるときの手順を以下に記載していきます。</p>
-<p><a id="create"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffインスタンス-構築手順div"><div style="background-color:#e5e5ff;">インスタンス 構築手順</div></h2>
-<ol>
-<li>
-<p><a href="https://console.cloud.google.com/welcome">Google Cloud メイン画面</a> 右上のターミナルマークをクリックして Cloud Shell を開く
-<img src="gc-shell.png" style="display:block; margin:auto; max-width:550px;"></p>
- <br>
-</li>
-<li>
-<p>インスタンスを新規作成し、VM を起動する</p>
-<pre><code>$ gcloud compute instances create text-instance01 --image-family=ubuntu-2204-lts --image-project=ubuntu-os-cloud --zone=us-central1-a --tags=http-server
-</code></pre><p>今回の設定項目は以下の通り。</p>
-<ul>
-<li>インスタンス名</li>
-<li>OS イメージ（Ubuntu）</li>
-<li>サーバの場所</li>
-<li>HTTP トラフィックの許可</li>
-</ul>
-<p><code>image-family</code>, <code>image-project</code> の値は</p>
-<pre><code>$ gcloud compute images list
-</code></pre><p>から選べる</p>
- <br>
-</li>
-<li>
-<p>インスタンスが立っているかの確認は以下のコマンドで行う</p>
-<pre><code>$ gcloud compute instances list
-</code></pre><p>これを実行することで、現在立てられているインスタンスの情報を表示することができる</p>
-</li>
-</ol>
-<p><a id="nginx"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffnginx-による-web-サーバ構築設定手順div"><div style="background-color:#e5e5ff;">NGINX による Web サーバ構築設定手順</div></h2>
-<ol>
-<li>
-<p>SSH で VM に接続</p>
-<pre><code>$ gcloud compute ssh --zone &quot;us-central1-a&quot; &quot;text-instance01&quot;  --project &quot;awesome-aurora-362109&quot;
-</code></pre><p>以降、VM での操作。</p>
- <br>
-</li>
-<li>
-<p>VM に NGINX インストール</p>
-<pre><code>$ sudo apt-get update
-$ sudo apt-get install nginx
-</code></pre> <br>
-</li>
-<li>
-<p>NGINX 自動起動設定</p>
-<pre><code>$ sudo systemctl enable nginx.service
-</code></pre> <br>
-</li>
-<li>
-<p>VM 再起動</p>
-<pre><code>$ sudo reboot
-</code></pre> <br>
-</li>
-<li>
-<p>VM 再起動により接続が切れるので、SSH 再接続</p>
-<pre><code>$ gcloud compute ssh --zone &quot;us-central1-a&quot; &quot;text-instance01&quot;  --project &quot;awesome-aurora-362109&quot;
-</code></pre> <br>
-</li>
-<li>
-<p>NGINX が自動起動していることを確認</p>
-<pre><code>$ systemctl status nginx.service
-</code></pre><p>→ <code>Active: active (running)</code>という文面が確認できればOK</p>
-</li>
-</ol>
-<p><a id="200"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffhttp-status-code-の確認方法div"><div style="background-color:#e5e5ff;">HTTP Status Code の確認方法</div></h2>
-<ol>
-<li>HTTP Status をリモートで確認（今回は自 PC の bash から確認した）
-<pre><code>$ curl -v [外部IP]
-</code></pre><p>→ 値が返ってくるので以下が確認できればOK</p>
-<pre><code>&lt; HTTP/1.1 200 OK
-</code></pre></li>
-</ol>
-<p><a id="log"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffaccesslog-の確認方法div"><div style="background-color:#e5e5ff;">AccessLog の確認方法</div></h2>
-<ol>
-<li>
-<p>NGINX の設定ファイルの中身を表示し、AccessLog ファイルの位置を調べる</p>
-<pre><code>$ cat /etc/nginx/nginx.conf
-</code></pre><p>ファイル内の以下の文面から確認</p>
-<pre><code>##
-# Logging Settings
-##
-
-access_log /var/log/nginx/access.log;
-</code></pre> <br>
-</li>
-<li>
-<p>AccessLog ファイルを確認</p>
-<pre><code>cat /var/log/nginx/access.log
-</code></pre><p>サーバにアクセスした履歴が残っていることを確認</p>
-</li>
-</ol>
-<p><a id="delete"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffインスタンス-削除手順div"><div style="background-color:#e5e5ff;">インスタンス 削除手順</div></h2>
-<ol>
-<li>
-<p>インスタンス削除</p>
-<pre><code>$ gcloud compute instances delete [instance name] –zone=[zone name]
-</code></pre> <br>
-</li>
-<li>
-<p>インスタンスの状況一覧を表示させ、インスタンスが削除されていることを確認する</p>
-<pre><code>$ gcloud compute instances list
-</code></pre><p>→ 削除したインスタンスが表示されていなければ OK</p>
-</li>
-</ol>
-<p><a id="fin"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffまとめ感想div"><div style="background-color:#e5e5ff;">まとめ・感想</div></h2>
-<p>クラウド CLI での Web サーバ構築第三弾として、Google Cloud Compute Engine での手順をまとめました。</p>
-<p>ここからは各社クラウドを触った感想をつらつら書いていきます～。完全雑談です。</p>
-<p>☁☁☁</p>
-<p>AWS が一番シェア率が高いそうなのですが、個人的には Azure や Google Cloud と比較して1番難しかったです…。<br>
-その理由として、「カスタムの多さ」と「公式ドキュメントの分かりにくさ」の2点を挙げたいと思います。<br>
-AWS は細かい設定まで可能で自由度の高い印象で、おそらくクラウドベテランで慣れてらっしゃる方ならむしろこの点は魅力なのではないかと思います。<br>
-しかし私のようなクラウド超初心者には逆に設定の多さに困惑してしまうことが多々ありました。<br>
-これにより、「公式ドキュメントが分かりにくい」にも繋がってしまっていると思います。</p>
-<p>今回の勉強で調べ物をするにあたり、原則公式ドキュメントを参照しておりました。<br>
-個人の Web サイトは分かりやすくまとめられていることが多く、今まで何度もお世話になっているのですが、公式が出しているものはやはり一番信頼できる情報なので、ここから読み取れるのがベストだと考えました。
-（特に AWS は CLI のバージョンが 1から 2へ変わっているので、情報が古い個人サイトも多々あります。）</p>
-<p>今回使用した IaaS の VM 関連サービスの公式ドキュメント(CLI)をピックアップしてみるとこんな感じです。<br>
-<a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/index.html">AWS EC2</a><br>
-<a href="https://learn.microsoft.com/ja-jp/cli/azure/vm?view=azure-cli-latest">Azure Virtual Machines</a><br>
-<a href="https://cloud.google.com/sdk/gcloud/reference/compute">Google Cloud Compute Engine</a></p>
-<p>AWS はひたすらコマンドが箇条書きで羅列されています。<br>
-「VM 立ててみるぞ～！コマンドは <code>create</code> とかかなぁ？」と調べてみても <code>create</code> から始まるコマンドが何十個もあって…。
-結構「どれが私の求めるくりえいと？？」となりがちでした。</p>
-<p>Azure はコマンドの一覧に 1行程度の簡潔な説明文も添えられていて、目当てのものが探しやすかったです。</p>
-<p>Google Cloud は 画面左に表示されるリストが見やすいので、こちらも探しやすくて好きでした。</p>
-<figure>
-<img src="gc-cli.png" style="display:block; margin:auto; max-width:600px;">
-<figcaption>「インスタンスを立てたい！」→ 「instances の中に create があるからきっとこれだ！」と直感的に見つけやすい</figcaption>
+<p><a id="intro"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffオライリー初見ですよろしくお願いしますdiv"><div style="background-color:#e5e5ff;">オライリー初見ですよろしくお願いします</div></h2>
+<p>今回はこの前読んだ本の記録と感想を書きたいと思います。</p>
+<p>読んだのは「<strong>Infrastructure as Code</strong>」という本です。</p>
+<figure style="text-align:center;">
+<img src="book.jpg" style="display:block; margin:auto; max-width:600px;">
+<figcaption>オライリー・ジャパン「Infrastructure as Code」Kief Morris 著</figcaption>
 </figure>
-<p>これもきっと慣れれば何ともなくなるのかもしれませんが、初心者には難しいかなと思った点でした。</p>
-<p>このままだと AWS の悪口ばかりと思われる可能性があるので、各社触った範囲で感じたクラウドの特徴も記載しておきます。<br>
-（そもそも悪口のつもりはありません…！AWS のメリットである自由度の高さが、初心者にはハードルになり得るかもという話です。）</p>
-<p>AWS の特徴は、何度も書いていますが自由度の高さだと思います。<br>
-クラウドとしての歴史も長いだけあって、多くのサービスがあり、細かくカスタマイズできます。<br>
-普及率が高いことから、関連記事が多くあることも利用者にとってはありがたいですよね。</p>
-<p>Azure は Resource group という考え方が特徴的で良いと感じました。<br>
-今回の場合だと VM を立てるときに、VM だけではなく他の機能も使用されているのですが（これは AWS も Google Cloud も同様です）、それらも含めて 1つの Resource group 内で管理できるので、何が使われているか分かりやすかったです。<br>
-Resource group ごと消せば関連機能もまるっと消せるところが、スッキリ感が強くてお気に入りです！</p>
-<p>Google Cloud は SSH の接続がめちゃくちゃ簡単で、それが今回とってもありがたかったです。<br>
-おそらく Google Cloud 側で自動で処理してくれているようですね。<br>
-同じことを 3社でやりましたが、Google が一番操作が少なくて比較的簡単にできた印象でした。<br>
-他の機能がどうかは分かりませんが、今回やった範囲ではクラウド側で面倒な作業をサポートしてくれたので、個人的には 1番好きなプラットフォームになりました！</p>
-<p>以上、感想でした。<br>
-まとまり皆無で長々とすみません。</p>
-<p>これからも継続して勉強し、少しずつクラウドに慣れていきたいです！</p>
+<p>ついに私もオライリーデビュー…！</p>
+<p>まず、この表紙のハゲワシがとても可愛いですよね！<br>
+鳥好きとしては大変テンションが上がります。<br>
+夜読んだまま寝落ちしてしまったとき、朝起きた時にハゲワシくんと目が合ってキュンとしたのをよく覚えています。</p>
+<p>え、どうでもいい？</p>
+<p>少し私自身の話をすると、今年7月頭に一念発起して「GitHub？なにそれおいしいの？」状態からモダンな Web アプリケーション開発の勉強を爆速（当社比）でし始めて約2か月半です。</p>
+<p>その間は GitHub、Docker、Cloud を中心に勉強してきて、これから Terraform に挑戦しようとしていたところでした。<br>
+そのため個人的にはいいタイミングで読めたと思っておりますが、オライリーデビューには少し早すぎる気も…？</p>
+<p>ということで、これから書いていく感想が頓珍漢な可能性が高いのですが、そこは温かい目で見て頂ければと思います。</p>
+<p><a id="condition"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ff読むときの条件div"><div style="background-color:#e5e5ff;">読むときの条件</div></h2>
+<p>正直今の私のレベルではとても難しい本だったので、以下のような条件で読みました。</p>
+<br>
+<div style="background-color:#fffff5; border-style:dotted; border-width:4px; border-color:#afeeee;">
+<ol>
+<li>1週間で1冊全部読み切る</li>
+<li>分からない箇所があっても読み進めることを優先する</li>
+</ol>
+</div>
+<p>完全に理解するのは今の段階では膨大な時間を要するので、毎度分からないところを調べていたらきりがないというのが正直なところです。<br>
+（仕事が終わってからプライベートの時間に勉強しているので、時間が思うように取れず…悔しい。）</p>
+<p>もちろん1回読んで完全理解！がベストだと思うのですが、本はいつでも読み返すことができるので、大筋を把握することに重きを置きました。</p>
+<p>結果的に 6日で読み通すことができたのですが、「分からなくても止まるな！」と自分を急かしてやっとという感じでしたね…。</p>
+<p>この本はオライリー本の中でもまだページ数が少ないほうらしいので、他の分厚いオライリー本ではこの条件では私の場合は厳しいかもしれません。</p>
+<figure style="text-align:center;">
+<img src="thick.jpg" style="display:block; margin:auto; max-width:600px;">
+<figcaption>それでも約300ページあり、低めの枕を好む私には丁度良い高さ</figcaption>
+</figure>
+<p>もっと分厚いオライリー本をたくさん読破しているつよつよエンジニアの皆さんすごい…。</p>
+<p>知識が増えてこういった本に読み慣れてくればもっと効率的に読めるのでしょうかね。</p>
+<p>IT業界は時代の流れがはやいですから、いつか日本語訳される前の原本（英語）のまま読めるくらいになりたいです…！</p>
+<p><a id="review"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ff感想div"><div style="background-color:#e5e5ff;">感想</div></h2>
+<p>まず第一に読むのがとても難しかった！</p>
+<p>知らない専門用語が多いのはもちろん、原文が英語のためか「自動テストやパイプラインをトリガリングするアクショナビリティが～」のような横文字も多く、そういった文章に慣れていない私はここに苦労しました。</p>
+<p>途中から「ルー〇柴さん系の話し方をする人なんだ」と考えを切り替えたことで何とか読み切ることができましたが…。</p>
+<p>技術ドキュメントに慣れるためにも、こういった文章をたくさん読んで練習しないとダメですね。<br>
+あと英語の勉強も…頑張ります。</p>
+<hr>
+<p>文章自体の読みにくさはあったものの、著者の主張している内容は理解できるものでしたし、目から鱗な考えがたくさんあってとても勉強になりました。</p>
+<p>まず、Infrastructure as Code を実現させる上で重要なキーワードは『統一性』『再現性』『反復可能性』のようです。</p>
+<p>一貫して『人間の介在を最小限に抑え、無駄や不確かなものを減らす』という考えがベースにあると受け取りました。</p>
+<p>当書で「鉄（物理ハードウェア）の時代とクラウドの時代」というコラムがあったのですが、
+その鉄の時代に近い考え方の人が多い環境の中で働いている自分には上記の考え方がとても魅力的でした。</p>
+<p>仕事をしていて「この作業無駄が多いなぁ」「もっと効率的な方法ないのかな」といった自分のモヤモヤへの一種の回答集のようでしたし、この本のような環境にできたら働き方が大きく変わって本来注力すべきことに集中できるよなぁと感じました。</p>
+<p>VCS（バージョン管理システム）や Docker、CI/CD、Cloud などを勉強してきたタイミングで読んで、なぜモダンな開発をしている企業がこれらを採用しているのか、少し全体像が見えたように思います。</p>
+<p>色々語りたいことはあるのですが、どうも支離滅裂な文章を生成してしまうので、最後に読んだ中で１番お気に入りの11章について触れて終わろうと思います。<br>
+（英語の前に日本語の勉強ですね…お恥ずかしい…）</p>
+<hr>
+<p>11章はテスト（特に自動テスト）について書かれている章となります。</p>
+<p>これまで仕事でテストを任されることが多かったので、身近に感じられる題材でした。</p>
+<p>エクセルに書かれたチェック項目に沿って手動で試験をして、エビデンスとして画面のスクショを撮りまくる、というような昔ながらのテスト方法を教え込まれた身として、どれだけ乖離があるのか読む前から楽しみでした。</p>
+<p>読んだ結果、もちろん私の予想を裏切らず、非常に画期的な方法を提案されていて目から鱗がポロポロでした。<br>
+（モダンな環境にいらっしゃる方はきっと共感しながら読めるのでしょう。早くそちら側に行きたい！）</p>
+<p>まずテストを単独のフェーズとして扱わず、実装と一緒に行うこと。<br>
+私もまさにテストだけの作業を指示される経験が多いのですが、実装した人がテストまでやるほうが明らかに早いですし間違いが少ないです。<br>
+コードを理解して、どういったテストが必要か考える時間が省けますからね。<br>
+さらにこの実装・テストのプロセスをこまめにやること、システムの変更の度にテストを書くことでさらに問題の解決が早くなって good です。</p>
+<p>そしてこれらのテストを低水準・中水準・高水準と 3層に分類して考え、低水準テストが 1番多いピラミッドのようなバランスにすることで、より素早い実行を可能にするようです。<br>
+（ここで言う水準はテストの範囲であり、低水準はテスト範囲の狭く単純なもの）</p>
+<p>テストをこのように分類するという考えを初めて知った（今までは画面ごとに分けるのみでした）ので驚きましたし、
+これなら最低限の時間でテスト可能で、エラーの特定もしやすくなるだろうと感じました。</p>
+<p>最後に、ベスト目から鱗賞のアイデアは TDD（テスト駆動開発）です。</p>
+<p>「言われてみればそうだよな～～でも思いつかなかったな～～！！」な面白い手法です。<br>
+それと同時に自動テストだからできる方法でもあります。</p>
+<p>やり方はシンプルで「テスト→実装→コードの改良」というサイクルで行うというもの。<br>
+テストを先に書いてからコードを書くという逆の考え方なんですね。</p>
+<p>調べてみると、工数が増えるなどのデメリットもあるようで賛否両論のようですが、
+テストをしながら実装するのでエラーの発見が早くなったり、
+コードの品質が上がるなどメリットも多くあります。</p>
+<p>状況によって最善の方法とは言えないかもしれませんが、
+1つのやり方として知っておくことはとても有用であると思いました。</p>
+<hr>
+<p>11章について感想を書いていきましたが、この章で書かれていることはこれだけではないですし、
+他の章もたくさんのアイデアがモリモリです。</p>
+<p>いい本に出会えてよかった。</p>
+<p>今後勉強を進めていって、より深く理解していけたらと思います。</p>
+<p>特に 7、8章のサーバーのパターンが難しくてわけわからん状態になってしまったので、
+知識を付けて読めるようになっていきたいです。<br>
+（未来の自分よ頼んだぜ）</p>
+<p><a id="fin"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>O&rsquo;Reilly の「Infrastructure as Code」という本を読みました、というご報告と感想でした。</p>
+<p>初心者がオライリー本に挑戦して失敗した的な記事もそこそこ見るのですが、私の場合は挑戦してよかったと思っています。<br>
+（本のレベルや内容、どの程度の初心者なのかにもよるのかもしれませんね。）</p>
+<p>モダンな開発を勉強し始めた段階で Infrastructure as Code の考え方を知ることができ、とてもいい経験になりました。</p>
+<p>2017年発行と今から 5年ほど前の本ではありますが、今でも役に立つ考え方がたくさん詰まっていておすすめです。</p>
+<p>とは言え、内容は恥ずかしながら 4割くらいしか理解できなかったので、1～2年後には 9割くらい理解できるエンジニアに成長していたいです！</p>
+<p>最後に、この本を進めてくださった先輩兼師匠に心からの感謝を込めて。</p>
 <br>
 <br>
 <br>
@@ -488,11 +411,9 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/cloud/">cloud</a>
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/oreilly/">o&#39;reilly</a>
 
-  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/google-cloud/">google-cloud</a>
-
-  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/ssh/">ssh</a>
+  <a class="tag tag--primary tag--small" href="https://inoue-kk.github.io/tags/iac/">IaC</a>
 
                   </div>
                 
@@ -505,7 +426,7 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/10/01/" data-tooltip="O&#39;Reilly「Infrastructure as Code」を読んでみた" aria-label="NEXT: O&#39;Reilly「Infrastructure as Code」を読んでみた">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -513,7 +434,7 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/20/" data-tooltip="[Azure] CLI で Web サーバ(NGINX)を構築してみた" aria-label="PREVIOUS: [Azure] CLI で Web サーバ(NGINX)を構築してみた">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/21/" data-tooltip="[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた" aria-label="PREVIOUS: [Google Cloud] CLI で Web サーバ(NGINX)を構築してみた">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -531,13 +452,13 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/21/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/10/01/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/21/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/10/01/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -562,9 +483,9 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/09\/21\/';
+        this.page.url = 'https:\/\/inoue-kk.github.io\/2022\/10\/01\/';
         
-          this.page.identifier = '\/2022\/09\/21\/'
+          this.page.identifier = '\/2022\/10\/01\/'
         
       };
       (function() {
@@ -600,7 +521,7 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/10/01/" data-tooltip="O&#39;Reilly「Infrastructure as Code」を読んでみた" aria-label="NEXT: O&#39;Reilly「Infrastructure as Code」を読んでみた">
+            <a class="post-action-btn btn btn--disabled">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -608,7 +529,7 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/20/" data-tooltip="[Azure] CLI で Web サーバ(NGINX)を構築してみた" aria-label="PREVIOUS: [Azure] CLI で Web サーバ(NGINX)を構築してみた">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://inoue-kk.github.io/2022/09/21/" data-tooltip="[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた" aria-label="PREVIOUS: [Google Cloud] CLI で Web サーバ(NGINX)を構築してみた">
           
               <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
               <i class="fa fa-angle-right"></i>
@@ -626,13 +547,13 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
     </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/09/21/" title="Share on Facebook" aria-label="Share on Facebook">
+        <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://inoue-kk.github.io/2022/10/01/" title="Share on Facebook" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i>
         </a>
       </li>
     
       <li class="post-action hide-xs">
-        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/09/21/" title="Share on Twitter" aria-label="Share on Twitter">
+        <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://inoue-kk.github.io/2022/10/01/" title="Share on Twitter" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i>
         </a>
       </li>
@@ -657,13 +578,13 @@ Resource group ごと消せば関連機能もまるっと消せるところが�
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F21%2F" aria-label="Share on Facebook">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finoue-kk.github.io%2F2022%2F10%2F01%2F" aria-label="Share on Facebook">
           <i class="fab fa-facebook-square" aria-hidden="true"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F09%2F21%2F" aria-label="Share on Twitter">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Finoue-kk.github.io%2F2022%2F10%2F01%2F" aria-label="Share on Twitter">
           <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
         </a>
       </li>
