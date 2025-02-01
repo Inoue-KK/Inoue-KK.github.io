@@ -104,7 +104,7 @@ docker-compose.yml ファイルで定義した複数コンテナを管理・実�
 <p>私の環境は Windows なので、以下の「Docker Desktop」の「Download for Windows」から Docker をインストールしました。<br>
 <a href="https://www.docker.com/get-started/">Get Started with Docker</a></p>
 <p>インストール後に気になったポップアップがあったので記録します。</p>
-<figure class="center"><img src="/posts/2022/07/29/docker_popup.png">
+<figure class="center"><img src="/posts/2022/07/29/docker_popup.png" width="100%">
 </figure>
 
 <p>Docker をインストールして直ぐに<span style="background-color:#f7fcd9;">『WSL 2 installation is incomplete.』</span>とポップアップが表示されました。</p>
@@ -118,8 +118,8 @@ Docker 自体が linux で動作するため、私のような Windows 信者は
 <li>Dockerfile</li>
 </ul>
 <p>コンテナの設定を書いて、</p>
-<pre tabindex="0"><code>$ docker-compose up
-</code></pre><p>でコンテナ起動！<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker-compose up
+</span></span></code></pre></div><p>でコンテナ起動！<br>
 ブラウザにて &ldquo;http://localhost:[指定したポート]&rdquo; で画面確認！</p>
 <h5 id="思ったようにできませんでした-ﾅﾝﾃﾞﾀﾞﾖｰ">・・・思ったようにできませんでした🙃🙂🙃🙂🙃🙂 ﾅﾝﾃﾞﾀﾞﾖｰ</h5>
 <p>というのも、Windowsだとこのやり方では <span style="background-color:#f7fcd9;">commit までしないと画面に反映されなかった</span>んですよね。<br>
