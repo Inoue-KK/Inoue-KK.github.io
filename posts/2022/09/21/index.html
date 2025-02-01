@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた</h1>
+  
+
+  
+  
+    <time datetime="2022-09-21T10:11:34&#43;00:00">September 21, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <div class="alert info">
+    <span class="alert-icon">
+      ℹ️
+      
+    </span>
+    <p>大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨</p>
+  </div>
+  
+<p><a href="https://inoue-kk.github.io/posts/2022/09/19/">【AWS EC2】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<p><a href="https://inoue-kk.github.io/posts/2022/09/20/">【Azure】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#todo">やること</a></li>
+<li><a href="#create">インスタンス 構築手順</a></li>
+<li><a href="#nginx">NGINX による Web サーバ構築設定手順</a></li>
+<li><a href="#200">HTTP Status Code の確認方法</a></li>
+<li><a href="#log">AccessLog の確認方法</a></li>
+<li><a href="#delete">インスタンス 削除手順</a></li>
+<li><a href="#fin">まとめ・感想</a></li>
+</ol>
+<hr>
+<p><a id="todo"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffやることdiv"><div style="background-color:#e5e5ff;">やること</div></h2>
+<ol>
+<li>Google Cloud 上で Ubuntu の VM を立てる</li>
+<li>VM に NGINX をインストールし、Web サーバとして設定
+<ol>
+<li>OS 起動時に NGINX が自動起動するように設定</li>
+<li>AccessLog が記録されていることを確認</li>
+<li>HTTP Status Code: 200 が返ることを確認</li>
+</ol>
+</li>
+<li>VM を削除する</li>
+</ol>
+<p>これを CLI でやるときの手順を以下に記載していきます。</p>
+<p><a id="create"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffインスタンス-構築手順div"><div style="background-color:#e5e5ff;">インスタンス 構築手順</div></h2>
+<ol>
+<li>
+<p><a href="https://console.cloud.google.com/welcome">Google Cloud メイン画面</a> 右上のターミナルマークをクリックして Cloud Shell を開く
+<img src="gc-shell.png" style="display:block; margin:auto; max-width:550px;"></p>
+ <br>
+</li>
+<li>
+<p>インスタンスを新規作成し、VM を起動する</p>
+<pre tabindex="0"><code>$ gcloud compute instances create text-instance01 --image-family=ubuntu-2204-lts --image-project=ubuntu-os-cloud --zone=us-central1-a --tags=http-server
+</code></pre><p>今回の設定項目は以下の通り。</p>
+<ul>
+<li>インスタンス名</li>
+<li>OS イメージ（Ubuntu）</li>
+<li>サーバの場所</li>
+<li>HTTP トラフィックの許可</li>
+</ul>
+<p><code>image-family</code>, <code>image-project</code> の値は</p>
+<pre tabindex="0"><code>$ gcloud compute images list
+</code></pre><p>から選べる</p>
+ <br>
+</li>
+<li>
+<p>インスタンスが立っているかの確認は以下のコマンドで行う</p>
+<pre tabindex="0"><code>$ gcloud compute instances list
+</code></pre><p>これを実行することで、現在立てられているインスタンスの情報を表示することができる</p>
+</li>
+</ol>
+<p><a id="nginx"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffnginx-による-web-サーバ構築設定手順div"><div style="background-color:#e5e5ff;">NGINX による Web サーバ構築設定手順</div></h2>
+<ol>
+<li>
+<p>SSH で VM に接続</p>
+<pre tabindex="0"><code>$ gcloud compute ssh --zone &#34;us-central1-a&#34; &#34;text-instance01&#34;  --project &#34;awesome-aurora-362109&#34;
+</code></pre><p>以降、VM での操作。</p>
+ <br>
+</li>
+<li>
+<p>VM に NGINX インストール</p>
+<pre tabindex="0"><code>$ sudo apt-get update
+$ sudo apt-get install nginx
+</code></pre> <br>
+</li>
+<li>
+<p>NGINX 自動起動設定</p>
+<pre tabindex="0"><code>$ sudo systemctl enable nginx.service
+</code></pre> <br>
+</li>
+<li>
+<p>VM 再起動</p>
+<pre tabindex="0"><code>$ sudo reboot
+</code></pre> <br>
+</li>
+<li>
+<p>VM 再起動により接続が切れるので、SSH 再接続</p>
+<pre tabindex="0"><code>$ gcloud compute ssh --zone &#34;us-central1-a&#34; &#34;text-instance01&#34;  --project &#34;awesome-aurora-362109&#34;
+</code></pre> <br>
+</li>
+<li>
+<p>NGINX が自動起動していることを確認</p>
+<pre tabindex="0"><code>$ systemctl status nginx.service
+</code></pre><p>→ <code>Active: active (running)</code>という文面が確認できればOK</p>
+</li>
+</ol>
+<p><a id="200"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffhttp-status-code-の確認方法div"><div style="background-color:#e5e5ff;">HTTP Status Code の確認方法</div></h2>
+<ol>
+<li>HTTP Status をリモートで確認（今回は自 PC の bash から確認した）
+<pre tabindex="0"><code>$ curl -v [外部IP]
+</code></pre>→ 値が返ってくるので以下が確認できればOK
+<pre tabindex="0"><code>&lt; HTTP/1.1 200 OK
+</code></pre></li>
+</ol>
+<p><a id="log"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffaccesslog-の確認方法div"><div style="background-color:#e5e5ff;">AccessLog の確認方法</div></h2>
+<ol>
+<li>
+<p>NGINX の設定ファイルの中身を表示し、AccessLog ファイルの位置を調べる</p>
+<pre tabindex="0"><code>$ cat /etc/nginx/nginx.conf
+</code></pre><p>ファイル内の以下の文面から確認</p>
+<pre tabindex="0"><code>##
+# Logging Settings
+##
+
+access_log /var/log/nginx/access.log;
+</code></pre> <br>
+</li>
+<li>
+<p>AccessLog ファイルを確認</p>
+<pre tabindex="0"><code>cat /var/log/nginx/access.log
+</code></pre><p>サーバにアクセスした履歴が残っていることを確認</p>
+</li>
+</ol>
+<p><a id="delete"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffインスタンス-削除手順div"><div style="background-color:#e5e5ff;">インスタンス 削除手順</div></h2>
+<ol>
+<li>
+<p>インスタンス削除</p>
+<pre tabindex="0"><code>$ gcloud compute instances delete [instance name] –zone=[zone name]
+</code></pre> <br>
+</li>
+<li>
+<p>インスタンスの状況一覧を表示させ、インスタンスが削除されていることを確認する</p>
+<pre tabindex="0"><code>$ gcloud compute instances list
+</code></pre><p>→ 削除したインスタンスが表示されていなければ OK</p>
+</li>
+</ol>
+<p><a id="fin"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffまとめ感想div"><div style="background-color:#e5e5ff;">まとめ・感想</div></h2>
+<p>クラウド CLI での Web サーバ構築第三弾として、Google Cloud Compute Engine での手順をまとめました。</p>
+<p>ここからは各社クラウドを触った感想をつらつら書いていきます～。完全雑談です。</p>
+<p>☁☁☁</p>
+<p>AWS が一番シェア率が高いそうなのですが、個人的には Azure や Google Cloud と比較して1番難しかったです…。<br>
+その理由として、「カスタムの多さ」と「公式ドキュメントの分かりにくさ」の2点を挙げたいと思います。<br>
+AWS は細かい設定まで可能で自由度の高い印象で、おそらくクラウドベテランで慣れてらっしゃる方ならむしろこの点は魅力なのではないかと思います。<br>
+しかし私のようなクラウド超初心者には逆に設定の多さに困惑してしまうことが多々ありました。<br>
+これにより、「公式ドキュメントが分かりにくい」にも繋がってしまっていると思います。</p>
+<p>今回の勉強で調べ物をするにあたり、原則公式ドキュメントを参照しておりました。<br>
+個人の Web サイトは分かりやすくまとめられていることが多く、今まで何度もお世話になっているのですが、公式が出しているものはやはり一番信頼できる情報なので、ここから読み取れるのがベストだと考えました。
+（特に AWS は CLI のバージョンが 1から 2へ変わっているので、情報が古い個人サイトも多々あります。）</p>
+<p>今回使用した IaaS の VM 関連サービスの公式ドキュメント(CLI)をピックアップしてみるとこんな感じです。<br>
+<a href="https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ec2/index.html">AWS EC2</a><br>
+<a href="https://learn.microsoft.com/ja-jp/cli/azure/vm?view=azure-cli-latest">Azure Virtual Machines</a><br>
+<a href="https://cloud.google.com/sdk/gcloud/reference/compute">Google Cloud Compute Engine</a></p>
+<p>AWS はひたすらコマンドが箇条書きで羅列されています。<br>
+「VM 立ててみるぞ～！コマンドは <code>create</code> とかかなぁ？」と調べてみても <code>create</code> から始まるコマンドが何十個もあって…。
+結構「どれが私の求めるくりえいと？？」となりがちでした。</p>
+<p>Azure はコマンドの一覧に 1行程度の簡潔な説明文も添えられていて、目当てのものが探しやすかったです。</p>
+<p>Google Cloud は 画面左に表示されるリストが見やすいので、こちらも探しやすくて好きでした。</p>
+<figure>
+<img src="gc-cli.png" style="display:block; margin:auto; max-width:600px;">
+<figcaption>「インスタンスを立てたい！」→ 「instances の中に create があるからきっとこれだ！」と直感的に見つけやすい</figcaption>
+</figure>
+<p>これもきっと慣れれば何ともなくなるのかもしれませんが、初心者には難しいかなと思った点でした。</p>
+<p>このままだと AWS の悪口ばかりと思われる可能性があるので、各社触った範囲で感じたクラウドの特徴も記載しておきます。<br>
+（そもそも悪口のつもりはありません…！AWS のメリットである自由度の高さが、初心者にはハードルになり得るかもという話です。）</p>
+<p>AWS の特徴は、何度も書いていますが自由度の高さだと思います。<br>
+クラウドとしての歴史も長いだけあって、多くのサービスがあり、細かくカスタマイズできます。<br>
+普及率が高いことから、関連記事が多くあることも利用者にとってはありがたいですよね。</p>
+<p>Azure は Resource group という考え方が特徴的で良いと感じました。<br>
+今回の場合だと VM を立てるときに、VM だけではなく他の機能も使用されているのですが（これは AWS も Google Cloud も同様です）、それらも含めて 1つの Resource group 内で管理できるので、何が使われているか分かりやすかったです。<br>
+Resource group ごと消せば関連機能もまるっと消せるところが、スッキリ感が強くてお気に入りです！</p>
+<p>Google Cloud は SSH の接続がめちゃくちゃ簡単で、それが今回とってもありがたかったです。<br>
+おそらく Google Cloud 側で自動で処理してくれているようですね。<br>
+同じことを 3社でやりましたが、Google が一番操作が少なくて比較的簡単にできた印象でした。<br>
+他の機能がどうかは分かりませんが、今回やった範囲ではクラウド側で面倒な作業をサポートしてくれたので、個人的には 1番好きなプラットフォームになりました！</p>
+<p>以上、感想でした。<br>
+まとまり皆無で長々とすみません。</p>
+<p>これからも継続して勉強し、少しずつクラウドに慣れていきたいです！</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/cloud/">Cloud</a></li>
+        <li><a href="/tags/google-cloud/">Google-Cloud</a></li>
+        <li><a href="/tags/ssh/">Ssh</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

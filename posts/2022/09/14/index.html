@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>GitHub の導入を会社に提案してみた話</h1>
+  
+
+  
+  
+    <time datetime="2022-09-14T13:34:51&#43;00:00">September 14, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <p>お久しぶりになってしまいました。イノウエです。</p>
+<p>もっとコンスタントにブログを書きたかったのですが、アウトプットが遅くなってしまいました。<br>
+言い訳っぽくなってしまうのですが、本ブログのタイトルに記載した通り GitHub を会社で提案する機会がもらえたので、そちらに注力していたのです。</p>
+<p>熱量のあるうちにこちらの話を今日は記録します。</p>
+<h2 id="div-stylebackground-colore5e5ffgithub-ってすごいよねdiv"><div style="background-color:#e5e5ff;">GitHub ってすごいよね</div></h2>
+<p>GitHub ってとっても便利ですよね。<br>
+何を当たり前のことを、と言われてしまうと思いますが…。<br>
+今年 7月に GitHub に出会って以来、少しずつ色んな機能を開拓していっているのですが、あまりの便利さに感動する日々です。</p>
+<p>そしてふと思いました。<br>
+こんなに便利なのになぜ弊社では使ってないんだろう？<br>
+GitHub 使ったら業務効率向上するし、何より仕事の仕方が変わるよなぁ、と。</p>
+<p>誤解を防ぐために申し上げますが、決して今の会社のやり方を否定するつもりは一切ありません。<br>
+歴史の長い会社なので長年にわたって培ってきたものが沢山あり、それ自体は素晴らしいと思っております。<br>
+ただGitHub を取り入れたらもっと仕事環境がよくなるのでは、と思った次第です。</p>
+<h2 id="div-stylebackground-colore5e5ffgithub-の導入を提案div"><div style="background-color:#e5e5ff;">GitHub の導入を提案</div></h2>
+<p>上司とお話する機会があり、仕事環境の課題についての話題になったときに<br>
+『今だ！』<br>
+と突然体内の全細胞が大騒ぎ。ﾜｱﾜｱ</p>
+<p>チャンスが来たと思って<br>
+「GitHub という便利なものがあるのですが、それなら改善できるかもしれません…」<br>
+とお話してみました。</p>
+<p>ありがたいことにその話に耳を傾けて下さり、GitHub の導入の提案をする機会をいただきました。<br>
+嬉しい！！</p>
+<p>現状の課題を洗い出し、改善策をまとめた提案資料を作成しました。</p>
+<p>Speaker Deck に提案資料を載せているので、宜しければご覧ください ☟☟<br>
+<a href="https://speakerdeck.com/inouekk/proposal-of-projects-improvement-with-github">バージョン管理システムによる開発環境の課題改善検討案</a><br>
+（勤務先の情報を一切含まないように一部修正しております）</p>
+<h2 id="div-stylebackground-colore5e5ffgithub-で何がどう変わるdiv"><div style="background-color:#e5e5ff;">GitHub で何がどう変わる？</div></h2>
+<p>資料にもまとめたのですが、GitHub でどう課題を改善できるかについて、こちらにもつらつらと書いてみます。</p>
+<h3 id="span-stylebackground-colord5e8fdバージョン管理ができるspan"><span style="background-color:#d5e8fd;">バージョン管理ができる</span></h3>
+<h4 id="現状">現状</h4>
+<p><strong>ソースコードはバージョン毎にファイルサーバ上に保存</strong></p>
+<pre tabindex="0"><code>project1  
+　├ project1_ver1.0.0  
+　├ project1_ver1.0.1  
+　└ project1_ver1.0.2  
+</code></pre><p>といった感じですね。</p>
+<hr>
+<h5 id="課題">課題</h5>
+<ul>
+<li><strong>ファイルサーバで書き換えできる権限のある人は容易に変更・削除が可能</strong><br>
+更に変更・削除してしまった場合の復旧が困難な場合も十分考えられます<br>
+複数人で作業することが多いので、他の人の変更に気づかずにうっかり上書きしてしまったりも…<br>
+上書きしてしまったことにすら気づけなかった場合はもう言葉がありませんよね…怖い話…！</li>
+</ul>
+<br>
+<ul>
+<li><strong>命名ルールの一貫性が損なわれると変更の把握が困難</strong><br>
+一貫した命名則に基づいて名称が付けられているときは問題ないですが、例えば以下のように
+<pre tabindex="0"><code>project1  
+　├ project1_ver1.0.1_最新  
+　├ project1_ver1.0.1  
+　├ project1_ver1.0.1_1  
+　└ project1_ver1.0.1_2  
+</code></pre>となっていたら何が何だか分からないですよね。<br>
+これは少し大袈裟かもしれません（もはやバージョンが機能していない）が、複数人で編集する以上、後から履歴の把握が難しい変更をしてしまうこともあります。</li>
+</ul>
+<hr>
+<h5 id="改善案">改善案</h5>
+<ul>
+<li><strong>GitHub の Release 機能と Tag 機能で容易にバージョン変更できないように</strong><br>
+Tag でバージョンなどの名称を付けることができ、Release 機能で Tag を付けたソース等を公開できます。<br>
+リリースノートでコメントも追加できるので、前回のバージョンからの変更点などが記載できる点もとても便利だと思います。<br>
+GitHub の画面上では Release や Tag の変更はできないので、うっかり削除の心配も少ないです。</li>
+</ul>
+<br>
+<ul>
+<li><strong>監査ログで操作履歴を追跡</strong><br>
+オーナー権限のある方のみ、Organization メンバーの操作履歴を閲覧することができるようです。<br>
+変なことするとバレちゃいますね。</li>
+</ul>
+<br>
+<h3 id="span-stylebackground-colord5e8fdソースコード結合作業の改善span"><span style="background-color:#d5e8fd;">ソースコード結合作業の改善</span></h3>
+<h4 id="現状-1">現状</h4>
+<p><strong>マージツールで比較をかけて手作業でソースの結合</strong></p>
+<ol>
+<li>対象ソースコードを複製して開発者に渡す</li>
+<li>開発者が対象ソースコードを変更</li>
+<li>開発者が変更後のソースコードを一式をファイルサーバの指定フォルダに配置</li>
+<li>マージ担当者が変更内容をマージツールで確認しながらマージ</li>
+<li>マージ担当者がマージ結果を検証</li>
+<li>マージ担当者がマージされたソースコード一式をファイルサーバの指定フォルダに配置</li>
+</ol>
+<hr>
+<h5 id="課題-1">課題</h5>
+<ul>
+<li><strong>作業に時間がかかり、ミスが生じやすい</strong><br>
+もうこれに尽きますね。現状の手順書くのもちょっと疲れちゃいました。<br>
+作業が増えるとその分ミスも発生しやすくなるので、できるだけ簡単に済ませたいところですよね。<br>
+何しろ時間を割くべき作業ではないと思っているので、こういった事務的な作業はどんどん減らしたいです。</li>
+</ul>
+<br>
+<ul>
+<li><strong>マージ作業が複雑、分担が困難</strong><br>
+総じてマージ担当者の負担が大きいですよね。<br>
+ソースコードを編集する人数が増えれば、その人数分マージをかけなければならないので、規模の大きなプロジェクトだと大変なことになりそうです。<br>
+全員がバラバラのバージョンからの修正をしていたら…と考えたら胃が痛くなってきました。</li>
+</ul>
+<hr>
+<h5 id="改善案-1">改善案</h5>
+<ul>
+<li><strong>GitHub の Pull requests 機能により、視認性の高いレビューと安全なマージが可能</strong><br>
+レビューとマージが流れで行えるって凄くないですか…。<br>
+GitHub と出会ってから個人的に一番驚いた機能かもしれません。（まだまだ機能は開拓中ですが）<br>
+ファイル同士比較をかけながらレビューして、問題がなければ自動でマージしてくれるなんて、私はなんて素晴らしい時代に生まれたのでしょうか。</li>
+</ul>
+<br>
+<ul>
+<li><strong>経過をプロジェクトメンバー間で共有できるため、分担や再修正が効率的に</strong><br>
+改善案の1点目に挙げた Pull requests の状況が全て記録されており、いつでも確認可能なので、誰がどのような作業をしているのかが把握しやすくなります。<br>
+手動マージの時のような、マージ担当者1人への負担が大きいといったことはなくなるでしょう。</li>
+</ul>
+<br>
+<h3 id="span-stylebackground-colord5e8fdバグやタスクが管理しやすくなるspan"><span style="background-color:#d5e8fd;">バグやタスクが管理しやすくなる</span></h3>
+<h4 id="現状-2">現状</h4>
+<p><strong>ソースコードやドキュメント、タスクやバグの一覧をそれぞれ独立して管理</strong><br>
+ソースコードやドキュメントはそれぞれ指定のファイルサーバに、追加のタスクやバグは Excel 上に一覧でまとめており、こちらも同じくファイルサーバに置いて管理しています。</p>
+<hr>
+<h4 id="課題-2">課題</h4>
+<p><strong>タスクやバグの資料からソースコードやドキュメントの変更が辿れない</strong><br>
+ファイルサーバでそれぞれ管理しているとこれは当たり前だと思いますが、Excel の一覧表からはソースコードやドキュメントをどのように修正したのか辿ることは難しいです。<br>
+タスクが複雑になってくると、修正したのかしていないのか把握しきれない事案が発生し、本当に修正済みになっているか2、3度チェックし直したりなど、手間と時間がかかる羽目に。</p>
+<hr>
+<h4 id="改善案-2">改善案</h4>
+<p><strong>GitHub の Issue 機能や Milestone 機能により、タスク・バグ管理や進捗把握の効率化</strong><br>
+Issue にタスク等を書き出し、Milestone を各 Issue に設定することで、効率的にタスク管理が行えます。<br>
+Issue のほかに Pull request にも Milestone を設定できます。
+Milestoneではタスクの進捗率がバーで表示されるのですが、こちらは一目で進捗状況が分かりやすくて便利です。<br>
+また commit と Issue を紐づけられるので、タスクからソースコードの確認が容易になります。</p>
+<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>今回は、とある会社への GitHub の導入の提案について記録いたしました。<br>
+きっと同じような環境の会社は一定数存在すると思うので、そういった方に向けて何か参考になるものがあれば幸いです。</p>
+<p>実際に導入に踏み込んでくれるかは会社の判断なので分かりませんが、少しでも今の環境が変わるきっかけになればと願っております。</p>
+<p>これからもどんどん不要な作業を減らして、時間をかけるべきところにかけられる職場環境にしたい！です！</p>
+<p>がんばるぞう🐘</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/github/">Github</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

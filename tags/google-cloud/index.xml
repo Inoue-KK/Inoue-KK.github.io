@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Google-Cloud on ほっそりイノウエのマッチョエンジニアへの道</title>
+    <link>https://inoue-kk.github.io/tags/google-cloud/</link>
+    <description>Recent content in Google-Cloud on ほっそりイノウエのマッチョエンジニアへの道</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Sep 2022 10:11:34 +0000</lastBuildDate>
+    <atom:link href="https://inoue-kk.github.io/tags/google-cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた</title>
+      <link>https://inoue-kk.github.io/posts/2022/09/21/</link>
+      <pubDate>Wed, 21 Sep 2022 10:11:34 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2022/09/21/</guid>
+      <description>ℹ️ 大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨ 【AWS EC2】 CLI で Web サーバ(NGINX)を構築してみた 【Azu</description>
+    </item>
+  </channel>
+</rss>

@@ -6,6 +6,56 @@
     <description>Recent content in Categories on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 23 Oct 2022 06:21:53 +0000</lastBuildDate>
     <atom:link href="https://inoue-kk.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Webアプリケーション開発</title>
+      <link>https://inoue-kk.github.io/categories/web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%8B%E7%99%BA/</link>
+      <pubDate>Sun, 23 Oct 2022 06:21:53 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/categories/web%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%8B%E7%99%BA/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>技術本</title>
+      <link>https://inoue-kk.github.io/categories/%E6%8A%80%E8%A1%93%E6%9C%AC/</link>
+      <pubDate>Sat, 01 Oct 2022 14:14:09 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/categories/%E6%8A%80%E8%A1%93%E6%9C%AC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cloud</title>
+      <link>https://inoue-kk.github.io/categories/cloud/</link>
+      <pubDate>Wed, 21 Sep 2022 10:11:34 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/categories/cloud/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>お役立ちコマンド</title>
+      <link>https://inoue-kk.github.io/categories/%E3%81%8A%E5%BD%B9%E7%AB%8B%E3%81%A1%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</link>
+      <pubDate>Sun, 18 Sep 2022 02:51:19 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/categories/%E3%81%8A%E5%BD%B9%E7%AB%8B%E3%81%A1%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>GitHub</title>
+      <link>https://inoue-kk.github.io/categories/github/</link>
+      <pubDate>Wed, 14 Sep 2022 13:34:51 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/categories/github/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://inoue-kk.github.io/categories/docker/</link>
+      <pubDate>Wed, 17 Aug 2022 04:51:18 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/categories/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>あいさつ</title>
+      <link>https://inoue-kk.github.io/categories/%E3%81%82%E3%81%84%E3%81%95%E3%81%A4/</link>
+      <pubDate>Sat, 16 Jul 2022 12:35:25 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/categories/%E3%81%82%E3%81%84%E3%81%95%E3%81%A4/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

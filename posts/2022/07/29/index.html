@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>Docker を使ってみたかった話</h1>
+  
+
+  
+  
+    <time datetime="2022-07-29T14:34:17&#43;00:00">July 29, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <p>本サイトは「GitHub Pages」というGitHubのサービスを利用して作成しております。</p>
+<p>リポジトリ名を「[アカウント名].github.io」とすることで作れるのですが、詳しくは<a href="https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages">こちら</a>の公式サイトをご覧ください。<br>
+今回のメインはこの先の話なので。</p>
+<h2 id="div-stylebackground-colore5e5ffいちいち-push-しないとページが確認できない問題div"><div style="background-color:#e5e5ff;">いちいち Push しないとページが確認できない問題</div></h2>
+<p>「[アカウント名].github.io」のリポジトリに作成したデータを Push してサイトを作っていくのですが、これがめちゃくちゃ面倒で。<br>
+特に初めて自分でサイトを作ったものだから、どこを触ってどうなるかが分からない場合が多かったんですよね。<br>
+その度に Push までしないと画面の状態が確認できないのがとにかく煩わしかった。</p>
+<h5 id="push-せずにローカルで逐一画面の状態を確認したいよう">Push せずにローカルで逐一画面の状態を確認したいよう！</h5>
+<p>ということで、以下のやり方でやってみることにしました。</p>
+<br>
+<ol>
+<li>「[アカウント名].github.io」のリポジトリと同一の内容のリポジトリを作成<br>
+→作業用リポジトリとする</li>
+<li><span style="background-color:#e3fafc;">Docker</span> を利用して Web サーバを立て、作業用リポジトリのデータをブラウザに表示できるようにする</li>
+</ol>
+<p>※前提として OS は Windows です。</p>
+<p>今回初めて使う <span style="background-color:#e3fafc;">Docker</span> について、以下に簡単に説明していきます。</p>
+<h2 id="div-stylebackground-colore5e5ffdocker-とはdiv"><div style="background-color:#e5e5ff;">Docker とは？</div></h2>
+<p>Docker はコンテナ型の仮想化を実現するプラットフォームの一種です。<br>
+コンテナを積んだクジラちゃんのマークがかわいいですね🐳</p>
+<p>仮想化というと私はホスト OS の上でゲスト OS を動かすイメージだったのですが（ VirtualBox や VMware Player など）、コンテナ型はこれらのやり方とは違い、ゲストOS を使用せずに&quot;コンテナ&quot;内にアプリケーションを実行する環境を構築するようです。<br>
+OS が要らないので負荷が少なく動作が軽い点が大きなメリットです。</p>
+<p>コンテナ型の仮想化には Docker が最も多く利用されているので、今回はこちらを使っていきます。</p>
+<h2 id="div-stylebackground-colore5e5ffdocker-についてお勉強div"><div style="background-color:#e5e5ff;">Docker についてお勉強！</div></h2>
+<p>今回 Docker を取り入れるにあたって、勉強した用語を以下にご紹介。<br>
+<br></p>
+<ul>
+<li><span style="background-color:#cfe6fc;"><b>Docker Container</b></span><br>
+「Docker Image」「実行環境」「命令の標準セット」の 3つで構成された Image を実行するインスタンス。</li>
+</ul>
+<br>
+<ul>
+<li><span style="background-color:#cfe6fc;"><b>Docker Image</b></span><br>
+Dockerfile をもとに作成された、レイヤー状に重なったイメージにより構成されている。
+Dockerfile 内の 1つ 1つの命令により、読み込み専用の Image layer が 1層ずつ作成され積み上げられる。（それぞれのレイヤーは直前のレイヤーとの差分）
+コンテナ内で実行するコマンドのみ、読み書き可能な Container layer に書き込まれ、複数の Image layer の上に最後のレイヤーとして加わる。</li>
+</ul>
+<br>
+<ul>
+<li><span style="background-color:#cfe6fc;"><b>Dockerfile</b></span><br>
+Docker Image を作成するためのコマンドが記載されたテキストファイル。
+このファイルを置くことで Docker が自動的にファイルを読み込み、イメージを構築する。
+（＝コンテナ構築作業を自動化できる）</li>
+</ul>
+<br>
+<ul>
+<li><span style="background-color:#cfe6fc;"><b>Docker Compose</b></span><br>
+docker-compose.yml ファイルで定義した複数コンテナを管理・実行するツール。&ldquo;docker-compose up&quot;または&quot;docker compose up&quot;というコマンド 1つでコンテナを起動させることができる。</li>
+</ul>
+<h2 id="div-stylebackground-colore5e5ffdocker-インストールで引っかかったことdiv"><div style="background-color:#e5e5ff;">Docker インストールで引っかかったこと</div></h2>
+<p>私の環境は Windows なので、以下の「Docker Desktop」の「Download for Windows」から Docker をインストールしました。<br>
+<a href="https://www.docker.com/get-started/">Get Started with Docker</a></p>
+<p>インストール後に気になったポップアップがあったので記録します。</p>
+<figure class="center"><img src="/posts/2022/07/29/docker_popup.png">
+</figure>
+
+<p>Docker をインストールして直ぐに<span style="background-color:#f7fcd9;">『WSL 2 installation is incomplete.』</span>とポップアップが表示されました。</p>
+<p>この <span style="background-color:#f7fcd9;">WSL</span> (<b>W</b>indows <b>S</b>ubsystem for <b>L</b>inux)というのは <span style="background-color:#f7fcd9;">Windows 上で linux を動かす仕組み</span>のことです。<br>
+Docker 自体が linux で動作するため、私のような Windows 信者は WSL2 をインストールする必要があります。<br>
+ポップアップのリンクよりインストールして再起動しましょう。</p>
+<h2 id="div-stylebackground-colore5e5ffdocker-で開発環境を作ってみるdiv"><div style="background-color:#e5e5ff;">Docker で開発環境を作ってみる</div></h2>
+<p>ブログのリポジトリを clone して、以下のファイルを追加しました。</p>
+<ul>
+<li>docker-compose.yml</li>
+<li>Dockerfile</li>
+</ul>
+<p>コンテナの設定を書いて、</p>
+<pre tabindex="0"><code>$ docker-compose up
+</code></pre><p>でコンテナ起動！<br>
+ブラウザにて &ldquo;http://localhost:[指定したポート]&rdquo; で画面確認！</p>
+<h5 id="思ったようにできませんでした-ﾅﾝﾃﾞﾀﾞﾖｰ">・・・思ったようにできませんでした🙃🙂🙃🙂🙃🙂 ﾅﾝﾃﾞﾀﾞﾖｰ</h5>
+<p>というのも、Windowsだとこのやり方では <span style="background-color:#f7fcd9;">commit までしないと画面に反映されなかった</span>んですよね。<br>
+「commit したら確認できるくらいで OK！」な方にはこの方法で問題ないと思いますが、私がやりたかったのは『ファイル保存の度に変更が反映される』なのです。</p>
+<p>そのためやり方を以下のように変更しました。</p>
+<ol>
+<li>仮想マシンを使用し、Windows 上で Linux (Ubuntu) を起動</li>
+<li>Windows と Ubuntu を SSH 接続</li>
+<li>「[アカウント名].github.io」のリポジトリと同一の内容のリポジトリ（作業用）を作成 → Ubuntu に clone</li>
+<li>git や gh コマンド、Docker を Ubuntu にインストール</li>
+<li>Docker を利用して Web サーバを立て、作業用リポジトリ（ローカル）のデータをブラウザに表示できるようにする</li>
+</ol>
+<p>Windows では動作に不具合があったので、仮想マシンを利用して OS を Linux に変更しております。<br>
+この結果無事に希望の環境となったので紹介したいのですが、ページが長くなってしまったので次回のブログに記録します。</p>
+<p>ではまた 🚲💨</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/docker/">Docker</a></li>
+        <li><a href="/tags/github-pages/">Github-Pages</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

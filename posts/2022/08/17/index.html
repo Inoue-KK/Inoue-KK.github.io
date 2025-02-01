@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</h1>
+  
+
+  
+  
+    <time datetime="2022-08-17T04:51:18&#43;00:00">August 17, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <p>前回の続きです☟☟<br>
+<a href="https://inoue-kk.github.io/posts/2022/07/29/">Docker を使ってみたかった話</a></p>
+<hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#ToDo">やりたいこと</a></li>
+<li><a href="#VM">VMware インストール</a></li>
+<li><a href="#SSH_set">Ubuntu に SSH をインストール</a></li>
+<li><a href="#SSH">Ubuntu と Windows を SSH 接続する</a></li>
+<li><a href="#InsSoft">Ubuntu に git や gh コマンド、Docker をインストールする</a></li>
+<li><a href="#clone">作業用リポジトリの作成、クローン</a></li>
+<li><a href="#do">動かしてみる</a></li>
+<li><a href="#Fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="ToDo"></a></p>
+<h2 id="div-stylebackground-colore5e5ffやりたいことdiv"><div style="background-color:#e5e5ff;">やりたいこと</div></h2>
+<p>タイトルに色々詰め込んだらロングロング意味わからん文を生成してしまったので、以下に現状等を記載します。</p>
+<h5 id="問題点">問題点</h5>
+<p>GitHub Pages を利用して本サイトを公開しているが、 Push までしないとページに反映されないのが不便。どのように画面が出来上がっているか確認しながらブログを作成したい。</p>
+<hr>
+<h5 id="やったこと失敗">やったこと（失敗）</h5>
+<p>ブログのリポジトリをコピーした作業用リポジトリを作成。Docker を利用してコンテナを立てて、作業用リポジトリのデータをブラウザに表示できるようにした。<br>
+→ ファイル保存の度にブラウザに反映されるはずが、なぜか Commit までしないと反映されなかった。<br>
+※詳しくは<a href="https://inoue-kk.github.io/posts/2022/07/29/">前回の記事</a>へ</p>
+<hr>
+<h5 id="失敗の原因">失敗の原因</h5>
+<p>詳しい原因は突き止められなかったが、恐らく OS (Windows) の仕様によるものだと思われる。<br>
+→ OS を仮想マシンで Windows から Linux に変更したらできる？？</p>
+<hr>
+<h4 id="今回やること">今回やること</h4>
+<ol>
+<li>仮想マシンを使用し、Windows 上で Linux (Ubuntu) を起動</li>
+<li>Windows と Ubuntu を SSH 接続</li>
+<li>git や gh コマンド、Docker を Ubuntu にインストール</li>
+<li>「[アカウント名].github.io」のリポジトリと同一の内容のリポジトリ（作業用）を作成 → Ubuntu に clone</li>
+<li>Docker を利用して Web サーバを立て、作業用リポジトリ（ローカル）のデータをブラウザに表示できるようにする</li>
+</ol>
+<p>こちらを実践してみたところ、私の環境では意図通りに「ファイルを保存する度にブラウザに変更が反映される」ようになったので、詳しい作業内容をこれから説明していきます。</p>
+<p>※ Windows 側の操作は VS Code 内の Git Bash で行っているのでご承知おきください。</p>
+<p><a id="VM"></a></p>
+<h2 id="div-stylebackground-colore5e5ffvm-インストールdiv"><div style="background-color:#e5e5ff;">VM インストール</div></h2>
+<p>Windows 上で Linux を動かしたいので、それに必要な仮想化ソフトウェアを入れていきます。<br>
+今回は VMware を使用します。（VirtualBox はインストールが上手くいかなかった…なぜ…。）</p>
+<ol>
+<li>
+<p>下記サイトからインストーラーをダウンロード。<br>
+<a href="https://www.vmware.com/jp/products/workstation-player/workstation-player-evaluation.html">VMware Workstation 16 Player</a></p>
+ <img src="VMwp_install00.png" style="display:block; margin:auto;" height="400px">
+<p>手順に沿ってインストールする。</p>
+</li>
+</ol>
+<br>
+<ol start="2">
+<li>
+<p>新規仮想マシンを作成していく。<br>
+VMware Workstation 16 Player を起動すると下記画面が表示されるので、「新規仮想マシンの作成」を選択。</p>
+ <img src="VMwp_install01.png" style="display:block; margin:auto;" height="300px">
+</li>
+</ol>
+<br>
+<ol start="3">
+<li>
+<p>Ubuntu の ISO を下記サイトでダウンロード。<br>
+<a href="https://ubuntu.com/download/desktop">Download Ubuntu Desktop</a></p>
+<p>ダウンロードしたISOイメージファイルを「インストーラディスクイメージファイル」に指定する。</p>
+ <img src="VMwp_install02.png" style="display:block; margin:auto;" height="400px">
+</li>
+</ol>
+<br>
+<ol start="4">
+<li>
+<p>ユーザ名などを設定していく。</p>
+ <img src="VMwp_install03.png" style="display:block; margin:auto;" height="400px">
+ <br>
+ <img src="VMwp_install04.png" style="display:block; margin:auto;" height="400px">
+</li>
+</ol>
+<br>
+<ol start="5">
+<li>
+<p>仮想マシンのディスクサイズを設定。<br>
+こちらは使用している PC のスペックに会わせて調整してください。</p>
+ <img src="VMwp_install05.png" style="display:block; margin:auto;" height="400px">
+ <br>
+</li>
+<li>
+<p>仮想マシンの設定完了！
+問題がなければ「完了」ボタンをクリックしましょう。<br>
+Ubuntu が起動します。
+<img src="VMwp_install06.png" style="display:block; margin:auto;" height="400px">
+<br></p>
+</li>
+</ol>
+<p><a id="SSH_set"></a></p>
+<h2 id="div-stylebackground-colore5e5ffubuntu-に-ssh-をインストールdiv"><div style="background-color:#e5e5ff;">Ubuntu に SSH をインストール</div></h2>
+<p>初期設定が諸々完了したら、早速 Ubuntu のターミナルを開いてソフトウェアをインストールしていきます。</p>
+<br>
+<ol>
+<li>パッケージリストを最新にする。<br>
+apt （Advanced Package Tool）はパッケージ管理をするコマンドである。<br>
+sodo をつけて root ユーザ = 管理者 として実行する。
+<pre tabindex="0"><code>$ sodo apt-get update
+</code></pre></li>
+</ol>
+<br>
+<ol start="2">
+<li>
+<p>SSH をインストール</p>
+<pre tabindex="0"><code>$ sudo apt-get install openssh-server
+</code></pre><p>これでインストール完了！</p>
+<p>以下のコマンドで SSH がインストールされていることを確認できます。</p>
+<pre tabindex="0"><code>$ systemctl status ssh
+</code></pre></li>
+</ol>
+<p><a id="SSH"></a></p>
+<h2 id="div-stylebackground-colore5e5ffubuntu-と-windows-を-ssh-接続するdiv"><div style="background-color:#e5e5ff;">Ubuntu と Windows を SSH 接続する</div></h2>
+<p>ここからは作業環境が Ubuntu なのか Windows なのか、ごちゃごちゃになりやすいので、気をつけながら説明していきます。<br>
+分かりにくかったらすみません。</p>
+<br>
+<ol>
+<li>
+<p>Windows 側にインストールされている VS Code に Remote-SSH をインストールする。</p>
+<p><code>Ctrl + Shift + X</code> で Extentions が開くので、検索窓に「remote-ssh」と入力し、Remote-SSH をインストールする。</p>
+ <img src="ssh01.png" style="display:block; margin:auto;" height="450px">
+ <br>
+</li>
+<li>
+<p>対象のローカルリポジトリに移動し、Remote-SSH をインストールして現れた左下の緑色のマークをクリック。
+すると画面上部にポップアップが表示されるので、「Connect to Host…」→「新規 SSH ホストを追加する」を選択する。</p>
+ <img src="ssh02.png" style="display:block; margin:auto;" height="200px">
+</li>
+</ol>
+<br>
+<ol start="3">
+<li>
+<p>SSH 接続コマンドを入力する。</p>
+<pre tabindex="0"><code>ssh [Ubuntu の IPアドレス] -l [Ubuntu の User名]
+</code></pre> <img src="ssh03.png" style="display:block; margin:auto;" height="200px">
+ <br>
+ Ubuntu の IP アドレスは、Ubuntu のターミナルに以下のコマンドを入力することで確認できます。
+<pre tabindex="0"><code>$ ip addr show
+</code></pre></li>
+</ol>
+<br>
+<ol start="4">
+<li>更新する SSH 構成ファイルを選択する。<br>
+私の場合は<code>~/.ssh/config</code>のファイルを選択しました。
+<img src="ssh04.png" style="display:block; margin:auto;" height="200px">
+<br>
+すると、右下にポップアップが表示されます。
+<img src="ssh05.png" style="display:block; margin:auto;" height="150px">
+<br>
+これで新規 SSH ホストの追加が完了しました！</li>
+</ol>
+<br>
+<ol start="5">
+<li>
+<p>画面左下の緑色のボタンをクリックし、「Connect to Host…」を選択、3 で設定した Ubuntu の SSH ホストを選択する。<br>
+（<code>Ctrl + Shift + P</code> または View タブの Command Palatte を開き、<code>Remote-SSH:Connect to Host…</code> を選択しても同様の画面が表示されますよ～）
+<img src="ssh06.png" style="display:block; margin:auto;" height="200px">
+<br></p>
+</li>
+<li>
+<p>接続先の OS の選択を求められるので、今回は Ubuntu と接続したいため Linux を選択する。</p>
+ <img src="ssh07.png" style="display:block; margin:auto;" height="200px">
+</li>
+</ol>
+<br>
+<ol start="7">
+<li>
+<p>Ubuntu にログインする際のパスワードを入力する。</p>
+ <img src="ssh08.png" style="display:block; margin:auto;" height="170px">
+ <br>
+<p>SSH 接続完了！！</p>
+</li>
+</ol>
+<br>
+<p><a id="InsSoft"></a></p>
+<h2 id="div-stylebackground-colore5e5ffubuntu-に-git-や-gh-コマンドdocker-をインストールするdiv"><div style="background-color:#e5e5ff;">Ubuntu に git や gh コマンド、Docker をインストールする</div></h2>
+<p>SSH 接続が完了したところで、Ubuntu に戻って作業に必要なものをインストールしていきましょう。<br>
+以下の作業は全て Ubuntu の ターミナルで行っております。</p>
+<h4 id="span-stylebackground-colorcfe6fcgit-コマンドインストールspan"><span style="background-color:#cfe6fc;">git コマンドインストール</span></h4>
+<ol>
+<li>リストの更新
+<pre tabindex="0"><code>$ sudo apt update
+</code></pre></li>
+</ol>
+<br>
+<ol start="2">
+<li>git をインストール
+<pre tabindex="0"><code>$ sudo apt install git
+</code></pre></li>
+</ol>
+<br>
+<h4 id="span-stylebackground-colorcfe6fcgh-コマンドインストールspan"><span style="background-color:#cfe6fc;">gh コマンドインストール</span></h4>
+<pre tabindex="0"><code>$ sudo apt install gh
+</code></pre><br>
+<h4 id="span-stylebackground-colorcfe6fcdocker-インストールspan"><span style="background-color:#cfe6fc;">Docker インストール</span></h4>
+<pre tabindex="0"><code>$ sudo snap install docker
+</code></pre><br>
+<p><a id="clone"></a></p>
+<h2 id="div-stylebackground-colore5e5ff作業用リポジトリの作成クローンdiv"><div style="background-color:#e5e5ff;">作業用リポジトリの作成、クローン</div></h2>
+<p>Ubuntu と SSH 接続した、Windows 側の VS Code で以下の操作をしていきます。</p>
+<p>「[アカウント名].github.io」と同じ内容のリポジトリを作業用リポジトリとして作成し、その作業用リポジトリを Ubuntu にクローンします。</p>
+<pre tabindex="0"><code>$ gh repo clone [アカウント名]/[作業用リポジトリ名]
+</code></pre><p>静的サイトジェネレータで HUGO を使用しているので、サブモジュール（HUGO のテーマ）を入れるために以下のコマンドを実行します。</p>
+<pre tabindex="0"><code>$ git submodule update --init --recursive
+</code></pre><p>そして Docker でコンテナを立てるために、<code>docker-compose.yml</code>に Ubuntu の IPアドレスを設定しておきます。<br>
+（Ubuntu の IPアドレスは環境によって変わるので、<code>.gitignore</code> （Git の管理対象外とするファイル）で設定した方が便利かもしれません。）</p>
+<p>これで作業環境構築完了！長かった！！</p>
+<br>
+<p><a id="do"></a></p>
+<h2 id="div-stylebackground-colore5e5ff動かしてみるdiv"><div style="background-color:#e5e5ff;">動かしてみる</div></h2>
+<p>環境が構築できたので、実際に意図通りの動きをするか確認です。</p>
+<p>Ubuntu と SSH 接続した、Windows 側の VS Code のターミナル（bash）で Docker コンテナを立ち上げます。</p>
+<pre tabindex="0"><code>$ docker-compose up
+</code></pre><p>※バージョンによっては<code>docker-compose</code> ではなく <code>docker compose</code> の場合もある。（docker コマンドに統一する動きがあるらしい）</p>
+<p>次に ブラウザの検索欄に<code>docker-compose.yml</code>で指定したアドレス、ポートを張り付けて通信します。</p>
+<pre tabindex="0"><code>[IPアドレス]:[ポート]
+</code></pre><p>これでサイトが表示されると思います。<br>
+作業用リポジトリの内容を編集して保存をしたタイミングで、サイトも更新されます。</p>
+<p>作業がひと段落したら、以下のコマンドで Docker コンテナを落としましょう。</p>
+<pre tabindex="0"><code>$ docker-compose down
+</code></pre><p>Docker の状況は<code>docker-compose ps</code> で確認できます。</p>
+<br>
+<a id="Fin"></a>
+<h2 id="div-stylebackground-colore5e5ffまとめー終わらない環境構築ーdiv"><div style="background-color:#e5e5ff;">まとめ　ー終わらない環境構築ー</div></h2>
+<p>今回は、GitHub Pages で作成されたサイトについて、仮想マシンとコンテナを使用して開発環境を構築しました。</p>
+<p>ただこれで終わりではありません…。<br>
+作業用リポジトリの変更内容をメインの「[アカウント名].github.io」リポジトリに反映させる作業が残っています。<br>
+そちらは GitHub Actions を利用して行う予定ですので、この内容もいずれブログ記事に残したいと思っております。</p>
+<p>ひとまずお疲れ様でした🍵</p>
+<br>
+<p>【追記】<br>
+☟作業用リポジトリの変更内容をメインの「[アカウント名].github.io」リポジトリに反映させる方法<br>
+<a href="https://inoue-kk.github.io/posts/2022/09/01/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</a><br>
+ちゃんと書きました！ ここまでやれば環境構築完了です。</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/docker/">Docker</a></li>
+        <li><a href="/tags/github-pages/">Github-Pages</a></li>
+        <li><a href="/tags/vm/">Vm</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

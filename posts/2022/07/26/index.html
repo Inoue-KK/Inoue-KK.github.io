@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>GitHub 初回pushまでの操作メモ</h1>
+  
+
+  
+  
+    <time datetime="2022-07-26T11:33:46&#43;00:00">July 26, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <p>前回の続きです☟☟<br>
+<a href="https://inoue-kk.github.io/posts/2022/07/23/">GitHub 初回のリポジトリクローン操作メモ</a></p>
+<p>クローンしたものに対して変更を加えた、という前提で以下の操作を行っていきます。</p>
+<h2 id="div-stylebackground-colore5e5ffファイルをステージングエリアに登録div"><div style="background-color:#e5e5ff;">ファイルをステージングエリアに登録</div></h2>
+<p>変更があったファイルのうち、コミットしたいファイルのみをステージングエリアというものに登録します。<br>
+ちなみに&quot;コミット&quot;とは変更の記録のことです。<br>
+Gitはこのコミット単位でバージョン管理をしていて、コミットしたものがリポジトリに貯まっていくイメージです。<br>
+つまり、1つのバージョンとして登録するのに必要なメンバーをまずステージに上げよう、ということですね。</p>
+<p>このステージに上げる方法が（私の知っている限り）2つあるのでそれぞれ紹介します。</p>
+<h4 id="ポチポチするだけ">①ポチポチするだけ</h4>
+<p>（言い忘れましたが私の環境では VS Code を使用しております。<br>
+　こちらの方法は VS Code 以外ではできないかもしれないのでご了承ください。）</p>
+<p>画面左にあるSource Controlをクリックします。（おそらく変更があったファイル数のバッジが表示されているはず）</p>
+<figure class="center"><img src="/posts/2022/07/26/add01.png">
+</figure>
+
+<p>すると変更があったファイルがChanges内に一覧となっているので、そのうちコミットしたいファイルのみ&quot;＋マーク&quot;をポチっとしましょう。</p>
+<p>これで終わり！らくらく～</p>
+<h4 id="addコマンド">②addコマンド</h4>
+<p>&ldquo;git add&quot;というコマンドを使用してステージに上げていきます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add <span style="color:#f92672">[</span>ファイルパス or ディレクトリパス<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>これも楽ちん！ではあるけど複数ファイルを入力するときは少し面倒そうですよね。<br>
+そこで、まるっとコミットするぜ！用のコマンドがあるのでご紹介。</p>
+<br>
+<ul>
+<li>カレントディレクトリ下の全変更ファイルをステージに追加</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add .
+</span></span></code></pre></div><ul>
+<li>指定のディレクトリ下の全変更ファイルをステージに追加</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add <span style="color:#f92672">[</span>ディレクトリ名<span style="color:#f92672">]</span>
+</span></span></code></pre></div><br>
+<p>私は変更を全て登録するときが多いので、以下のやり方をよくやっています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add -n .
+</span></span></code></pre></div><p>で、変更のあった全ファイルが確認できるので、それをチェックした後に</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git add .
+</span></span></code></pre></div><p>ですべて登録。らくちん。</p>
+<h2 id="div-stylebackground-colore5e5ffファイルのコミットdiv"><div style="background-color:#e5e5ff;">ファイルのコミット</div></h2>
+<p>ステージングエリアに登録されたファイルをコミットしていきます。<br>
+使用するのは以下のコマンド。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git commit
+</span></span></code></pre></div><p>※初回のみ名前とメールアドレスの登録が必要です。<br>
+　この情報はコミット時のAuthor情報となり、他の人に見えるので注意してください⚠</p>
+<p>コミットする際はメッセージを記入する必要があるので、画面に従って入力しましょう。</p>
+<p>コミットメッセージの入力が終わればコミットが完了！やったね！</p>
+<h2 id="div-stylebackground-colore5e5ffリモートリポジトリへプッシュdiv"><div style="background-color:#e5e5ff;">リモートリポジトリへプッシュ</div></h2>
+<p>これまでローカルリポジトリにコミットした内容を、リモートリポジトリへ反映させます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git push
+</span></span></code></pre></div><p>おわり！え、これだけ？</p>
+<h2 id="div-stylebackground-colore5e5ffおまけ便利なコマンドdiv"><div style="background-color:#e5e5ff;">おまけ　便利なコマンド</div></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git status
+</span></span></code></pre></div><p>☝ローカルリポジトリの状態が確認できます。<br>
+　取得できるのは以下の情報。</p>
+<ul>
+<li>ステージングエリアに登録されているファイル</li>
+<li>ファイルに変更はあるけどステージングエリアに登録されていないファイル</li>
+</ul>
+<p>　add や commit の前後で確認として行うと便利だと思います。</p>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git log
+</span></span></code></pre></div><p>☝コミットの履歴が確認できます。<br>
+　末尾に&rdquo;-[数字]&ldquo;を追加すると、直近[数字]回分のログが表示できます。<br>
+　コミット後の確認におひとついかが。</p>
+<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>最低限これだけでローカルリポジトリの変更をリモートリポジトリに反映できる！</p>
+<pre tabindex="0"><code class="language-bush" data-lang="bush">$ git add .
+$ git commit
+$ git push
+</code></pre><p>一通り大まかな流れは理解できたので、少しずつ他の機能も勉強していきたいです。<br>
+頑張ります！</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/github/">Github</a></li>
+        <li><a href="/tags/git/">Git</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>[AWS EC2] CLI で Web サーバ(NGINX)を構築してみた</h1>
+  
+
+  
+  
+    <time datetime="2022-09-19T15:57:13&#43;00:00">September 19, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <div class="alert info">
+    <span class="alert-icon">
+      ℹ️
+      
+    </span>
+    <p>大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨</p>
+  </div>
+  
+<p><a href="https://inoue-kk.github.io/posts/2022/09/20/">【Azure】CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<p><a href="https://inoue-kk.github.io/posts/2022/09/21/">【Google Cloud】CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#cloud">クラウドに触ってみる</a></li>
+<li><a href="#todo">やること</a></li>
+<li><a href="#create">インスタンス 構築手順</a></li>
+<li><a href="#nginx">NGINX による Web サーバ構築設定手順</a></li>
+<li><a href="#200">HTTP Status Code の確認方法</a></li>
+<li><a href="#log">AccessLog の確認方法</a></li>
+<li><a href="#delete">インスタンス 削除手順</a></li>
+<li><a href="#fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="cloud"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffクラウドに触ってみるdiv"><div style="background-color:#e5e5ff;">クラウドに触ってみる</div></h2>
+<p>世はまさに大クラウド時代なので、先月あたりからクラウドデビューしてみました！（遅いとか言わないで）</p>
+<p>クラウドを勉強するにあたって、多くの方が使用しているサービスのほうが学んだことを活かせる機会が多いと考え、シェア率の高い <strong>AWS、Azure、Google Cloud</strong> の 3つをピックアップしました。</p>
+<p>画面をポチポチして VM を立ててみたりして「わ～これは革命だ～」と一昔前の人のリアクションをしながら触っていたのですが、やはりポチポチだけではどうやらクラウドの良さをまだ引き出せていないようで。</p>
+<p><strong>CLI</strong> (Command Line Interface)で、コマンドだけで操作すれば画面ポチポチしなくても簡単にできる！複数同じ VM を立てたりする場合は圧倒的に CLI が便利！
+なようです。</p>
+<p>確かに画面ポチポチ（= Web UI ）は見た目が分かりやすいので初心者にはありがたいですが、毎度毎度入力するとなるとちょっとしんどいですよね。</p>
+<p>何度か Web UI で操作して少し慣れてきたところで、クラウド3社それぞれで CLI での操作に挑戦してみました！</p>
+<p>テーマは『<strong>3大クラウドの IaaS のサービスで VM を立てて、NGINX で Web サーバ構築してみる！</strong>』です。</p>
+<p>その戦闘の記録と感想を、クラウド各社で分けて記載していきます。</p>
+<p>今回は AWS です！頑張るぞ！</p>
+<p><a id="todo"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffやることdiv"><div style="background-color:#e5e5ff;">やること</div></h2>
+<ol>
+<li>AWS EC2 上で Ubuntu の VM を立てる</li>
+<li>VM に NGINX をインストールし、Web サーバとして設定
+<ol>
+<li>OS 起動時に NGINX が自動起動するように設定</li>
+<li>AccessLog が記録されていることを確認</li>
+<li>HTTP Status Code: 200 が返ることを確認</li>
+</ol>
+</li>
+<li>VM を削除する</li>
+</ol>
+<p>これを CLI でやるときの手順を以下に記載していきます。</p>
+<p><a id="create"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffインスタンス-構築手順div"><div style="background-color:#e5e5ff;">インスタンス 構築手順</div></h2>
+<ol>
+<li>
+<p>画面右上の「CloudShell」からターミナルを開く<br>
+<img src="aws-shell.png" style="display:block; margin:auto; max-width:650px;"></p>
+ <br>
+</li>
+<li>
+<p>SSH 接続に使用する key pair を設定<br>
+新規に key pair（public と private）を作成し、public key を aws に渡す（private key は自身で管理）</p>
+<pre tabindex="0"><code>$ aws ec2 create-key-pair --key-name [key pair name] --query &#34;KeyMaterial&#34; --output text &gt; ~/[path]/[private key file].pem
+</code></pre><p>任意のフォルダに任意の名称の pem ファイルを作成し、そこに private key を出力</p>
+ <br>
+</li>
+<li>
+<p>private key ファイルのアクセス権限を設定</p>
+<pre tabindex="0"><code>$ chmod 400 ~/[path]/[private key file].pem
+</code></pre><p>これで他のユーザがこのファイルを読み取れないようになる<br>
+このアクセス権限を設定しないと、この key pair を使用してインスタンスに接続できないため注意</p>
+ <br>
+</li>
+<li>
+<p>セキュリティグループの作成</p>
+<pre tabindex="0"><code>$ aws ec2 create-security-group --description &#34;[任意の説明]&#34; --group-name [group name]
+</code></pre><p>作成したセキュリティグループは <code>aws ec2 describe-security-groups --group-id [id]</code> で確認できる</p>
+ <br>
+</li>
+<li>
+<p>セキュリティグループに SSH 用のポート 22 と 80 を開ける設定を追加</p>
+<pre tabindex="0"><code>$ aws ec2 authorize-security-group-ingress --group-id [security group id] --protocol tcp --port 22 --cidr 0.0.0.0/0
+$ aws ec2 authorize-security-group-ingress --group-id [security group id] --protocol tcp --port 80 --cidr 0.0.0.0/0
+</code></pre> <br>
+</li>
+<li>
+<p>インスタンスを新規作成する</p>
+<pre tabindex="0"><code>$ aws ec2 run-instances --image-id [image id] --count 1 --instance-type t2.micro --key-name [key pair name] --security-group-ids [security group id]
+</code></pre><p>以下のコマンドでAMI（イメージ）を検索できる</p>
+<pre tabindex="0"><code>$ aws ec2 describe-images --owners self amazon --filters &#34;[条件]&#34;
+</code></pre><p>今回は Ubuntu の AMI を使用したかったので、<code>--image-id ami-09d56f8956ab235b3</code> (Ubuntu 22.04LTS) を指定</p>
+</li>
+</ol>
+<p><a id="nginx"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffnginx-による-web-サーバ構築設定手順div"><div style="background-color:#e5e5ff;">NGINX による Web サーバ構築設定手順</div></h2>
+<ol>
+<li>
+<p>SSH でインスタンスに接続</p>
+<pre tabindex="0"><code>$ ssh -i ~/[path]/[private key file].pem [instance user name]@[instance public dns name]
+</code></pre><p>今回は AMI に Ubuntu を使用しているので、デフォルトで <code>[instance user name] = ubuntu</code> の値が設定されている
+（その他の AMI でのデフォルト user name も<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connection-prereqs.html">公式ドキュメント</a>に記載）</p>
+<p><code>[instance public dns name]</code> の情報は <code>aws ec2 describe-instances</code> コマンドより取得できる</p>
+ <br>
+</li>
+<li>
+<p>VM 内に nginx インストール</p>
+<pre tabindex="0"><code>$ sudo apt-get update
+$ sudo apt-get install nginx
+</code></pre> <br>
+</li>
+<li>
+<p>nginx 自動起動設定</p>
+<pre tabindex="0"><code>$ sudo systemctl enable nginx.service
+</code></pre> <br>
+</li>
+<li>
+<p>VM 再起動</p>
+<pre tabindex="0"><code>$ sudo reboot
+</code></pre> <br>
+</li>
+<li>
+<p>再起動で VM との接続が切れるので SSH 再接続</p>
+<pre tabindex="0"><code>$ ssh -i ~/[path]/[private key file].pem [instance user name]@[instance public dns name]
+</code></pre> <br>
+</li>
+<li>
+<p>nginx が自動起動していることを確認</p>
+<pre tabindex="0"><code>$ systemctl status nginx.service
+</code></pre><p>→ <code>Active: active (running)</code>という文面が確認できればOK</p>
+</li>
+</ol>
+<p><a id="200"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffhttp-status-code-の確認方法div"><div style="background-color:#e5e5ff;">HTTP Status Code の確認方法</div></h2>
+<ol>
+<li>HTTP Status をリモートで確認（今回は自 PC の bash から確認した）
+<pre tabindex="0"><code>$ curl -v [外部IP]
+</code></pre>→ 値が返ってくるので以下が確認できればOK
+<pre tabindex="0"><code>&lt; HTTP/1.1 200 OK
+</code></pre></li>
+</ol>
+<p><a id="log"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffaccesslog-の確認方法div"><div style="background-color:#e5e5ff;">AccessLog の確認方法</div></h2>
+<ol>
+<li>
+<p>nginx の設定ファイルの中身を表示し、AccessLog ファイルの位置を調べる</p>
+<pre tabindex="0"><code>$ cat /etc/nginx/nginx.conf
+</code></pre><p>ファイル内の以下の文面から確認</p>
+<pre tabindex="0"><code>##
+# Logging Settings
+##
+
+access_log /var/log/nginx/access.log;
+</code></pre> <br>
+</li>
+<li>
+<p>AccessLog ファイルを確認</p>
+<pre tabindex="0"><code>cat /var/log/nginx/access.log
+</code></pre><p>サーバにアクセスした履歴が残っていることを確認</p>
+</li>
+</ol>
+<p><a id="delete"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffインスタンス-削除手順div"><div style="background-color:#e5e5ff;">インスタンス 削除手順</div></h2>
+<ol>
+<li>
+<p>インスタンス削除</p>
+<pre tabindex="0"><code>$ aws ec2 terminate-instances --instance-ids [instance id]
+</code></pre><p>ついでに今回作成した key pair とセキュリティグループの削除方法も以下に記載</p>
+ <br>
+</li>
+<li>
+<p>key pair削除</p>
+<pre tabindex="0"><code>$ aws ec2 delete-key-pair --key-name [key pair name]
+$ rm ~/[path]/[private key file].pem
+</code></pre> <br>
+</li>
+<li>
+<p>セキュリティグループの削除</p>
+<pre tabindex="0"><code>$ aws ec2 delete-security-group --group-id [security group id]
+</code></pre></li>
+</ol>
+<p><a id="fin"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>クラウド CLI での Web サーバ構築第一弾として、AWS EC2 での手順をまとめました。</p>
+<p>クラウド 3社を触った感想は１番最後の Google Cloud のまとめに一緒に書こうかなぁと思っています。</p>
+<p>次回は Azure です！</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/aws/">Aws</a></li>
+        <li><a href="/tags/ec2/">Ec2</a></li>
+        <li><a href="/tags/cloud/">Cloud</a></li>
+        <li><a href="/tags/ssh/">Ssh</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

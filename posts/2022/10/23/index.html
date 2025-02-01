@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>webアプリ開発に必要そうなワードまとめ</h1>
+  
+
+  
+  
+    <time datetime="2022-10-23T06:21:53&#43;00:00">October 23, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <p>こんにちはこんばんは。イノウエです。</p>
+<p>webアプリケーション開発との関連度が高そうなものたちを調べて、
+超簡潔にざっくりまとめてみました。</p>
+<p>（TypeScriptでの開発を見据えた調べものなので、偏りがある点ご了承ください。）</p>
+<hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#language">開発言語</a>
+<ul>
+<li><a href="#la-frontend">フロントエンド</a>
+<ul>
+<li><a href="#html">HTML</a></li>
+<li><a href="#css">CSS</a></li>
+<li><a href="#javascript">JavaScript</a></li>
+<li><a href="#typescript">TypeScript</a></li>
+</ul>
+</li>
+<li><a href="#la-backend">バックエンド</a>
+<ul>
+<li><a href="#java">Java</a></li>
+<li><a href="#python">Python</a></li>
+<li><a href="#php">PHP</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#go">Go</a></li>
+<li><a href="#scala">Scala</a></li>
+<li><a href="#rust">Rust</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#framework">フレームワーク</a>
+<ul>
+<li><a href="#angular">Angular</a></li>
+<li><a href="#vuejs">Vue.js</a></li>
+<li><a href="#nuxt">Nuxt</a></li>
+<li><a href="#tailwindcss">TailwindCSS</a></li>
+<li><a href="#jest">Jest</a></li>
+<li><a href="#django">Django</a></li>
+<li><a href="#laravel">Laravel</a></li>
+<li><a href="#rails">Ruby on Rails</a></li>
+<li><a href="#nextjs">Next.js</a></li>
+</ul>
+</li>
+<li><a href="#library">ライブラリ</a>
+<ul>
+<li><a href="#react">React</a></li>
+<li><a href="#jquery">jQuery</a></li>
+</ul>
+</li>
+<li><a href="#tool">ツール</a>
+<ul>
+<li><a href="#eslint">ESLint</a></li>
+<li><a href="#swagger">Swagger</a></li>
+</ul>
+</li>
+<li><a href="#packagemanager">パッケージマネージャー</a>
+<ul>
+<li><a href="#npm">npm</a></li>
+<li><a href="#yarn">yarn</a></li>
+</ul>
+</li>
+<li><a href="#other">その他</a>
+<ul>
+<li><a href="#nodejs">Node.js</a></li>
+<li><a href="#storybook">Storybook</a></li>
+</ul>
+</li>
+<li><a href="#fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="language"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ff開発言語div"><div style="background-color:#e5e5ff;">開発言語</div></h2>
+<p><a id="la-frontend"></a><br></p>
+<h3 id="div-stylebackgroundlinear-gradienttransparent-85-e5e5ff-0フロントエンドdiv"><div style="background:linear-gradient(transparent 85%, #e5e5ff 0%);">フロントエンド</div></h3>
+<p>画面上の見た目の部分を担当する言語です。<br>
+ベースはHTML. CSS, JavaScriptの3つしかありません。</p>
+<p><a id="html"></a><br></p>
+<h4 id="html">HTML</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" style="margin:auto; max-width:50px;"/>
+<p>画面に表示する文書の構成を表すマークアップ言語。<br>
+この子がいないと画面に何も表示できない…はず。<br>
+<code>&lt;&gt;</code>で囲まれたタグによって文書の構成要素を作成する。</p>
+<p><a id="css"></a><br></p>
+<h4 id="css">CSS</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style="margin:auto; max-width:50px;"/>
+<p>HTMLやXMLで作成した文書に対して、フォントや色、サイズを指定するなどデザインの部分を担当するスタイルシート言語。<br>
+HTMLでもデザインを指定するのは可能であるが、文書構造はHTML、デザインはCSSと分けるように推奨されている。<br>
+それは文書の構造とデザインを分けることで、HTMLが簡潔になって検索エンジンに情報を正しく解釈してもらいやすくなったり、メンテナンス性が向上したりなど多くのメリットがあるためである。</p>
+<p><a id="javascript"></a><br></p>
+<h4 id="javascript">JavaScript</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style="margin:auto; max-width:50px;"/>
+<p>ユーザによって画面の表示内容が変わるような、動的なWebページを作成するのに使用するオブジェクト指向型のスクリプト言語。<br>
+ボタンを押したらポップアップが表示されたり、マウスオーバーで画像などが表示されたりなど、ちょっといけてるWebページが作れるのもこの子のおかげ。<br>
+ECMAScriptによってJavaScriptの基本となる仕様が定められている。<br>
+今まではクライアント側で使用されるのが主流だったが、近年はサーバーサイドでも利用され始めているのでこの点については後述。</p>
+<p><a id="typescript"></a><br></p>
+<h4 id="typescript">TypeScript</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" style="margin:auto; max-width:50px;"/>
+<p>avaScriptの上位互換的なプログラミング言語。<br>
+JavaScriptをより大規模開発向けにする目的でMicrosoftによって開発された。<br>
+TypeScriptがコンパイルされるとJavaScriptに変換されるため、JavaScriptが実行できる環境でなら利用可能。<br>
+JavaScriptよりも厳密な型指定を必要とするため安全性が高く、従来だとJavaScript実行時に気づいていたエラーが、TypeScriptからJavaScriptへのコンパイル時にエラーを発見できるようになっている。</p>
+<p><a id="la-backend"></a><br></p>
+<h3 id="div-stylebackgroundlinear-gradienttransparent-85-e5e5ff-0バックエンドdiv"><div style="background:linear-gradient(transparent 85%, #e5e5ff 0%);">バックエンド</div></h3>
+<p>画面に表示されない、裏側（サーバーサイド）でごにょごにょやってる言語たちです。<br>
+先ほどのフロントエンドの言語とは打って変わってたくさんの言語が存在します。
+<a id="java"></a></p>
+<h4 id="java">Java</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" style="margin:auto; max-width:50px;"/>
+<p>なんだか名前がさっきのJavaScriptと似ていて紛らわしいが、パンとフライパンくらい異なる。<br>
+どうやらJavaScriptが元々LiveScriptという名前で、Javaの人気にあやかってJavaScriptと変更したようなので、この子は何も悪くない。<br>
+クラスベースのオブジェクト指向言語で、Java仮想マシン上で動作する。<br>
+そのためJava仮想マシンが入っていればOSやハードウェアに依存しない実行環境の自由度の高さがメリットである。<br>
+仮想マシン上で実行されるためセキュリティが高く、オブジェクト指向のため大規模開発に向いているという特徴もある。</p>
+<p><a id="python"></a></p>
+<h4 id="python">Python</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" style="margin:auto; max-width:50px;"/>
+<p>コンパイル不要なインタプリタ型の高水準プログラミング言語。<br>
+読みやすく書きやすい、簡潔な言語を謳っており、機械学習の分野で使用されることが多い。</p>
+<p><a id="php"></a><br></p>
+<h4 id="php">PHP</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" style="margin:auto; max-width:50px;"/>
+<p>こちらもコンパイル不要なインタプリタ言語で、主にWebページの開発に用いられる。<br>
+有名どころだとWordPressの開発言語がこの子。<br>
+HTMLに埋め込んで使うことができる。</p>
+<p><a id="ruby"></a><br></p>
+<h4 id="ruby">Ruby</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" style="margin:auto; max-width:50px;"/>
+<p>まつもとゆきひろさんによって開発された日本産のオブジェクト指向型スクリプト言語。<br>
+Webアプリケーション開発を得意とする言語で、シンプルで分かりやすいコードが特徴。<br>
+フレームワークのRuby on Railsの人気によってシェアが拡大した。</p>
+<p><a id="go"></a><br></p>
+<h4 id="go">Go</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg" style="margin:auto; max-width:50px;"/>
+<p>Googleによって開発された、近年人気上昇中の言語。<br>
+&ldquo;Golang&quot;と表記されることも多い。<br>
+C言語を参考に開発されており、記述の簡潔さ、処理の速さ、メモリの安全性の高さなどが特徴として挙げられる。</p>
+<p><a id="scala"></a><br></p>
+<h4 id="scala">Scala</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg" style="margin:auto; max-width:50px;"/>
+<p>オブジェクト指向言語と関数型言語の特徴を併せ持った言語。<br>
+言語開発にJavaの開発陣が携わっているため、その特徴を多く引き継いでおり互換性が高い。<br>
+Javaと比較して、よりシンプルで安全性が高いことが特徴。</p>
+<p><a id="rust"></a><br></p>
+<h4 id="rust">Rust</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg" style="margin:auto; max-width:50px;"/>
+<p>CやC++の代替言語として開発された、比較的新しい言語。<br>
+Goと同様に近年人気が高い。<br>
+メモリの安全性の高さ、CやC++に匹敵する処理速度の速さが特徴で、マルチスレッドにより複数タスクを並行処理することも可能。<br>
+OSカーネルの開発などコアな部分からWebアプリケーション開発、APIサーバーの開発など幅広く利用されている。</p>
+<p><a id="framework"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffフレームワークdiv"><div style="background-color:#e5e5ff;">フレームワーク</div></h2>
+<p>フレームワークとは効率的に開発を行うことを可能にする枠組み・テンプレートのようなものです。<br>
+各プログラミング言語に合わせて様々なフレームワークが存在します。</p>
+<p><a id="angular"></a><br></p>
+<h4 id="angular">Angular</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" style="margin:auto; max-width:50px;"/>
+<p>Googleとコミュニティによって開発されたTypeScriptのフレームワーク。<br>
+Vue.jsやReactと同様にSPA<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>の原則を採用しており、フロントエンド開発に必要な機能は一通り揃っている。</p>
+<p><a id="vuejs"></a><br></p>
+<h4 id="vuejs">Vue.js</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" style="margin:auto; max-width:50px;"/>
+<p>UI構築用のオープンソースのJavaScriptフレームワーク。<br>
+AngularJSを参考に開発された。<br>
+他のフレームワークと比較して構造がシンプルで学習コストが低く、拡張性が高い。</p>
+<p><a id="nuxt"></a><br></p>
+<h4 id="nuxt">Nuxt</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" style="margin:auto; max-width:50px;"/>
+<p>Vue.jsのフレームワーク。<br>
+Next.jsにインスパイアされたらしく、名前がそっくりなため要注意。
+（Nuxt.jsと表記されることも多いため余計間違えやすい。）<br>
+Vue.jsのSPAに加え、SSR<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>やSSG<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>といった機能が盛り込まれている。</p>
+<p><a id="tailwindcss"></a><br></p>
+<h4 id="tailwindcss">TailwindCSS</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" style="margin:auto; max-width:50px;"/>
+<p>オープンソースのCSSフレームワーク。<br>
+HTMLのクラス名に直接スタイルを書くのが特徴で、クラス名を考える手間が省ける。<br>
+Bootstrapなどはコンポーネントが用意されているので効率的にページを作れる反面、独自性に欠けるといったデメリットがあるが、TailwindCSSではコンポーネントが用意されていないため、独自性の高いデザインが可能となる。</p>
+<p><a id="jest"></a><br></p>
+<h4 id="jest">Jest</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" style="margin:auto; max-width:50px;"/>
+<p>Meta（旧Facebook）によって開発されたJavaScript単体テスト用のフレームワーク。（TypeScriptでテストを書くことも可能）<br>
+並列処理を行うことでテストを高速に行う。<br>
+また豊富なAPIを利用することで、簡単にテストを記述することが可能となる。</p>
+<p><a id="django"></a><br></p>
+<h4 id="django">Django</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" style="margin:auto; max-width:50px;"/>
+<p>オープンソースのPythonでのWebアプリケーション開発用のフレームワーク。<br>
+読み方はジャンゴ。<br>
+機能が豊富にあり、セキュリティの高い開発が可能となる。<br>
+機能の高さ故、処理が遅めなのがデメリット。</p>
+<p><a id="laravel"></a><br></p>
+<h4 id="laravel">Laravel</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" style="margin:auto; max-width:50px;"/>
+<p>「Web職人のためのフレームワーク」と謳われている、オープンソースのPHPフレームワーク。<br>
+MVCアーキテクチャを採用している。<br>
+機能が豊富なため自由度が高く、小規模な開発向き。<br>
+Django同様、デフォルトの機能の多さから処理が重めといったデメリットがある。</p>
+<p><a id="rubyonrails"></a><br></p>
+<h4 id="ruby-on-rails">Ruby on Rails</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain-wordmark.svg" style="margin:auto; max-width:50px;"/>
+<p>Rubyで書かれたオープンソースのWebアプリケーション開発用フレームワーク。<br>
+MVCアーキテクチャに基づいている。<br>
+他のフレームワークと比べて簡潔なコードで開発できることが特徴。</p>
+<p><a id="nextjs"></a><br></p>
+<h4 id="nextjs">Next.js</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" style="margin:auto; max-width:50px;"/>
+<p>ReactベースのWebアプリケーションフレームワーク。<br>
+SSR<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>とSSG<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>の機能を有している。</p>
+<p><a id="library"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffライブラリdiv"><div style="background-color:#e5e5ff;">ライブラリ</div></h2>
+<p>特定の機能に特化したコードの集まり。<br>
+名前の通り、図書館の多くの本の中から必要なものを引っ張り出すように、コードを書く際にライブラリからコードを引用することで簡潔に機能を使用することが可能になります。<br>
+こちらもフレームワーク同様、言語によって様々なライブラリが存在します。</p>
+<p><a id="react"></a><br></p>
+<h4 id="react">React</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style="margin:auto; max-width:50px;"/>
+<p>Meta（旧Facebook）とコミュニティによって開発された、UIに特化したJavaScriptライブラリ。<br>
+仮想DOMというレンダリング機能により、コードの変更部分のみレンダリングされるため高速描画が可能。</p>
+<p><a id="jquery"></a><br></p>
+<h4 id="jquery">jQuery</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" style="margin:auto; max-width:50px;"/>
+<p>JavaScriptを簡潔に書くことを目的としたJavaScriptライブラリ。<br>
+プラグインで拡張可能なこと、Ajax処理が簡単に書けることなどがメリットとして挙げられる。<br>
+近年ではjQueryからReactに移行してきているらしい。</p>
+<p><a id="tool"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffツールdiv"><div style="background-color:#e5e5ff;">ツール</div></h2>
+<p>開発を便利にするためのツールたちを少し紹介。</p>
+<p><a id="eslint"></a><br></p>
+<h4 id="eslint">ESLint</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eslint/eslint-original.svg" style="margin:auto; max-width:50px;"/>
+<p>JavaScriptの静的解析ツール。<br>
+作成したJavaScriptのソースコードに対し、規則に則って書かれているかをチェックしてエラーを検出してくれる。<br>
+この規則はカスタマイズ可能となっている。<br>
+プラグインを入れればTypeScriptの解析も可能。</p>
+<p><a id="swagger"></a><br></p>
+<h4 id="swagger">Swagger</h4>
+<img src="swagger.svg" style="margin:auto; max-width:50px;"/>
+<p>OpenAPIという仕様に基づいたRESTful API<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>を作成するためのツールの総称。<br>
+ツールは様々であり、Swagger Editor、Swagger UI、Swagger Codegenなどが存在する。</p>
+<p><a id="packagemanager"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffパッケージマネージャーdiv"><div style="background-color:#e5e5ff;">パッケージマネージャー</div></h2>
+<p><a id="npm"></a><br></p>
+<h4 id="npm">npm</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" style="margin:auto; max-width:50px;"/>
+<p>Node.jsのパッケージ管理システム。<br>
+公式ツールなのでNode.jsを入れるときに一緒についてくる。<br>
+依存関係も含めてJavaScriptのパッケージを管理する。</p>
+<p><a id="yarn"></a><br></p>
+<h4 id="yarn">yarn</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/yarn/yarn-original.svg" style="margin:auto; max-width:50px;"/>
+<p>Meta（旧Facebook）が開発したNode.jsのパッケージ管理システム。<br>
+npmよりも処理が早い、セキュリティが高いことを特徴とする。（前よりはnpmの処理速度が追いついてきたらしい。）<br>
+npmと互換性あり。</p>
+<p><a id="other"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffその他div"><div style="background-color:#e5e5ff;">その他</div></h2>
+<p><a id="nodejs"></a><br></p>
+<h4 id="nodejs">Node.js</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" style="margin:auto; max-width:50px;"/>
+<p>JavaScript実行環境。<br>
+多数のアクセスを捌けるアプリケーション構築を目的として設計されている。<br>
+従来はブラウザ上でJavaScriptを動かすのが一般的であったが、Node.jsによってバックエンドの部分もJavaScriptで扱えるようになるという、初心者には意味わからんすごいやつ。<br>
+色々面白そうなので、触ってみた後に別途ブログにまとめたいと思う。</p>
+<p><a id="storybook"></a><br></p>
+<h4 id="storybook">Storybook</h4>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg" style="margin:auto; max-width:50px;"/>
+<p>フロントエンド用の、UIコンポーネントを管理するツール。<br>
+コンポーネントごとに切り離して、それぞれ単独で開発・テスト・再利用が可能になる。
+React、Vue.js、Angularなどに対応。</p>
+<p><a id="fin"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>Webアプリケーション開発で使われているものたちを、若干TypeScriptでの開発寄りで簡単にまとめてみました。</p>
+<p>今回調べるにあたって色んなサイトを拝見したのですが、言語・フレームワーク・ライブラリの境目が曖昧で混乱することが結構多かったのが少し大変でした。</p>
+<p>「今習得すべきプログラミング言語5選！1つ目はReact！」<br>
+（公式サイトにはJavaScriptライブラリって書いてあったけど言語なのか…？）</p>
+<p>のような感じでサイトを行ったり来たり…。<br>
+結局、極力公式サイトの情報をもとに分類してみたのですがどうでしょうか。</p>
+<p>何はともあれ自分の中でワードが整理できたので満足です。</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>SPA (Single Page Application)：1つのWebページで構成され、ページ遷移を行わずにコンテンツの切り替えを行う。
+最初のページ読み込みには時間がかかるが、1度読み込んでしまえばページ全体の再読み込みが不要なため、高速な描画が可能となる。&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>SSR (Server Side Rendaring)：従来クライアント側のブラウザでレンダリングしていた(MPA)のに対し、サーバー側でレンダリングを行う機能のこと。ブラウザ側の負担が減るため、ユーザ体験が向上するのが特徴。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>SSG (Static Site Generation)：ビルド済みの静的サイトを生成する機能。ユーザは事前にビルドされたページを表示させるだけなので、表示速度がはやいことが特徴。ビルド済みのため動的なコンテンツには向いていないことがデメリットである。&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>RESTful API：REST(Representational State Transfer)という設計原則に従ったWeb API。
+これまでRESTful APIの人気が高かったが、近年ではGraphQL APIの人気が高まっている。<br>
+(GraphQL API：RESTful APIの問題点を解決するためにMeta(旧Facebook)によって開発されたAPI。
+最小限のHTTPリクエストで複数ページへのアクセス、必要なデータのみの取得、クエリを損なうリスクの低いAPI更新が可能となる。)&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/typescript/">TypeScript</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

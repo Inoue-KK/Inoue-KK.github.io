@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>GitHub 初回のリポジトリクローン操作メモ</h1>
+  
+
+  
+  
+    <time datetime="2022-07-23T13:53:08&#43;00:00">July 23, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <h2 id="div-stylebackground-colore5e5ffリポジトリのクローンの前にdiv"><div style="background-color:#e5e5ff;">リポジトリのクローン、、の前に</div></h2>
+<p>&ldquo;<a href="https://cli.github.com/">Learn more</a>&ldquo;をクリックしてGitHub CLIをインストール
+<figure class="center"><img src="/posts/2022/07/23/clone01.png">
+</figure>
+</p>
+<p>※CLI(Command Line Inerface)
+<br>
+ キーボードのみでPCを操作するもの。身近な例だとコマンドプロンプトとか。</p>
+<p>GitHub CLIでできること<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<ul>
+<li>リポジトリの表示、作成、複製、フォーク</li>
+<li>Issue及びPull Requestの作成、クローズ、編集、表示</li>
+<li>プルリクエストのレビュー、diff、マージ</li>
+<li>ワークフローの実行、表示、リスト</li>
+<li>リリースの作成、リスト、表示、削除</li>
+<li>Gistsの作成、編集、リスト、表示、削除</li>
+<li>codespaceのリスト、作成、削除、接続</li>
+</ul>
+<p>アイコンをクリックしてURLをコピー
+<figure class="center"><img src="/posts/2022/07/23/clone02.png">
+</figure>
+</p>
+<p>これを張り付けて実行！
+<figure class="center"><img src="/posts/2022/07/23/cmd01.png">
+</figure>
+
+…したら今度はgitコマンドが足りないと言われた！ まだあるんかい！</p>
+<h2 id="div-stylebackground-colore5e5ffgitコマンドのインストールdiv"><div style="background-color:#e5e5ff;">gitコマンドのインストール</div></h2>
+<p>初回なので面倒くさいです。またまたインストール。<br>
+gitコマンドインストールは<a href="https://git-scm.com/download/">ここからどぞ</a></p>
+<h2 id="div-stylebackground-colore5e5ff満を持してのクローンdiv"><div style="background-color:#e5e5ff;">満を持してのクローン</div></h2>
+<p>できた！！！！
+<figure class="center"><img src="/posts/2022/07/23/cmd02.png">
+</figure>
+</p>
+<p>次回以降は楽ちんになるのでご安心を。</p>
+<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>記念すべき初クローンには以下の順序で環境を整えて行いましょう。</p>
+<ol>
+<li>GitHub CLIのインストール</li>
+<li>Gitコマンドのインストール</li>
+<li>gh repo clone [user名]/[リポジトリ名]</li>
+</ol>
+<p>お疲れ様でした！</p>
+<br>
+<p>【追記】<br>
+☟クローンしたローカルリポジトリに対しての変更を、リモートリポジトリに反映させる方法
+<a href="https://inoue-kk.github.io/posts/2022/07/26/">GitHub 初回pushまでの操作メモ</a><br>
+後半戦です。</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div><div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>公式サイトより引用 <a href="https://docs.github.com/ja/github-cli/github-cli/about-github-cli">About GitHub CLI</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/github/">Github</a></li>
+        <li><a href="/tags/git/">Git</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

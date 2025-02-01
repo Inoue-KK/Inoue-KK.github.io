@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TypeScript on ほっそりイノウエのマッチョエンジニアへの道</title>
+    <link>https://inoue-kk.github.io/tags/typescript/</link>
+    <description>Recent content in TypeScript on ほっそりイノウエのマッチョエンジニアへの道</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Oct 2022 06:21:53 +0000</lastBuildDate>
+    <atom:link href="https://inoue-kk.github.io/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>webアプリ開発に必要そうなワードまとめ</title>
+      <link>https://inoue-kk.github.io/posts/2022/10/23/</link>
+      <pubDate>Sun, 23 Oct 2022 06:21:53 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2022/10/23/</guid>
+      <description>こんにちはこんばんは。イノウエです。 webアプリケーション開発との関連度が高そうなものたちを調べて、 超簡潔にざっくりまとめてみました。 （Ty</description>
+    </item>
+  </channel>
+</rss>

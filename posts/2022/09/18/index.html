@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+      <link rel="stylesheet" href="/css/main.min.e92253da890fb97504f0e545ceb475b2570517dde810635cdc26fea6097a9b9c.css" integrity="sha256-6SJT2okPuXUE8OVFzrR1slcFF93oEGNc3Cb&#43;pgl6m5w=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+    </ul>
+</div>
+    </header>
+    <div class="all">
+    <main>
+      
+  <h1>tarコマンドでSSH接続先に画像を送る</h1>
+  
+
+  
+  
+    <time datetime="2022-09-18T02:51:19&#43;00:00">September 18, 2022</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#ToDo">問題点とやりたいこと</a></li>
+<li><a href="#send">Windows から Ubuntu (VM) にフォルダ転送</a></li>
+<li><a href="#tar">tar コマンドの解説</a></li>
+<li><a href="#Fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="ToDo"></a></p>
+<h2 id="div-stylebackground-colore5e5ff問題点とやりたいことdiv"><div style="background-color:#e5e5ff;">問題点とやりたいこと</div></h2>
+<p>このブログの開発環境は Ubuntu の仮想マシン上にブログのリポジトリを置いて、Windows 上の VSCode で Ubuntu と Remote SSH で接続して記事を書いている状態です。</p>
+<p>ちょっと説明が下手すぎますね…すみません。<br>
+詳しくは以下のブログにて開発環境構築手順を記載しています。</p>
+<ul>
+<li>
+<p><a href="https://inoue-kk.github.io/posts/2022/08/17/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</a></p>
+</li>
+<li>
+<p><a href="https://inoue-kk.github.io/posts/2022/09/01/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</a></p>
+</li>
+</ul>
+<p>基本的に Windows の PC で作業を行っていて、Ubuntu (VM) には SSH 接続するだけなのですが、作業を進めるうちやりたいことが出てきました。</p>
+<p><strong>「ブログに Windows PC でキャプチャした画像を貼りたい…！！」</strong></p>
+<p>困りましたわ。</p>
+<p>ブログのソースコードを Ubuntu 上に置いているものですから、画像も Ubuntu 上で引用できる状態でないとだめですの。</p>
+<p>Ubuntu 上でキャプチャ撮ればいいやんみたいな無粋なことは言わないでくださる？？</p>
+<p>Windows で作業するというスタイルはこんなことでは崩せませんことよ！<br>
+絶対に Windows の作業だけで Ubuntu に持っていってやりますわ👸</p>
+<br>
+<p>結論いきます。</p>
+<p><a id="send"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffwindows-から-ubuntu-vm-にフォルダ転送div"><div style="background-color:#e5e5ff;">Windows から Ubuntu (VM) にフォルダ転送</div></h2>
+<ol>
+<li>
+<p>Windows 上の任意のフォルダに SSH 接続先に送りたいファイルを入れる。<br>
+（このフォルダをコピーして送ることになります。）</p>
+ <br>
+</li>
+<li>
+<p>Windows 上で ターミナルを開く。<br>
+（私の場合は VSCode で新しいウィンドウを開き、bash のターミナルを開きました。）</p>
+ <br>
+</li>
+<li>
+<p>以下のコマンドを実行。</p>
+<pre tabindex="0"><code>$ tar c [Windows側のフォルダパス] | ssh [SSH接続先のIPアドレス] -l [Ubuntuのユーザ名] &#39;tar x -C [Ubuntu側の送信先フォルダパス]&#39;
+</code></pre> <br>
+ 例えば
+<table>
+<thead>
+<tr>
+<th>設定項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 側のフォルダパス</td>
+<td>Documents/files_toUbuntu</td>
+</tr>
+<tr>
+<td>SSH接続先のIPアドレス</td>
+<td>192.168.XXX.XXX</td>
+</tr>
+<tr>
+<td>Ubuntuのユーザ名</td>
+<td>Ubuntu01</td>
+</tr>
+<tr>
+<td>Ubuntu側の送信先フォルダパス</td>
+<td>Documents</td>
+</tr>
+</tbody>
+</table>
+ <br>
+ という条件であればこんな感じ。
+<pre tabindex="0"><code>$ tar c Documents/files_toUbuntu/ | ssh 192.168.XXX.XXX -l ubuntu01 &#39;tar x -C ~/Documents/&#39;
+</code></pre><p>実行すると、Ubuntu 側の Documents フォルダ内に files_toUbuntu フォルダが置かれます。</p>
+ <img src="ubuntu_image.png" style="display:block; margin:auto; max-width:600px;">
+</li>
+</ol>
+<p><a id="tar"></a><br></p>
+<h2 id="div-stylebackground-colore5e5fftar-コマンドの解説div"><div style="background-color:#e5e5ff;">tar コマンドの解説</div></h2>
+<p>ここで、使用したコマンドの解説を少し行います。</p>
+<br>
+<ul>
+<li>
+<p><code>tar c</code> : ファイルのアーカイブを作成</p>
+</li>
+<li>
+<p><code>tar x</code> : 指定の場所（ -C で指定）にファイルを展開</p>
+</li>
+</ul>
+<p>→ これらを SSH を通して実行しています</p>
+<p>シングルクォーテーション<code>''</code> でくくることによって、Windows 側のディレクトリにアクセスしてしまうことを回避できます。</p>
+<p><code>''</code> の中身を丸ごと SSH に持っていく感じです。</p>
+<p><a id="Fin"></a><br></p>
+<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>SSH 接続元から接続先にフォルダを送るには</p>
+<pre tabindex="0"><code>$ tar c [SSH接続元のフォルダパス] | ssh [SSH接続先のIPアドレス] -l [SSH接続先のユーザ名] &#39;tar x -C [SSH接続先のフォルダパス]&#39;
+</code></pre><p>が便利だよ、というお話でした。</p>
+<p>これで毎回 Windows 側で Google Drive に画像を上げて、Ubuntu 側で受け取る作業がなくなりました。</p>
+<p>もっと色んなコマンドを勉強して、効率よく作業が行えるようになりたいです🐢</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/command/">Command</a></li>
+        <li><a href="/tags/ssh/">Ssh</a></li>
+        <li><a href="/tags/vm/">Vm</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

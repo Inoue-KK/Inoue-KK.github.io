@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on ほっそりイノウエのマッチョエンジニアへの道</title>
+    <link>https://inoue-kk.github.io/tags/github/</link>
+    <description>Recent content in Github on ほっそりイノウエのマッチョエンジニアへの道</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Sep 2022 13:34:51 +0000</lastBuildDate>
+    <atom:link href="https://inoue-kk.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub の導入を会社に提案してみた話</title>
+      <link>https://inoue-kk.github.io/posts/2022/09/14/</link>
+      <pubDate>Wed, 14 Sep 2022 13:34:51 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2022/09/14/</guid>
+      <description>お久しぶりになってしまいました。イノウエです。 もっとコンスタントにブログを書きたかったのですが、アウトプットが遅くなってしまいました。 言い訳</description>
+    </item>
+    <item>
+      <title>[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</title>
+      <link>https://inoue-kk.github.io/posts/2022/09/01/</link>
+      <pubDate>Thu, 01 Sep 2022 08:12:58 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2022/09/01/</guid>
+      <description>このブログの後編です☟☟ [Windows向け]GitHub Pagesを使用したサイトの開発環境構築① ～VM(Ubuntu)とDockerを添</description>
+    </item>
+    <item>
+      <title>GitHub 初回pushまでの操作メモ</title>
+      <link>https://inoue-kk.github.io/posts/2022/07/26/</link>
+      <pubDate>Tue, 26 Jul 2022 11:33:46 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2022/07/26/</guid>
+      <description>前回の続きです☟☟ GitHub 初回のリポジトリクローン操作メモ クローンしたものに対して変更を加えた、という前提で以下の操作を行っていきます。 ファイルを</description>
+    </item>
+    <item>
+      <title>GitHub 初回のリポジトリクローン操作メモ</title>
+      <link>https://inoue-kk.github.io/posts/2022/07/23/</link>
+      <pubDate>Sat, 23 Jul 2022 13:53:08 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2022/07/23/</guid>
+      <description>リポジトリのクローン、、の前に &amp;ldquo;Learn more&amp;ldquo;をクリックしてGitHub CLIをインストール ※CLI(Command Line Inerface) キーボードの</description>
+    </item>
+    <item>
+      <title>GitHubってなあに？</title>
+      <link>https://inoue-kk.github.io/posts/2022/07/20/</link>
+      <pubDate>Wed, 20 Jul 2022 00:34:07 +0900</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2022/07/20/</guid>
+      <description>ぎっとはぶ？？ IT系の就活サイトでふと見た GitHubアカウント とやらを記入する欄。 なにこれ？ 早速調べる！ 🔎🔎🔎 &amp;ldquo;GitHub&amp;</description>
+    </item>
+  </channel>
+</rss>
