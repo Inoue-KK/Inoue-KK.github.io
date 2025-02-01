@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ほっそりイノウエのマッチョエンジニアへの道</title>
+    <title>Home on ほっそりイノウエのマッチョエンジニアへの道</title>
     <link>https://inoue-kk.github.io/</link>
-    <description>Recent content on ほっそりイノウエのマッチョエンジニアへの道</description>
+    <description>Recent content in Home on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 21 Jun 2024 12:51:32 +0000</lastBuildDate>
     <atom:link href="https://inoue-kk.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>🚧 リニューアル工事中 🚧</title>
-      <link>https://inoue-kk.github.io/2024/06/21/</link>
+      <link>https://inoue-kk.github.io/posts/2024/06/22/</link>
       <pubDate>Fri, 21 Jun 2024 12:51:32 +0000</pubDate>
-      <guid>https://inoue-kk.github.io/2024/06/21/</guid>
-      <description></description>
+      <guid>https://inoue-kk.github.io/posts/2024/06/22/</guid>
+      <description>しばし待たれよ。 ⚠️ これは警告メッセージです。注意してください！ ℹ️ これは情報メッセージです。 ✅ 成功した場合のメッセージです。🎉</description>
     </item>
   </channel>
 </rss>

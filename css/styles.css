@@ -1,0 +1,37 @@
+/* styles.css */
+.alert {
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .alert-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .alert.warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+  }
+  
+  .alert.info {
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+  }
+  
+  .alert.success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+  }
+  
+  .alert p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
