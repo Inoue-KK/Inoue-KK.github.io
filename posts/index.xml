@@ -6,8 +6,15 @@
     <description>Recent content in Posts on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 02 Feb 2025 04:07:37 +0000</lastBuildDate>
     <atom:link href="https://inoue-kk.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[HUGO] Dart Sassを使用するとdocker compose upでエラーになった話</title>
+      <link>https://inoue-kk.github.io/posts/2025/02/02/</link>
+      <pubDate>Sun, 02 Feb 2025 04:07:37 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2025/02/02/</guid>
+      <description>HUGOのテーマを作成するにあたり、Dart Sassを使用しようと思ったらエラーでちょっと困ったことになったのでここに記録を残したいと思いま</description>
+    </item>
     <item>
       <title>🎉 Blogリニューアル 🎉</title>
       <link>https://inoue-kk.github.io/posts/2025/02/01/</link>
