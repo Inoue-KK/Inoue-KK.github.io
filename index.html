@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.129.0">
+	<meta name="generator" content="Hugo 0.159.1">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
@@ -67,37 +67,131 @@
         <a href="/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
       <li class="page-item">
-        <a href="/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
-      </li>
-      <li class="page-item">
-        <a href="/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
-      </li>
-      <li class="page-item">
         <a href="/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
   
+    <h2><a href="/posts/2026/04/05/">スタンプで予定・記録を残せるカレンダーアプリ「Petacal」を作りました</a></h2>
+    <h2 id="目次">目次</h2>
+<ol>
+<li><a href="#intro">はじめに</a></li>
+<li><a href="#result">完成したもの</a></li>
+<li><a href="#stack">技術スタック</a></li>
+<li><a href="#calendar">カレンダーUIを作る</a></li>
+<li><a href="#stamp">スタンプ機能</a></li>
+<li><a href="#supabase">Supabase導入</a></li>
+<li><a href="#crypto">セキュリティ: コメントをAES-GCMで暗号化する</a></li>
+<li><a href="#uiux">UI/UXのこだわりポイント</a></li>
+<li><a href="#headers">セキュリティヘッダーの追加</a></li>
+<li><a href="#learned">ハマりポイント・学んだこと</a></li>
+<li><a href="#fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="intro"></a><br></p>
+<h2 id="はじめに"><div style="background-color:#e5e5ff;">はじめに</div></h2>
+<p>こんにちはこんばんは。イノウエです。</p>
+<p>突然ですが最近のカレンダーアプリって、分単位で時間を設定する前提の作りになっているものが多いですよね。（本当に突然すぎる）</p>
+    <hr style="border-top: 3px dotted silver;">
+  
     <h2><a href="/posts/2025/02/02/">[HUGO] Dart Sassを使用するとdocker compose upでエラーになった話</a></h2>
-    HUGOのテーマを作成するにあたり、Dart Sassを使用しようと思ったらエラーでちょっと困ったことになったのでここに記録を残したいと思いま
+    <p>HUGOのテーマを作成するにあたり、Dart Sassを使用しようと思ったらエラーでちょっと困ったことになったのでここに記録を残したいと思います。</p>
     <hr style="border-top: 3px dotted silver;">
   
     <h2><a href="/posts/2025/02/01/">🎉 Blogリニューアル 🎉</a></h2>
-    お久しぶりです。イノウエです。 ちょっと色々あってこちらの技術ブログをお休みしておりました。 今回ブログをぼちぼち復活させようと思い、前々からh
+    <p>お久しぶりです。イノウエです。</p>
+<p>ちょっと色々あってこちらの技術ブログをお休みしておりました。</p>
+<p>今回ブログをぼちぼち復活させようと思い、前々からhugoのテーマを作りたかったのもあり</p>
     <hr style="border-top: 3px dotted silver;">
   
     <h2><a href="/posts/2022/10/23/">webアプリ開発に必要そうなワードまとめ</a></h2>
-    こんにちはこんばんは。イノウエです。 webアプリケーション開発との関連度が高そうなものたちを調べて、 超簡潔にざっくりまとめてみました。 （Ty
+    <p>こんにちはこんばんは。イノウエです。</p>
+<p>webアプリケーション開発との関連度が高そうなものたちを調べて、
+超簡潔にざっくりまとめてみました。</p>
+<p>（TypeScriptでの開発を見据えた調べものなので、偏りがある点ご了承ください。）</p>
     <hr style="border-top: 3px dotted silver;">
   
     <h2><a href="/posts/2022/10/01/">O&#39;Reilly「Infrastructure as Code」を読んでみた</a></h2>
-    目次 オライリー初見ですよろしくお願いします 読むときの条件 感想 まとめ オライリー初見ですよろしくお願いします 今回はこの前読んだ本の記録と感想を書
+    <hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#intro">オライリー初見ですよろしくお願いします</a></li>
+<li><a href="#condition">読むときの条件</a></li>
+<li><a href="#review">感想</a></li>
+<li><a href="#fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="intro"></a><br></p>
+<h2 id="オライリー初見ですよろしくお願いします"><div style="background-color:#e5e5ff;">オライリー初見ですよろしくお願いします</div></h2>
+<p>今回はこの前読んだ本の記録と感想を書きたいと思います。</p>
+<p>読んだのは「<strong>Infrastructure as Code</strong>」という本です。</p>
+<figure style="text-align:center;">
+<img src="book.jpg" style="display:block; margin:auto; max-width:600px;">
+<figcaption>オライリー・ジャパン「Infrastructure as Code」Kief Morris 著</figcaption>
+</figure>
+<p>ついに私もオライリーデビュー…！</p>
     <hr style="border-top: 3px dotted silver;">
   
     <h2><a href="/posts/2022/09/21/">[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた</a></h2>
-    ℹ️ 大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨ 【AWS EC2】 CLI で Web サーバ(NGINX)を構築してみた 【Azu
+    <div class="alert info">
+    <span class="alert-icon">
+      ℹ️
+      
+    </span>
+    <p>大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨</p>
+  </div>
+  
+<p><a href="https://inoue-kk.github.io/posts/2022/09/19/">【AWS EC2】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<p><a href="https://inoue-kk.github.io/posts/2022/09/20/">【Azure】 CLI で Web サーバ(NGINX)を構築してみた</a></p>
+    <hr style="border-top: 3px dotted silver;">
+  
+    <h2><a href="/posts/2022/09/20/">[Azure] CLI で Web サーバ(NGINX)を構築してみた</a></h2>
+    <div class="alert info">
+    <span class="alert-icon">
+      ℹ️
+      
+    </span>
+    <p>大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨</p>
+  </div>
+  
+<p><a href="https://inoue-kk.github.io/posts/2022/09/19/">【AWS EC2】CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<p><a href="https://inoue-kk.github.io/posts/2022/09/21/">【Google Cloud】CLI で Web サーバ(NGINX)を構築してみた</a></p>
+    <hr style="border-top: 3px dotted silver;">
+  
+    <h2><a href="/posts/2022/09/19/">[AWS EC2] CLI で Web サーバ(NGINX)を構築してみた</a></h2>
+    <div class="alert info">
+    <span class="alert-icon">
+      ℹ️
+      
+    </span>
+    <p>大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨</p>
+  </div>
+  
+<p><a href="https://inoue-kk.github.io/posts/2022/09/20/">【Azure】CLI で Web サーバ(NGINX)を構築してみた</a></p>
+<p><a href="https://inoue-kk.github.io/posts/2022/09/21/">【Google Cloud】CLI で Web サーバ(NGINX)を構築してみた</a></p>
+    <hr style="border-top: 3px dotted silver;">
+  
+    <h2><a href="/posts/2022/09/18/">tarコマンドでSSH接続先に画像を送る</a></h2>
+    <hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#ToDo">問題点とやりたいこと</a></li>
+<li><a href="#send">Windows から Ubuntu (VM) にフォルダ転送</a></li>
+<li><a href="#tar">tar コマンドの解説</a></li>
+<li><a href="#Fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="ToDo"></a></p>
+<h2 id="問題点とやりたいこと"><div style="background-color:#e5e5ff;">問題点とやりたいこと</div></h2>
+<p>このブログの開発環境は Ubuntu の仮想マシン上にブログのリポジトリを置いて、Windows 上の VSCode で Ubuntu と Remote SSH で接続して記事を書いている状態です。</p>
+    <hr style="border-top: 3px dotted silver;">
+  
+    <h2><a href="/posts/2022/09/14/">GitHub の導入を会社に提案してみた話</a></h2>
+    <p>お久しぶりになってしまいました。イノウエです。</p>
+<p>もっとコンスタントにブログを書きたかったのですが、アウトプットが遅くなってしまいました。<br>
+言い訳っぽくなってしまうのですが、本ブログのタイトルに記載した通り GitHub を会社で提案する機会がもらえたので、そちらに注力していたのです。</p>
     <hr style="border-top: 3px dotted silver;">
   
   
@@ -115,22 +209,16 @@
         <a href="/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
       </li>
       <li class="page-item">
-        <a href="/page/3/" aria-label="Page 3" class="page-link" role="button">3</a>
-      </li>
-      <li class="page-item">
-        <a href="/page/4/" aria-label="Page 4" class="page-link" role="button">4</a>
-      </li>
-      <li class="page-item">
         <a href="/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
       </li>
       <li class="page-item">
-        <a href="/page/4/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
 
     </main>
     <footer>
-      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+      <p>Copyright 2026 Inoue-KK. All rights reserved.</p>
     </footer>  
   </div>
 </body>

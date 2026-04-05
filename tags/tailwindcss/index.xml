@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tailwindcss on ほっそりイノウエのマッチョエンジニアへの道</title>
+    <link>https://inoue-kk.github.io/tags/tailwindcss/</link>
+    <description>Recent content in Tailwindcss on ほっそりイノウエのマッチョエンジニアへの道</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://inoue-kk.github.io/tags/tailwindcss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>スタンプで予定・記録を残せるカレンダーアプリ「Petacal」を作りました</title>
+      <link>https://inoue-kk.github.io/posts/2026/04/05/</link>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2026/04/05/</guid>
+      <description>&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#intro&#34;&gt;はじめに&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#result&#34;&gt;完成したもの&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#stack&#34;&gt;技術スタック&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#calendar&#34;&gt;カレンダーUIを作る&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#stamp&#34;&gt;スタンプ機能&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#supabase&#34;&gt;Supabase導入&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#crypto&#34;&gt;セキュリティ: コメントをAES-GCMで暗号化する&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#uiux&#34;&gt;UI/UXのこだわりポイント&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#headers&#34;&gt;セキュリティヘッダーの追加&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#learned&#34;&gt;ハマりポイント・学んだこと&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#fin&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a id=&#34;intro&#34;&gt;&lt;/a&gt;&lt;br&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;はじめに&#34;&gt;&lt;div style=&#34;background-color:#e5e5ff;&#34;&gt;はじめに&lt;/div&gt;&lt;/h2&gt;&#xA;&lt;p&gt;こんにちはこんばんは。イノウエです。&lt;/p&gt;&#xA;&lt;p&gt;突然ですが最近のカレンダーアプリって、分単位で時間を設定する前提の作りになっているものが多いですよね。（本当に突然すぎる）&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

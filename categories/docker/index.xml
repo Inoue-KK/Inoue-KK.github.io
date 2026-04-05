@@ -13,14 +13,14 @@
       <link>https://inoue-kk.github.io/posts/2022/08/17/</link>
       <pubDate>Wed, 17 Aug 2022 04:51:18 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/08/17/</guid>
-      <description>前回の続きです☟☟ Docker を使ってみたかった話 目次 やりたいこと VMware インストール Ubuntu に SSH をインストール Ubuntu と Windows を SSH 接続する Ubuntu に git や gh コマンド、Docker</description>
+      <description>&lt;p&gt;前回の続きです☟☟&lt;br&gt;&#xA;&lt;a href=&#34;https://inoue-kk.github.io/posts/2022/07/29/&#34;&gt;Docker を使ってみたかった話&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#ToDo&#34;&gt;やりたいこと&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#VM&#34;&gt;VMware インストール&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#SSH_set&#34;&gt;Ubuntu に SSH をインストール&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#SSH&#34;&gt;Ubuntu と Windows を SSH 接続する&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#InsSoft&#34;&gt;Ubuntu に git や gh コマンド、Docker をインストールする&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#clone&#34;&gt;作業用リポジトリの作成、クローン&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#do&#34;&gt;動かしてみる&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#Fin&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a id=&#34;ToDo&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>Docker を使ってみたかった話</title>
       <link>https://inoue-kk.github.io/posts/2022/07/29/</link>
       <pubDate>Fri, 29 Jul 2022 14:34:17 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/07/29/</guid>
-      <description>本サイトは「GitHub Pages」というGitHubのサービスを利用して作成しております。 リポジトリ名を「[アカウント名].github.</description>
+      <description>&lt;p&gt;本サイトは「GitHub Pages」というGitHubのサービスを利用して作成しております。&lt;/p&gt;&#xA;&lt;p&gt;リポジトリ名を「[アカウント名].github.io」とすることで作れるのですが、詳しくは&lt;a href=&#34;https://docs.github.com/ja/pages/getting-started-with-github-pages/about-github-pages&#34;&gt;こちら&lt;/a&gt;の公式サイトをご覧ください。&lt;br&gt;&#xA;今回のメインはこの先の話なので。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

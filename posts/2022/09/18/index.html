@@ -68,7 +68,7 @@
 </ol>
 <hr>
 <p><a id="ToDo"></a></p>
-<h2 id="div-stylebackground-colore5e5ff問題点とやりたいことdiv"><div style="background-color:#e5e5ff;">問題点とやりたいこと</div></h2>
+<h2 id="問題点とやりたいこと"><div style="background-color:#e5e5ff;">問題点とやりたいこと</div></h2>
 <p>このブログの開発環境は Ubuntu の仮想マシン上にブログのリポジトリを置いて、Windows 上の VSCode で Ubuntu と Remote SSH で接続して記事を書いている状態です。</p>
 <p>ちょっと説明が下手すぎますね…すみません。<br>
 詳しくは以下のブログにて開発環境構築手順を記載しています。</p>
@@ -90,7 +90,7 @@
 <br>
 <p>結論いきます。</p>
 <p><a id="send"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffwindows-から-ubuntu-vm-にフォルダ転送div"><div style="background-color:#e5e5ff;">Windows から Ubuntu (VM) にフォルダ転送</div></h2>
+<h2 id="windows-から-ubuntu-vm-にフォルダ転送"><div style="background-color:#e5e5ff;">Windows から Ubuntu (VM) にフォルダ転送</div></h2>
 <ol>
 <li>
 <p>Windows 上の任意のフォルダに SSH 接続先に送りたいファイルを入れる。<br>
@@ -108,30 +108,30 @@
 </code></pre> <br>
  例えば
 <table>
-<thead>
-<tr>
-<th>設定項目</th>
-<th>値</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Windows 側のフォルダパス</td>
-<td>Documents/files_toUbuntu</td>
-</tr>
-<tr>
-<td>SSH接続先のIPアドレス</td>
-<td>192.168.XXX.XXX</td>
-</tr>
-<tr>
-<td>Ubuntuのユーザ名</td>
-<td>Ubuntu01</td>
-</tr>
-<tr>
-<td>Ubuntu側の送信先フォルダパス</td>
-<td>Documents</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>設定項目</th>
+          <th>値</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Windows 側のフォルダパス</td>
+          <td>Documents/files_toUbuntu</td>
+      </tr>
+      <tr>
+          <td>SSH接続先のIPアドレス</td>
+          <td>192.168.XXX.XXX</td>
+      </tr>
+      <tr>
+          <td>Ubuntuのユーザ名</td>
+          <td>Ubuntu01</td>
+      </tr>
+      <tr>
+          <td>Ubuntu側の送信先フォルダパス</td>
+          <td>Documents</td>
+      </tr>
+  </tbody>
 </table>
  <br>
  という条件であればこんな感じ。
@@ -141,7 +141,7 @@
 </li>
 </ol>
 <p><a id="tar"></a><br></p>
-<h2 id="div-stylebackground-colore5e5fftar-コマンドの解説div"><div style="background-color:#e5e5ff;">tar コマンドの解説</div></h2>
+<h2 id="tar-コマンドの解説"><div style="background-color:#e5e5ff;">tar コマンドの解説</div></h2>
 <p>ここで、使用したコマンドの解説を少し行います。</p>
 <br>
 <ul>
@@ -156,7 +156,7 @@
 <p>シングルクォーテーション<code>''</code> でくくることによって、Windows 側のディレクトリにアクセスしてしまうことを回避できます。</p>
 <p><code>''</code> の中身を丸ごと SSH に持っていく感じです。</p>
 <p><a id="Fin"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<h2 id="まとめ"><div style="background-color:#e5e5ff;">まとめ</div></h2>
 <p>SSH 接続元から接続先にフォルダを送るには</p>
 <pre tabindex="0"><code>$ tar c [SSH接続元のフォルダパス] | ssh [SSH接続先のIPアドレス] -l [SSH接続先のユーザ名] &#39;tar x -C [SSH接続先のフォルダパス]&#39;
 </code></pre><p>が便利だよ、というお話でした。</p>
@@ -182,14 +182,14 @@
     <ul>
         <li><a href="/tags/command/">Command</a></li>
         <li><a href="/tags/ssh/">Ssh</a></li>
-        <li><a href="/tags/vm/">Vm</a></li>
+        <li><a href="/tags/vm/">VM</a></li>
     </ul>
   </div>
 
 
     </main>
     <footer>
-      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+      <p>Copyright 2026 Inoue-KK. All rights reserved.</p>
     </footer>  
   </div>
 </body>

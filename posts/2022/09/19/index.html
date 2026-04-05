@@ -82,7 +82,7 @@
 </ol>
 <hr>
 <p><a id="cloud"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffクラウドに触ってみるdiv"><div style="background-color:#e5e5ff;">クラウドに触ってみる</div></h2>
+<h2 id="クラウドに触ってみる"><div style="background-color:#e5e5ff;">クラウドに触ってみる</div></h2>
 <p>世はまさに大クラウド時代なので、先月あたりからクラウドデビューしてみました！（遅いとか言わないで）</p>
 <p>クラウドを勉強するにあたって、多くの方が使用しているサービスのほうが学んだことを活かせる機会が多いと考え、シェア率の高い <strong>AWS、Azure、Google Cloud</strong> の 3つをピックアップしました。</p>
 <p>画面をポチポチして VM を立ててみたりして「わ～これは革命だ～」と一昔前の人のリアクションをしながら触っていたのですが、やはりポチポチだけではどうやらクラウドの良さをまだ引き出せていないようで。</p>
@@ -94,7 +94,7 @@
 <p>その戦闘の記録と感想を、クラウド各社で分けて記載していきます。</p>
 <p>今回は AWS です！頑張るぞ！</p>
 <p><a id="todo"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffやることdiv"><div style="background-color:#e5e5ff;">やること</div></h2>
+<h2 id="やること"><div style="background-color:#e5e5ff;">やること</div></h2>
 <ol>
 <li>AWS EC2 上で Ubuntu の VM を立てる</li>
 <li>VM に NGINX をインストールし、Web サーバとして設定
@@ -108,7 +108,7 @@
 </ol>
 <p>これを CLI でやるときの手順を以下に記載していきます。</p>
 <p><a id="create"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffインスタンス-構築手順div"><div style="background-color:#e5e5ff;">インスタンス 構築手順</div></h2>
+<h2 id="インスタンス-構築手順"><div style="background-color:#e5e5ff;">インスタンス 構築手順</div></h2>
 <ol>
 <li>
 <p>画面右上の「CloudShell」からターミナルを開く<br>
@@ -150,7 +150,7 @@ $ aws ec2 authorize-security-group-ingress --group-id [security group id] --prot
 </li>
 </ol>
 <p><a id="nginx"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffnginx-による-web-サーバ構築設定手順div"><div style="background-color:#e5e5ff;">NGINX による Web サーバ構築設定手順</div></h2>
+<h2 id="nginx-による-web-サーバ構築設定手順"><div style="background-color:#e5e5ff;">NGINX による Web サーバ構築設定手順</div></h2>
 <ol>
 <li>
 <p>SSH でインスタンスに接続</p>
@@ -188,7 +188,7 @@ $ sudo apt-get install nginx
 </li>
 </ol>
 <p><a id="200"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffhttp-status-code-の確認方法div"><div style="background-color:#e5e5ff;">HTTP Status Code の確認方法</div></h2>
+<h2 id="http-status-code-の確認方法"><div style="background-color:#e5e5ff;">HTTP Status Code の確認方法</div></h2>
 <ol>
 <li>HTTP Status をリモートで確認（今回は自 PC の bash から確認した）
 <pre tabindex="0"><code>$ curl -v [外部IP]
@@ -197,7 +197,7 @@ $ sudo apt-get install nginx
 </code></pre></li>
 </ol>
 <p><a id="log"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffaccesslog-の確認方法div"><div style="background-color:#e5e5ff;">AccessLog の確認方法</div></h2>
+<h2 id="accesslog-の確認方法"><div style="background-color:#e5e5ff;">AccessLog の確認方法</div></h2>
 <ol>
 <li>
 <p>nginx の設定ファイルの中身を表示し、AccessLog ファイルの位置を調べる</p>
@@ -217,7 +217,7 @@ access_log /var/log/nginx/access.log;
 </li>
 </ol>
 <p><a id="delete"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffインスタンス-削除手順div"><div style="background-color:#e5e5ff;">インスタンス 削除手順</div></h2>
+<h2 id="インスタンス-削除手順"><div style="background-color:#e5e5ff;">インスタンス 削除手順</div></h2>
 <ol>
 <li>
 <p>インスタンス削除</p>
@@ -237,7 +237,7 @@ $ rm ~/[path]/[private key file].pem
 </code></pre></li>
 </ol>
 <p><a id="fin"></a><br></p>
-<h2 id="div-stylebackground-colore5e5ffまとめdiv"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<h2 id="まとめ"><div style="background-color:#e5e5ff;">まとめ</div></h2>
 <p>クラウド CLI での Web サーバ構築第一弾として、AWS EC2 での手順をまとめました。</p>
 <p>クラウド 3社を触った感想は１番最後の Google Cloud のまとめに一緒に書こうかなぁと思っています。</p>
 <p>次回は Azure です！</p>
@@ -269,7 +269,7 @@ $ rm ~/[path]/[private key file].pem
 
     </main>
     <footer>
-      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+      <p>Copyright 2026 Inoue-KK. All rights reserved.</p>
     </footer>  
   </div>
 </body>

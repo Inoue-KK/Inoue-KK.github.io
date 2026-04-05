@@ -74,7 +74,7 @@
 </ol>
 <hr>
 <p><a id="ToDo"></a></p>
-<h2 id="div-stylebackground-colore5e5ffやりたいことdiv"><div style="background-color:#e5e5ff;">やりたいこと</div></h2>
+<h2 id="やりたいこと"><div style="background-color:#e5e5ff;">やりたいこと</div></h2>
 <p>タイトルに色々詰め込んだらロングロング意味わからん文を生成してしまったので、以下に現状等を記載します。</p>
 <h5 id="問題点">問題点</h5>
 <p>GitHub Pages を利用して本サイトを公開しているが、 Push までしないとページに反映されないのが不便。どのように画面が出来上がっているか確認しながらブログを作成したい。</p>
@@ -99,7 +99,7 @@
 <p>こちらを実践してみたところ、私の環境では意図通りに「ファイルを保存する度にブラウザに変更が反映される」ようになったので、詳しい作業内容をこれから説明していきます。</p>
 <p>※ Windows 側の操作は VS Code 内の Git Bash で行っているのでご承知おきください。</p>
 <p><a id="VM"></a></p>
-<h2 id="div-stylebackground-colore5e5ffvm-インストールdiv"><div style="background-color:#e5e5ff;">VM インストール</div></h2>
+<h2 id="vm-インストール"><div style="background-color:#e5e5ff;">VM インストール</div></h2>
 <p>Windows 上で Linux を動かしたいので、それに必要な仮想化ソフトウェアを入れていきます。<br>
 今回は VMware を使用します。（VirtualBox はインストールが上手くいかなかった…なぜ…。）</p>
 <ol>
@@ -153,7 +153,7 @@ Ubuntu が起動します。
 </li>
 </ol>
 <p><a id="SSH_set"></a></p>
-<h2 id="div-stylebackground-colore5e5ffubuntu-に-ssh-をインストールdiv"><div style="background-color:#e5e5ff;">Ubuntu に SSH をインストール</div></h2>
+<h2 id="ubuntu-に-ssh-をインストール"><div style="background-color:#e5e5ff;">Ubuntu に SSH をインストール</div></h2>
 <p>初期設定が諸々完了したら、早速 Ubuntu のターミナルを開いてソフトウェアをインストールしていきます。</p>
 <br>
 <ol>
@@ -174,7 +174,7 @@ sodo をつけて root ユーザ = 管理者 として実行する。
 </code></pre></li>
 </ol>
 <p><a id="SSH"></a></p>
-<h2 id="div-stylebackground-colore5e5ffubuntu-と-windows-を-ssh-接続するdiv"><div style="background-color:#e5e5ff;">Ubuntu と Windows を SSH 接続する</div></h2>
+<h2 id="ubuntu-と-windows-を-ssh-接続する"><div style="background-color:#e5e5ff;">Ubuntu と Windows を SSH 接続する</div></h2>
 <p>ここからは作業環境が Ubuntu なのか Windows なのか、ごちゃごちゃになりやすいので、気をつけながら説明していきます。<br>
 分かりにくかったらすみません。</p>
 <br>
@@ -237,10 +237,10 @@ sodo をつけて root ユーザ = 管理者 として実行する。
 </ol>
 <br>
 <p><a id="InsSoft"></a></p>
-<h2 id="div-stylebackground-colore5e5ffubuntu-に-git-や-gh-コマンドdocker-をインストールするdiv"><div style="background-color:#e5e5ff;">Ubuntu に git や gh コマンド、Docker をインストールする</div></h2>
+<h2 id="ubuntu-に-git-や-gh-コマンドdocker-をインストールする"><div style="background-color:#e5e5ff;">Ubuntu に git や gh コマンド、Docker をインストールする</div></h2>
 <p>SSH 接続が完了したところで、Ubuntu に戻って作業に必要なものをインストールしていきましょう。<br>
 以下の作業は全て Ubuntu の ターミナルで行っております。</p>
-<h4 id="span-stylebackground-colorcfe6fcgit-コマンドインストールspan"><span style="background-color:#cfe6fc;">git コマンドインストール</span></h4>
+<h4 id="git-コマンドインストール"><span style="background-color:#cfe6fc;">git コマンドインストール</span></h4>
 <ol>
 <li>リストの更新
 <pre tabindex="0"><code>$ sudo apt update
@@ -253,14 +253,14 @@ sodo をつけて root ユーザ = 管理者 として実行する。
 </code></pre></li>
 </ol>
 <br>
-<h4 id="span-stylebackground-colorcfe6fcgh-コマンドインストールspan"><span style="background-color:#cfe6fc;">gh コマンドインストール</span></h4>
+<h4 id="gh-コマンドインストール"><span style="background-color:#cfe6fc;">gh コマンドインストール</span></h4>
 <pre tabindex="0"><code>$ sudo apt install gh
 </code></pre><br>
-<h4 id="span-stylebackground-colorcfe6fcdocker-インストールspan"><span style="background-color:#cfe6fc;">Docker インストール</span></h4>
+<h4 id="docker-インストール"><span style="background-color:#cfe6fc;">Docker インストール</span></h4>
 <pre tabindex="0"><code>$ sudo snap install docker
 </code></pre><br>
 <p><a id="clone"></a></p>
-<h2 id="div-stylebackground-colore5e5ff作業用リポジトリの作成クローンdiv"><div style="background-color:#e5e5ff;">作業用リポジトリの作成、クローン</div></h2>
+<h2 id="作業用リポジトリの作成クローン"><div style="background-color:#e5e5ff;">作業用リポジトリの作成、クローン</div></h2>
 <p>Ubuntu と SSH 接続した、Windows 側の VS Code で以下の操作をしていきます。</p>
 <p>「[アカウント名].github.io」と同じ内容のリポジトリを作業用リポジトリとして作成し、その作業用リポジトリを Ubuntu にクローンします。</p>
 <pre tabindex="0"><code>$ gh repo clone [アカウント名]/[作業用リポジトリ名]
@@ -271,7 +271,7 @@ sodo をつけて root ユーザ = 管理者 として実行する。
 <p>これで作業環境構築完了！長かった！！</p>
 <br>
 <p><a id="do"></a></p>
-<h2 id="div-stylebackground-colore5e5ff動かしてみるdiv"><div style="background-color:#e5e5ff;">動かしてみる</div></h2>
+<h2 id="動かしてみる"><div style="background-color:#e5e5ff;">動かしてみる</div></h2>
 <p>環境が構築できたので、実際に意図通りの動きをするか確認です。</p>
 <p>Ubuntu と SSH 接続した、Windows 側の VS Code のターミナル（bash）で Docker コンテナを立ち上げます。</p>
 <pre tabindex="0"><code>$ docker-compose up
@@ -285,7 +285,7 @@ sodo をつけて root ユーザ = 管理者 として実行する。
 </code></pre><p>Docker の状況は<code>docker-compose ps</code> で確認できます。</p>
 <br>
 <a id="Fin"></a>
-<h2 id="div-stylebackground-colore5e5ffまとめー終わらない環境構築ーdiv"><div style="background-color:#e5e5ff;">まとめ　ー終わらない環境構築ー</div></h2>
+<h2 id="まとめー終わらない環境構築ー"><div style="background-color:#e5e5ff;">まとめ　ー終わらない環境構築ー</div></h2>
 <p>今回は、GitHub Pages で作成されたサイトについて、仮想マシンとコンテナを使用して開発環境を構築しました。</p>
 <p>ただこれで終わりではありません…。<br>
 作業用リポジトリの変更内容をメインの「[アカウント名].github.io」リポジトリに反映させる作業が残っています。<br>
@@ -316,15 +316,15 @@ sodo をつけて root ユーザ = 管理者 として実行する。
     <div>Tags:</div>
     <ul>
         <li><a href="/tags/docker/">Docker</a></li>
-        <li><a href="/tags/github-pages/">Github-Pages</a></li>
-        <li><a href="/tags/vm/">Vm</a></li>
+        <li><a href="/tags/github-pages/">GitHub Pages</a></li>
+        <li><a href="/tags/vm/">VM</a></li>
     </ul>
   </div>
 
 
     </main>
     <footer>
-      <p>Copyright 2025 Inoue-KK. All rights reserved.</p>
+      <p>Copyright 2026 Inoue-KK. All rights reserved.</p>
     </footer>  
   </div>
 </body>
