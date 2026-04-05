@@ -13,7 +13,7 @@
       <link>https://inoue-kk.github.io/posts/2022/09/18/</link>
       <pubDate>Sun, 18 Sep 2022 02:51:19 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/09/18/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#ToDo&#34;&gt;問題点とやりたいこと&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#send&#34;&gt;Windows から Ubuntu (VM) にフォルダ転送&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#tar&#34;&gt;tar コマンドの解説&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#Fin&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a id=&#34;ToDo&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;問題点とやりたいこと&#34;&gt;&lt;div style=&#34;background-color:#e5e5ff;&#34;&gt;問題点とやりたいこと&lt;/div&gt;&lt;/h2&gt;&#xA;&lt;p&gt;このブログの開発環境は Ubuntu の仮想マシン上にブログのリポジトリを置いて、Windows 上の VSCode で Ubuntu と Remote SSH で接続して記事を書いている状態です。&lt;/p&gt;</description>
+      <description>「Ubuntu でキャプチャ撮ればいいじゃん」なんて無粋なことは言わないでください。Windows の作業スタイルは絶対に崩しませんことよ👸 そのための tar コマンド活用法です。どうぞ！</description>
     </item>
   </channel>
 </rss>

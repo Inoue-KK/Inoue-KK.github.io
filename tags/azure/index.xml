@@ -13,14 +13,14 @@
       <link>https://inoue-kk.github.io/posts/2022/09/20/</link>
       <pubDate>Tue, 20 Sep 2022 16:04:32 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/09/20/</guid>
-      <description>&lt;div class=&#34;alert info&#34;&gt;&#xA;    &lt;span class=&#34;alert-icon&#34;&gt;&#xA;      ℹ️&#xA;      &#xA;    &lt;/span&gt;&#xA;    &lt;p&gt;大手 3社のクラウドにて同じことをやっています。 宜しければご覧ください 👀✨&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;  &#xA;&lt;p&gt;&lt;a href=&#34;https://inoue-kk.github.io/posts/2022/09/19/&#34;&gt;【AWS EC2】CLI で Web サーバ(NGINX)を構築してみた&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://inoue-kk.github.io/posts/2022/09/21/&#34;&gt;【Google Cloud】CLI で Web サーバ(NGINX)を構築してみた&lt;/a&gt;&lt;/p&gt;</description>
+      <description>Azure CLI を使い、Ubuntu の VM を立てて NGINX で Web サーバを構築する手順をまとめました。AWS・Azure・Google Cloud の 3 社でやってみるシリーズ第二弾です。</description>
     </item>
     <item>
       <title>Microsoft Azure アカウント作成方法</title>
       <link>https://inoue-kk.github.io/posts/2022/08/21/</link>
       <pubDate>Sun, 21 Aug 2022 05:28:05 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/08/21/</guid>
-      <description>&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#MS_Acount&#34;&gt;Microsoft アカウントを作成&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#Azure&#34;&gt;Azure サブスクリプションを作成&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a id=&#34;MS_Acount&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;microsoft-アカウントを作成&#34;&gt;&lt;div style=&#34;background-color:#e5e5ff;&#34;&gt;Microsoft アカウントを作成&lt;/div&gt;&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;以下のサイトにアクセスする。&lt;br&gt;&#xA;&lt;a href=&#34;https://signup.live.com/&#34;&gt;https://signup.live.com/&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;br&gt; &#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;メールアドレスを入力して Next ボタン押下。&#xA;&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://inoue-kk.github.io/posts/2022/08/21/Azure1.png&#34; width=&#34;100%&#34;&gt;&#xA;    &lt;/figure&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;br&gt;&#xA;&lt;ol start=&#34;3&#34;&gt;&#xA;&lt;li&gt;任意のパスワードを入力して Next ボタン押下。&#xA;&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://inoue-kk.github.io/posts/2022/08/21/Azure2.png&#34; width=&#34;100%&#34;&gt;&#xA;    &lt;/figure&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;br&gt;&#xA;&lt;ol start=&#34;4&#34;&gt;&#xA;&lt;li&gt;アカウント名を入力して Next ボタン押下。&#xA;&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://inoue-kk.github.io/posts/2022/08/21/Azure3.png&#34; width=&#34;100%&#34;&gt;&#xA;    &lt;/figure&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;br&gt;&#xA;&lt;ol start=&#34;5&#34;&gt;&#xA;&lt;li&gt;国と生年月日を選択して Next ボタン押下。&#xA;&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://inoue-kk.github.io/posts/2022/08/21/Azure4.png&#34; width=&#34;100%&#34;&gt;&#xA;    &lt;/figure&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;br&gt;&#xA;&lt;ol start=&#34;6&#34;&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;登録したメールアドレスに Microsoft account team からメールが届いているはずなので、そこに記載されているセキュリティコードを入力し、Next ボタン押下。&lt;/p&gt;</description>
+      <description>Microsoft アカウントと Azure サブスクリプションの作成手順をスクリーンショット付きでまとめています。</description>
     </item>
   </channel>
 </rss>

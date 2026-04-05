@@ -13,35 +13,35 @@
       <link>https://inoue-kk.github.io/posts/2022/09/14/</link>
       <pubDate>Wed, 14 Sep 2022 13:34:51 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/09/14/</guid>
-      <description>&lt;p&gt;お久しぶりになってしまいました。イノウエです。&lt;/p&gt;&#xA;&lt;p&gt;もっとコンスタントにブログを書きたかったのですが、アウトプットが遅くなってしまいました。&lt;br&gt;&#xA;言い訳っぽくなってしまうのですが、本ブログのタイトルに記載した通り GitHub を会社で提案する機会がもらえたので、そちらに注力していたのです。&lt;/p&gt;</description>
+      <description>GitHub の便利さに感動しすぎて、気づいたら上司に導入提案していた話です。Speaker Deck に提案資料も公開しています。</description>
     </item>
     <item>
       <title>[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</title>
       <link>https://inoue-kk.github.io/posts/2022/09/01/</link>
       <pubDate>Thu, 01 Sep 2022 08:12:58 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/09/01/</guid>
-      <description>&lt;p&gt;このブログの後編です☟☟&lt;br&gt;&#xA;&lt;a href=&#34;https://inoue-kk.github.io/posts/2022/08/17/&#34;&gt;[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#ToDo&#34;&gt;やりたいこと&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#outline&#34;&gt;GitHub Actionsとは&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#imple&#34;&gt;GitHub Actionsで他リポジトリにpushする&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#Fin&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a id=&#34;ToDo&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>GitHub Actions を使い、作業用リポジトリへの push をトリガーにメインリポジトリへ自動 push する仕組みを構築しました。</description>
     </item>
     <item>
       <title>GitHub 初回pushまでの操作メモ</title>
       <link>https://inoue-kk.github.io/posts/2022/07/26/</link>
       <pubDate>Tue, 26 Jul 2022 11:33:46 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/07/26/</guid>
-      <description>&lt;p&gt;前回の続きです☟☟&lt;br&gt;&#xA;&lt;a href=&#34;https://inoue-kk.github.io/posts/2022/07/23/&#34;&gt;GitHub 初回のリポジトリクローン操作メモ&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;クローンしたものに対して変更を加えた、という前提で以下の操作を行っていきます。&lt;/p&gt;&#xA;&lt;h2 id=&#34;ファイルをステージングエリアに登録&#34;&gt;&lt;div style=&#34;background-color:#e5e5ff;&#34;&gt;ファイルをステージングエリアに登録&lt;/div&gt;&lt;/h2&gt;&#xA;&lt;p&gt;変更があったファイルのうち、コミットしたいファイルのみをステージングエリアというものに登録します。&lt;br&gt;&#xA;ちなみに&amp;quot;コミット&amp;quot;とは変更の記録のことです。&lt;br&gt;&#xA;Gitはこのコミット単位でバージョン管理をしていて、コミットしたものがリポジトリに貯まっていくイメージです。&lt;br&gt;&#xA;つまり、1つのバージョンとして登録するのに必要なメンバーをまずステージに上げよう、ということですね。&lt;/p&gt;</description>
+      <description>git add・commit・push の基本的な流れをまとめた操作メモです。VS Code とコマンド、それぞれでのステージング方法や便利なコマンドも紹介しています。</description>
     </item>
     <item>
       <title>GitHub 初回のリポジトリクローン操作メモ</title>
       <link>https://inoue-kk.github.io/posts/2022/07/23/</link>
       <pubDate>Sat, 23 Jul 2022 13:53:08 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/07/23/</guid>
-      <description>&lt;h2 id=&#34;リポジトリのクローンの前に&#34;&gt;&lt;div style=&#34;background-color:#e5e5ff;&#34;&gt;リポジトリのクローン、、の前に&lt;/div&gt;&lt;/h2&gt;&#xA;&lt;p&gt;&amp;ldquo;&lt;a href=&#34;https://cli.github.com/&#34;&gt;Learn more&lt;/a&gt;&amp;ldquo;をクリックしてGitHub CLIをインストール&#xA;&lt;figure class=&#34;center&#34;&gt;&lt;img src=&#34;https://inoue-kk.github.io/posts/2022/07/23/clone01.png&#34; width=&#34;100%&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&lt;/p&gt;&#xA;&lt;p&gt;※CLI(Command Line Inerface)&#xA;&lt;br&gt;&#xA; キーボードのみでPCを操作するもの。身近な例だとコマンドプロンプトとか。&lt;/p&gt;</description>
+      <description>GitHub のリポジトリを初めてクローンするときの手順メモです。GitHub CLI と git コマンドのインストールから、実際のクローン操作までを記録しています。</description>
     </item>
     <item>
       <title>GitHubってなあに？</title>
       <link>https://inoue-kk.github.io/posts/2022/07/20/</link>
       <pubDate>Wed, 20 Jul 2022 00:34:07 +0900</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/07/20/</guid>
-      <description>&lt;h2 id=&#34;ぎっとはぶ&#34;&gt;ぎっとはぶ？？&lt;/h2&gt;&#xA;&lt;p&gt;IT系の就活サイトでふと見た&#xA;&lt;span style=&#34;background-color:#e5e5ff;&#34;&gt;GitHubアカウント&lt;/span&gt;&#xA;とやらを記入する欄。&lt;br&gt;&#xA;なにこれ？&#xA;早速調べる！&lt;/p&gt;&#xA;&lt;h2 id=&#34;heading&#34;&gt;🔎🔎🔎&lt;/h2&gt;&#xA;&lt;p&gt;&amp;ldquo;GitHub&amp;quot;でグーグルすると「ソフトウェア開発のプラットフォーム」とのお答えが、、ふむふむ？？&#xA;そして「ソースコードの管理」とやらの文章もよく見かけるなぁ。&lt;/p&gt;</description>
+      <description>GitHub と Git の違いから、バージョン管理の概念や GitHub の主な機能（Pull Request・GitHub Actions・GitHub Pages など）をざっくりまとめてみました。</description>
     </item>
   </channel>
 </rss>

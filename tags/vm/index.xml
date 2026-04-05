@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Vm on ほっそりイノウエのマッチョエンジニアへの道</title>
+    <title>VM on ほっそりイノウエのマッチョエンジニアへの道</title>
     <link>https://inoue-kk.github.io/tags/vm/</link>
-    <description>Recent content in Vm on ほっそりイノウエのマッチョエンジニアへの道</description>
+    <description>Recent content in VM on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 18 Sep 2022 02:51:19 +0000</lastBuildDate>
@@ -13,14 +13,14 @@
       <link>https://inoue-kk.github.io/posts/2022/09/18/</link>
       <pubDate>Sun, 18 Sep 2022 02:51:19 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/09/18/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#ToDo&#34;&gt;問題点とやりたいこと&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#send&#34;&gt;Windows から Ubuntu (VM) にフォルダ転送&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#tar&#34;&gt;tar コマンドの解説&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#Fin&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a id=&#34;ToDo&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;問題点とやりたいこと&#34;&gt;&lt;div style=&#34;background-color:#e5e5ff;&#34;&gt;問題点とやりたいこと&lt;/div&gt;&lt;/h2&gt;&#xA;&lt;p&gt;このブログの開発環境は Ubuntu の仮想マシン上にブログのリポジトリを置いて、Windows 上の VSCode で Ubuntu と Remote SSH で接続して記事を書いている状態です。&lt;/p&gt;</description>
+      <description>「Ubuntu でキャプチャ撮ればいいじゃん」なんて無粋なことは言わないでください。Windows の作業スタイルは絶対に崩しませんことよ👸 そのための tar コマンド活用法です。どうぞ！</description>
     </item>
     <item>
       <title>[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</title>
       <link>https://inoue-kk.github.io/posts/2022/08/17/</link>
       <pubDate>Wed, 17 Aug 2022 04:51:18 +0000</pubDate>
       <guid>https://inoue-kk.github.io/posts/2022/08/17/</guid>
-      <description>&lt;p&gt;前回の続きです☟☟&lt;br&gt;&#xA;&lt;a href=&#34;https://inoue-kk.github.io/posts/2022/07/29/&#34;&gt;Docker を使ってみたかった話&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;目次&#34;&gt;目次&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#ToDo&#34;&gt;やりたいこと&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#VM&#34;&gt;VMware インストール&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#SSH_set&#34;&gt;Ubuntu に SSH をインストール&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#SSH&#34;&gt;Ubuntu と Windows を SSH 接続する&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#InsSoft&#34;&gt;Ubuntu に git や gh コマンド、Docker をインストールする&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#clone&#34;&gt;作業用リポジトリの作成、クローン&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#do&#34;&gt;動かしてみる&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#Fin&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a id=&#34;ToDo&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>Windows 上で VMware（Ubuntu）と Docker を使い、GitHub Pages のローカル開発環境を構築する手順を詳しくまとめました。ファイルを保存するたびにブラウザへ変更が反映される環境を目指しています。</description>
     </item>
   </channel>
 </rss>
