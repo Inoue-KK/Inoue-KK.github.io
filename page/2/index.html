@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.159.1">
+	<meta name="generator" content="Hugo 0.160.0">
   <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
   
   
     
       
-        <link rel="stylesheet" href="/css/main.6988fb9b3b44abf0b51c78ef92c89ea028f1f1fda7d19409da3c3c451b09c9bd.css" integrity="sha256-aYj7mztEq/C1HHjvksieoCjx8f2n0ZQJ2jw8RRsJyb0=" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/main.69767842dbfad3bb1e49d6c1eaf9bbba9f99b590f724620a6d2830c6518e5767.css" integrity="sha256-aXZ4Qtv607seSdbB6vm7up&#43;ZtZD3JGIKbSgwxlGOV2c=" crossorigin="anonymous">
       
     
   
 
 
-      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+      <script src="/js/main.a232b85c0ce07f7a2686793792ac18ac68cc3729ff79c8bc0fa7ab91aac31d5d.js" integrity="sha256-ojK4XAzgf3omhnk3kqwYrGjMNyn/eci8D6erkarDHV0=" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="/css/styles.css">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -30,7 +30,7 @@
       <div class="header-inner">
     <ul class="menu-bar">
         <li class="menu-title">
-            <a style="font-size: large;" href="/">ほっそりイノウエのマッチョエンジニアへの道</a>
+            <h1 class="site-title"><a href="/"><span class="menu-title-sub">ほっそりイノウエの</span><br>マッチョエンジニアへの道</a></h1>
         </li>
         
   <nav>
@@ -50,14 +50,32 @@
         <li class="about">
             <a href="/about/">about</a>
         </li>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="メニュー" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </ul>
 </div>
     </header>
+    <div class="mobile-nav" id="mobile-nav">
+      <nav>
+        <ul class="mobile-nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Posts</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">about</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     <div class="all">
     <main>
       
   
-  
+
+  <div class="post-list-desktop">
+    
     <ul class="pagination pagination-default">
       <li class="page-item">
         <a href="/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
@@ -78,40 +96,40 @@
         <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
-  
-    <h2><a href="/posts/2022/09/01/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</a></h2>
-    GitHub Actions を使い、作業用リポジトリへの push をトリガーにメインリポジトリへ自動 push する仕組みを構築しました。
-    <hr style="border-top: 3px dotted silver;">
-  
-    <h2><a href="/posts/2022/08/21/">Microsoft Azure アカウント作成方法</a></h2>
-    Microsoft アカウントと Azure サブスクリプションの作成手順をスクリーンショット付きでまとめています。
-    <hr style="border-top: 3px dotted silver;">
-  
-    <h2><a href="/posts/2022/08/17/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</a></h2>
-    Windows 上で VMware（Ubuntu）と Docker を使い、GitHub Pages のローカル開発環境を構築する手順を詳しくまとめました。ファイルを保存するたびにブラウザへ変更が反映される環境を目指しています。
-    <hr style="border-top: 3px dotted silver;">
-  
-    <h2><a href="/posts/2022/07/29/">Docker を使ってみたかった話</a></h2>
-    GitHub Pages をローカルで確認したくて Docker に挑戦。結果はいかに…？？
-    <hr style="border-top: 3px dotted silver;">
-  
-    <h2><a href="/posts/2022/07/26/">GitHub 初回pushまでの操作メモ</a></h2>
-    git add・commit・push の基本的な流れをまとめた操作メモです。VS Code とコマンド、それぞれでのステージング方法や便利なコマンドも紹介しています。
-    <hr style="border-top: 3px dotted silver;">
-  
-    <h2><a href="/posts/2022/07/23/">GitHub 初回のリポジトリクローン操作メモ</a></h2>
-    GitHub のリポジトリを初めてクローンするときの手順メモです。GitHub CLI と git コマンドのインストールから、実際のクローン操作までを記録しています。
-    <hr style="border-top: 3px dotted silver;">
-  
-    <h2><a href="/posts/2022/07/20/">GitHubってなあに？</a></h2>
-    GitHub と Git の違いから、バージョン管理の概念や GitHub の主な機能（Pull Request・GitHub Actions・GitHub Pages など）をざっくりまとめてみました。
-    <hr style="border-top: 3px dotted silver;">
-  
-    <h2><a href="/posts/2022/07/16/">Hello World!</a></h2>
-    初めてブログを作成しました。日々の勉強の記録を残していきます。マッチョエンジニアを目指して頑張ります！
-    <hr style="border-top: 3px dotted silver;">
-  
-  
+    
+      <h2 class="post-list-title"><a href="/posts/2022/09/01/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</a></h2>
+      <div class="post-summary">GitHub Actions を使い、作業用リポジトリへの push をトリガーにメインリポジトリへ自動 push する仕組みを構築しました。</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+      <h2 class="post-list-title"><a href="/posts/2022/08/21/">Microsoft Azure アカウント作成方法</a></h2>
+      <div class="post-summary">Microsoft アカウントと Azure サブスクリプションの作成手順をスクリーンショット付きでまとめています。</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+      <h2 class="post-list-title"><a href="/posts/2022/08/17/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</a></h2>
+      <div class="post-summary">Windows 上で VMware（Ubuntu）と Docker を使い、GitHub Pages のローカル開発環境を構築する手順を詳しくまとめました。ファイルを保存するたびにブラウザへ変更が反映される環境を目指しています。</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+      <h2 class="post-list-title"><a href="/posts/2022/07/29/">Docker を使ってみたかった話</a></h2>
+      <div class="post-summary">GitHub Pages をローカルで確認したくて Docker に挑戦。結果はいかに…？？</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+      <h2 class="post-list-title"><a href="/posts/2022/07/26/">GitHub 初回pushまでの操作メモ</a></h2>
+      <div class="post-summary">git add・commit・push の基本的な流れをまとめた操作メモです。VS Code とコマンド、それぞれでのステージング方法や便利なコマンドも紹介しています。</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+      <h2 class="post-list-title"><a href="/posts/2022/07/23/">GitHub 初回のリポジトリクローン操作メモ</a></h2>
+      <div class="post-summary">GitHub のリポジトリを初めてクローンするときの手順メモです。GitHub CLI と git コマンドのインストールから、実際のクローン操作までを記録しています。</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+      <h2 class="post-list-title"><a href="/posts/2022/07/20/">GitHubってなあに？</a></h2>
+      <div class="post-summary">GitHub と Git の違いから、バージョン管理の概念や GitHub の主な機能（Pull Request・GitHub Actions・GitHub Pages など）をざっくりまとめてみました。</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+      <h2 class="post-list-title"><a href="/posts/2022/07/16/">Hello World!</a></h2>
+      <div class="post-summary">初めてブログを作成しました。日々の勉強の記録を残していきます。マッチョエンジニアを目指して頑張ります！</div>
+      <hr style="border-top: 3px dotted silver;">
+    
+    
     <ul class="pagination pagination-default">
       <li class="page-item">
         <a href="/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
@@ -132,6 +150,120 @@
         <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
       </li>
     </ul>
+  </div>
+
+  <div class="post-list-mobile" id="post-list-mobile">
+    
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2026/04/05/">スタンプで予定・記録を残せるカレンダーアプリ「Petacal」を作りました</a></h2>
+        <div class="post-summary">スタンプをペタペタ貼るだけでざっくり予定を把握したり、日記のような感覚で記録を残せるカレンダーアプリ「Petacal（ペタカル）」を作りました🗓️　設計から実装・セキュリティ対応まで、開発の全工程をまとめます。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2025/02/02/">[HUGO] Dart Sassを使用するとdocker compose upでエラーになった話</a></h2>
+        <div class="post-summary">HUGO のテーマ作成で Dart Sass を使おうとしたら、docker compose up 時にエラーが発生。npm でインストールせずに pre-built binary でインストールし直したら解決しました。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2025/02/01/">🎉 Blogリニューアル 🎉</a></h2>
+        <div class="post-summary">しばらくお休みしていたブログを、HUGO テーマを自作してリニューアルしました。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/10/23/">webアプリ開発に必要そうなワードまとめ</a></h2>
+        <div class="post-summary">TypeScript での Web アプリ開発を見据えて、フロントエンド・バックエンドの言語・フレームワーク・ライブラリ・ツールなどを超簡潔にざっくりまとめてみました。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/10/01/">O&#39;Reilly「Infrastructure as Code」を読んでみた</a></h2>
+        <div class="post-summary">念願のオライリーデビュー。表紙のハゲワシくんの凛々しい瞳にドキドキしながら読み進めた「Infrastructure as Code」の感想です。理解度は約 4 割でした。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/09/21/">[Google Cloud] CLI で Web サーバ(NGINX)を構築してみた</a></h2>
+        <div class="post-summary">Google Cloud の CLI を使い、Ubuntu の VM を立てて NGINX で Web サーバを構築する手順と、3 社のクラウドを触ってみた感想をまとめています。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/09/20/">[Azure] CLI で Web サーバ(NGINX)を構築してみた</a></h2>
+        <div class="post-summary">Azure CLI を使い、Ubuntu の VM を立てて NGINX で Web サーバを構築する手順をまとめました。AWS・Azure・Google Cloud の 3 社でやってみるシリーズ第二弾です。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/09/19/">[AWS EC2] CLI で Web サーバ(NGINX)を構築してみた</a></h2>
+        <div class="post-summary">AWS EC2 の CLI を使い、Ubuntu の VM を立てて NGINX で Web サーバを構築する手順をまとめました。AWS・Azure・Google Cloud の 3 社でやってみるシリーズ第一弾です。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/09/18/">tarコマンドでSSH接続先に画像を送る</a></h2>
+        <div class="post-summary">「Ubuntu でキャプチャ撮ればいいじゃん」なんて無粋なことは言わないでください。Windows の作業スタイルは絶対に崩しませんことよ👸 そのための tar コマンド活用法です。どうぞ！</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/09/14/">GitHub の導入を会社に提案してみた話</a></h2>
+        <div class="post-summary">GitHub の便利さに感動しすぎて、気づいたら上司に導入提案していた話です。Speaker Deck に提案資料も公開しています。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/09/01/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築②　～GitHub Actions使ってみた～</a></h2>
+        <div class="post-summary">GitHub Actions を使い、作業用リポジトリへの push をトリガーにメインリポジトリへ自動 push する仕組みを構築しました。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/08/21/">Microsoft Azure アカウント作成方法</a></h2>
+        <div class="post-summary">Microsoft アカウントと Azure サブスクリプションの作成手順をスクリーンショット付きでまとめています。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/08/17/">[Windows向け]GitHub Pagesを使用したサイトの開発環境構築①　～VM(Ubuntu)とDockerを添えて～</a></h2>
+        <div class="post-summary">Windows 上で VMware（Ubuntu）と Docker を使い、GitHub Pages のローカル開発環境を構築する手順を詳しくまとめました。ファイルを保存するたびにブラウザへ変更が反映される環境を目指しています。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/07/29/">Docker を使ってみたかった話</a></h2>
+        <div class="post-summary">GitHub Pages をローカルで確認したくて Docker に挑戦。結果はいかに…？？</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/07/26/">GitHub 初回pushまでの操作メモ</a></h2>
+        <div class="post-summary">git add・commit・push の基本的な流れをまとめた操作メモです。VS Code とコマンド、それぞれでのステージング方法や便利なコマンドも紹介しています。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/07/23/">GitHub 初回のリポジトリクローン操作メモ</a></h2>
+        <div class="post-summary">GitHub のリポジトリを初めてクローンするときの手順メモです。GitHub CLI と git コマンドのインストールから、実際のクローン操作までを記録しています。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/07/20/">GitHubってなあに？</a></h2>
+        <div class="post-summary">GitHub と Git の違いから、バージョン管理の概念や GitHub の主な機能（Pull Request・GitHub Actions・GitHub Pages など）をざっくりまとめてみました。</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+      <div class="post-item">
+        <h2 class="post-list-title"><a href="/posts/2022/07/16/">Hello World!</a></h2>
+        <div class="post-summary">初めてブログを作成しました。日々の勉強の記録を残していきます。マッチョエンジニアを目指して頑張ります！</div>
+        <hr style="border-top: 3px dotted silver;">
+      </div>
+    
+  </div>
 
     </main>
     <footer>
