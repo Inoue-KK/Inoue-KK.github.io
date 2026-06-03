@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://inoue-kk.github.io/tasktune/</loc>
+    <lastmod>2026-06-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://inoue-kk.github.io/categories/</loc>
     <lastmod>2026-04-05T00:00:00+00:00</lastmod>
   </url><url>
@@ -160,7 +163,5 @@
   </url><url>
     <loc>https://inoue-kk.github.io/tags/%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B/</loc>
     <lastmod>2022-07-16T12:35:25+00:00</lastmod>
-  </url><url>
-    <loc>https://inoue-kk.github.io/tasktune/</loc>
   </url>
 </urlset>
