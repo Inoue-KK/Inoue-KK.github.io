@@ -6,8 +6,29 @@
     <description>Recent content in Tags on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://inoue-kk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IOS</title>
+      <link>https://inoue-kk.github.io/tags/ios/</link>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/tags/ios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Swift</title>
+      <link>https://inoue-kk.github.io/tags/swift/</link>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/tags/swift/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SwiftData</title>
+      <link>https://inoue-kk.github.io/tags/swiftdata/</link>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/tags/swiftdata/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Nextjs</title>
       <link>https://inoue-kk.github.io/tags/nextjs/</link>
@@ -37,7 +58,7 @@
       <description></description>
     </item>
     <item>
-      <title>Typescript</title>
+      <title>TypeScript</title>
       <link>https://inoue-kk.github.io/tags/typescript/</link>
       <pubDate>Sun, 05 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://inoue-kk.github.io/tags/typescript/</guid>
@@ -128,7 +149,7 @@
       <description></description>
     </item>
     <item>
-      <title>Github</title>
+      <title>GitHub</title>
       <link>https://inoue-kk.github.io/tags/github/</link>
       <pubDate>Wed, 14 Sep 2022 13:34:51 +0000</pubDate>
       <guid>https://inoue-kk.github.io/tags/github/</guid>

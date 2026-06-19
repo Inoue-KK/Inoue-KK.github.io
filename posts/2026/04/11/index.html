@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+    
+      
+        <link rel="stylesheet" href="/css/main.2b39a6c24015d41a73bfcbfcdb136d5891cfaf6a1b6259d3247b8b1831e541df.css" integrity="sha256-KzmmwkAV1Bpzv8v82xNtWJHPr2obYlnTJHuLGDHlQd8=" crossorigin="anonymous">
+      
+    
+  
+
+
+      <script src="/js/main.a232b85c0ce07f7a2686793792ac18ac68cc3729ff79c8bc0fa7ab91aac31d5d.js" integrity="sha256-ojK4XAzgf3omhnk3kqwYrGjMNyn/eci8D6erkarDHV0=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <h1 class="site-title"><a href="/"><span class="menu-title-sub">ほっそりイノウエの</span><br>マッチョエンジニアへの道</a></h1>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="メニュー" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </ul>
+</div>
+    </header>
+    <div class="mobile-nav" id="mobile-nav">
+      <nav>
+        <ul class="mobile-nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Posts</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">about</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <div class="all">
+    <main>
+      
+  <h1 class="post-title">SwiftData の #Predicate で optional enum を使うとクラッシュする</h1>
+  
+
+  
+  
+    <time datetime="2026-04-11T00:00:00&#43;00:00">April 11, 2026</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <p>こんにちはこんばんは。イノウエです。</p>
+<p>今までWebアプリケーションエンジニアとしてやってきましたが、なんと最近iOSアプリ開発に挑戦しております。（血迷ってはいません）</p>
+<p>欲しい機能が揃っている Todoリストアプリが App Store を漁りまくっても存在せず…もう自分で作るか！と1からコネコネしております🐈 ←これはネコ</p>
+<p>🐈🐈🐈</p>
+<p>Todoリストに繰り返し通知機能を追加しようとしたところ、実機確認でアプリが起動直後に落ちるようになってしまいました。</p>
+<p>原因特定に結構手こずったので、本ブログに記録を残したいと思います。</p>
+<hr>
+<h2 id="目次">目次</h2>
+<ol>
+<li><a href="#what">やろうとしたこと</a></li>
+<li><a href="#error">症状</a></li>
+<li><a href="#investigation">終わらない調査</a></li>
+<li><a href="#resolve">対処法</a></li>
+<li><a href="#update">【追記】iOS 27 で対応予定【朗報】</a></li>
+</ol>
+<hr>
+<p><a id="what"></a><br></p>
+<h2 id="やろうとしたこと"><div style="background-color:#e5e5ff;">やろうとしたこと</div></h2>
+<p>通知の繰り返し間隔（日、曜日、月毎）を表現するために <code>RepeatInterval</code> という enum を定義し、<code>Todo</code> モデルに <code>repeatInterval: RepeatInterval?</code> を追加しました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span>@Model
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Todo</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> repeatInterval: RepeatInterval? = <span style="color:#66d9ef">nil</span>  <span style="color:#75715e">// 新しく追加</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>ビルドは通ったので実機確認しようとしたところ、起動直後に落ちるようになってしまいました。</p>
+<p><a id="error"></a><br></p>
+<h2 id="症状"><div style="background-color:#e5e5ff;">症状</div></h2>
+<p>エラーメッセージを確認したところ、以下のように書かれていました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-md" data-lang="md"><span style="display:flex;"><span>keypath repeatInterval not found in entity Todo
+</span></span><span style="display:flex;"><span><span style="font-style:italic">**</span>* Terminating app due to uncaught exception &#39;NSInvalidArgumentException&#39;
+</span></span></code></pre></div><p>モデルの定義が間違っているのかと思い何度も確認したのですが、そこは問題ないようでした。<br>
+ビルドは通っているのにランタイムでクラッシュするという状況です。</p>
+<p><a id="investigation"></a><br></p>
+<h2 id="終わらない調査"><div style="background-color:#e5e5ff;">終わらない調査</div></h2>
+<p>「スキーマ変更でマイグレーションが失敗してるのか？」<br>
+と思い、アプリをデバイスから削除して再インストールしてみたものの、全く解消しません。</p>
+<p>そこで、App Group（<code>group.com.xxx.xxx</code>）経由で共有している SwiftData ストアはアプリを削除しても残り続けるという iOS の仕様があるそうなので、コードでストアファイルを明示的に削除する実装を追加しました。</p>
+<p>最初は <code>.store</code> ファイルだけを削除していたのですが、それでもクラッシュが止まらず…。<br>
+調べると SQLite は</p>
+<ul>
+<li><code>.store</code></li>
+<li><code>.store-shm</code></li>
+<li><code>.store-wal</code></li>
+</ul>
+<p>の3ファイル構成になっていて、<code>.store-wal</code> が残っていると古いスキーマが復元されてしまうそうです。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> suffix <span style="color:#66d9ef">in</span> [<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;-shm&#34;</span>, <span style="color:#e6db74">&#34;-wal&#34;</span>] {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> url = groupURL.appendingPathComponent(<span style="color:#e6db74">&#34;todo-list.store</span><span style="color:#e6db74">\(</span>suffix<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>? FileManager.<span style="color:#66d9ef">default</span>.removeItem(at: url)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>3ファイルまとめて削除するよう変えましたが、それでもまだクラッシュが続きました。（もう勘弁してくれ🙃）</p>
+<p>ログを見ると <code>Schema version changed (2 → 3), recreating store.</code> と出ており、ストアの削除自体は成功しています。<br>
+つまりストアの問題ではなく、クエリの実行時に落ちているということになります。</p>
+<p>クラッシュのタイミングを絞り込んでいくと、<code>#Predicate</code> で <code>repeatInterval</code> を参照している箇所でした。</p>
+<p>調べてみると、SwiftData の既知の制限として <code>#Predicate</code> の中で optional な enum プロパティを参照するとクラッシュするというものがあるようです。<br>
+iOS 17 以降ずっと報告されており、Apple Developer Forums や Hacking with Swift などでも広く確認されていました。</p>
+<p><a id="resolve"></a><br></p>
+<h2 id="対処法"><div style="background-color:#e5e5ff;">対処法</div></h2>
+<p><strong>スキーマ変更時は3ファイルまとめて削除する</strong></p>
+<p><code>.store</code> だけでは <code>.store-wal</code> から古いスキーマが復元されてしまうので、3ファイルセットで削除します。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> suffix <span style="color:#66d9ef">in</span> [<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;-shm&#34;</span>, <span style="color:#e6db74">&#34;-wal&#34;</span>] {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> url = groupURL.appendingPathComponent(<span style="color:#e6db74">&#34;todo-list.store</span><span style="color:#e6db74">\(</span>suffix<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>? FileManager.<span style="color:#66d9ef">default</span>.removeItem(at: url)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><strong><code>#Predicate</code> で optional な enum を直接参照しない</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#75715e">// NG: クラッシュする（SwiftData の既知の制限）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> descriptor = FetchDescriptor&lt;Todo&gt;(
+</span></span><span style="display:flex;"><span>    predicate: #Predicate { $0.repeatInterval <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> }
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// OK: 全件取得してから Swift 側でフィルタ</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> all = <span style="color:#66d9ef">try</span> context.fetch(FetchDescriptor&lt;Todo&gt;())
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> todos = all.filter { $0.repeatInterval <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> }
+</span></span></code></pre></div><p>全件フェッチしてから Swift 側でフィルタするのが現状の回避策です。<br>
+件数が多い場合はパフォーマンスに注意が必要ですが、今回はそこまで件数が増えない想定なので、とりあえずこれで対応しました。</p>
+<p><a id="update"></a><br></p>
+<h2 id="追記-20260619ios-27-で対応予定"><div style="background-color:#e5e5ff;">【追記 2026/06/19】iOS 27 で対応予定</div></h2>
+<p>WWDC 2026 にて、iOS 27 で <code>#Predicate</code> 内での enum の直接参照がサポートされることが発表されました。<br>
+参考：<a href="https://developer.apple.com/videos/play/wwdc2026/274/">What&rsquo;s new in SwiftData - WWDC26</a></p>
+<p>iOS 27 以降では回避策なしにそのまま書けるようになるようです🎉</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#75715e">// iOS 27 以降はこれがそのまま動く（予定）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> descriptor = FetchDescriptor&lt;Todo&gt;(
+</span></span><span style="display:flex;"><span>    predicate: #Predicate { $0.repeatInterval <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> }
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>それまでは全件フェッチしてフィルタする方法でしのぐしかなさそうです。</p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは初心者エンジニアが勉強の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性が多大にありますのでご了承ください。
+<br>
+<br>
+</div>
+
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/swiftdata/">SwiftData</a></li>
+        <li><a href="/tags/swift/">Swift</a></li>
+        <li><a href="/tags/ios/">IOS</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2026 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>

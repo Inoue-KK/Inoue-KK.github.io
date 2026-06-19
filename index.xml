@@ -6,8 +6,15 @@
     <description>Recent content in Home on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 05 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 11 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://inoue-kk.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SwiftData の #Predicate で optional enum を使うとクラッシュする</title>
+      <link>https://inoue-kk.github.io/posts/2026/04/11/</link>
+      <pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2026/04/11/</guid>
+      <description>SwiftData の #Predicate 内で optional な enum プロパティを参照するとクラッシュする問題が発生。原因の特定に手こずったので調査から解決方法まで記載します。</description>
+    </item>
     <item>
       <title>スタンプで予定・記録を残せるカレンダーアプリ「Petacal」を作りました</title>
       <link>https://inoue-kk.github.io/posts/2026/04/05/</link>
