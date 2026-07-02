@@ -6,8 +6,15 @@
     <description>Recent content in IOS on ほっそりイノウエのマッチョエンジニアへの道</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://inoue-kk.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>欲しいTodoアプリがなかったので、「TaskTune」を作ってApp Storeにリリースしてみた話</title>
+      <link>https://inoue-kk.github.io/posts/2026/06/30/</link>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://inoue-kk.github.io/posts/2026/06/30/</guid>
+      <description>欲しいTodoアプリが見つからなかったので、iOSアプリ開発に初挑戦してApp Storeにリリースしました。実装の工夫やハマりポイントを紹介します。</description>
+    </item>
     <item>
       <title>SwiftData の #Predicate で optional enum を使うとクラッシュする</title>
       <link>https://inoue-kk.github.io/posts/2026/04/11/</link>

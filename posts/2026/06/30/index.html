@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  
+    
+      
+        <link rel="stylesheet" href="/css/main.2b39a6c24015d41a73bfcbfcdb136d5891cfaf6a1b6259d3247b8b1831e541df.css" integrity="sha256-KzmmwkAV1Bpzv8v82xNtWJHPr2obYlnTJHuLGDHlQd8=" crossorigin="anonymous">
+      
+    
+  
+
+
+      <script src="/js/main.a232b85c0ce07f7a2686793792ac18ac68cc3729ff79c8bc0fa7ab91aac31d5d.js" integrity="sha256-ojK4XAzgf3omhnk3kqwYrGjMNyn/eci8D6erkarDHV0=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+</head>
+<body>
+    <header class="header">
+      <div class="header-inner">
+    <ul class="menu-bar">
+        <li class="menu-title">
+            <h1 class="site-title"><a href="/"><span class="menu-title-sub">ほっそりイノウエの</span><br>マッチョエンジニアへの道</a></h1>
+        </li>
+        
+  <nav>
+    <ul class="menu-list">
+    <li class="menu-list-item">
+      <a href="/">Home</a>
+    </li>
+    <li class="menu-list-item">
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li class="menu-list-item">
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+        <li class="about">
+            <a href="/about/">about</a>
+        </li>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="メニュー" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </ul>
+</div>
+    </header>
+    <div class="mobile-nav" id="mobile-nav">
+      <nav>
+        <ul class="mobile-nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/posts/">Posts</a></li>
+          <li><a href="/tags/">Tags</a></li>
+          <li><a href="/about/">about</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <div class="all">
+    <main>
+      
+  <h1 class="post-title">欲しいTodoアプリがなかったので、「TaskTune」を作ってApp Storeにリリースしてみた話</h1>
+  
+
+  
+  
+    <time datetime="2026-06-30T00:00:00&#43;00:00">June 30, 2026</time>
+  <div class="post-content markdown">
+    <div class="main-content-wrap">
+      <h2 id="目次">目次</h2>
+<ol>
+<li><a href="#intro">はじめに</a></li>
+<li><a href="#result">完成したもの</a></li>
+<li><a href="#stack">技術スタック</a></li>
+<li><a href="#widget">実装の工夫①：インタラクティブウィジェット</a></li>
+<li><a href="#notification">実装の工夫②：繰り返し通知の先読みスケジューリング</a></li>
+<li><a href="#audio">実装の工夫③：AVAudioEngineで音声ファイルなし</a></li>
+<li><a href="#swiftdata">実装の工夫④：SwiftData × App Groupでデータ共有</a></li>
+<li><a href="#fin">まとめ</a></li>
+</ol>
+<hr>
+<p><a id="intro"></a><br></p>
+<h2 id="はじめに"><div style="background-color:#e5e5ff;">はじめに</div></h2>
+<p>こんにちはこんばんは。イノウエです。</p>
+<p>普段iPhoneを使っているのですが、最近Todoリストアプリが欲しいな〜と考えていました。</p>
+<p>デフォルトでリマインダーというアプリが入っていたので一時期それを使っていたのですが、いろんな機能がある故にどこから手をつければいいのかわからない感じと、Todoに登録したものを自動で分類してくれるのが結構的外れなことが多くて、だんだん嫌になって使わなくなってしまいました。<br>
+（クレンジングオイルを買い物リストに入れたら『パン・スイーツ・シリアル』に分類されていました…🫠）</p>
+<p>そこでApp Storeを探したのですが、Todoリストアプリって山ほどあるんですよね🔍</p>
+<p>なので人気上位のアプリをいくつも試したんですが、自分が欲しい機能を備えたアプリが見つからず…。</p>
+<p>欲しい機能というのは以下のようなものでした。</p>
+<ul>
+<li><strong>シンプルに使えること</strong><br>
+機能豊富だとしてもベーシックな使い方も選択できるといいなと。</li>
+<li><strong>広告が機能を邪魔するほど大量ではないこと</strong><br>
+ここはビジネス上仕方ない部分でもあるので、有料アプリも選択肢かなと思いました。</li>
+<li><strong>ウィジェットのデザインをカスタマイズできること</strong><br>
+ホーム画面に置くものなので、壁紙と統一感のあるデザインに設定できるのが理想でした。スマホの画面は毎日見るので、気に入ったデザインだと気分が上がります👀✨</li>
+<li><strong>ウィジェット上からそのままタスクを完了できること</strong><br>
+いちいちアプリを開かずにタスク完了できたら便利だなと…。</li>
+</ul>
+<p>一つ満たしているものはあっても、これらを網羅しているアプリが見つからなかったので、自分で作ることにしました。</p>
+<p>iOSアプリ開発は初挑戦のため、かなりハードルは高かったですが、「AIのサポートがあれば新しい領域でも挑戦できるかも」と思いチャレンジしてみました！</p>
+<p>成果物のリンク🔗<br>
+App Store: <a href="https://apps.apple.com/jp/app/tasktune/id6776622457">https://apps.apple.com/jp/app/tasktune/id6776622457</a><br>
+GitHub: <a href="https://github.com/Inoue-KK/TaskTune">https://github.com/Inoue-KK/TaskTune</a></p>
+<p><a id="result"></a><br></p>
+<h2 id="完成したもの"><div style="background-color:#e5e5ff;">完成したもの</div></h2>
+<div style="display:flex; gap:24px; justify-content:center; flex-wrap:wrap;">
+<figure style="text-align:center; margin:0;">
+<img src="Lists-japanese.png" style="max-height:500px; width:auto;">
+<figcaption>リスト一覧画面</figcaption>
+</figure>
+<figure style="text-align:center; margin:0;">
+<img src="List-japanese.png" style="max-height:500px; width:auto;">
+<figcaption>Todo一覧画面（未完了／完了セクション）</figcaption>
+</figure>
+</div>
+<p>主な機能はこちらです。</p>
+<ul>
+<li>複数リストの管理（作成・名前変更・並び替え・削除）</li>
+<li>Todo管理（追加・編集・完了・削除・並び替え・未完了／完了セクションへの自動振り分け）</li>
+<li>期日設定とローカル通知（通知バナーから直接完了操作も可能）</li>
+<li>繰り返しTodo（日・週・月・年、終了条件も設定可能）</li>
+<li>リストリマインダー（未完了件数がある場合のみ発火）</li>
+<li>ホーム画面ウィジェット（Small・Medium・Large、インタラクティブ／読み取り専用を選択可能）</li>
+<li>ウィジェットテーマのカスタマイズ（アクセントカラー・背景色・テキスト色・チェックボックスデザインなど）</li>
+<li>全リスト横断検索</li>
+<li>完了時のサウンド＆ハプティクス（ON/OFF切替可能）</li>
+<li>日英ローカライズ対応</li>
+</ul>
+<p>アプリアイコンはiPadとCLIP STUDIO PAINTを使って自分でデザインし、Icon ComposerでLiquid Glass仕上げにしました。<br>
+iOS 26ではアイコンをDefault・Dark・クリア・色合い調整の4モードでカスタマイズできるようになっており、すべてのモードに対応しています。<br>
+クリアと色合い調整は同じモノクロアセットをiOSが使い回す形（クリアは壁紙が透けるLiquid Glass表示、色合い調整はアクセントカラーで着色）で、実質3つのアセットで4モードに対応しています。<br>
+アプリ全体でiOS 26のLiquid Glassデザインを積極的に取り入れているので、アイコンもそれに合わせています。</p>
+<div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; align-items:center;">
+  <div style="text-align:center;">
+    <img src="AppIcon.png" style="width:140px; height:140px; border-radius:31px;">
+    <div style="font-size:12px; margin-top:4px;">Default</div>
+  </div>
+  <div style="text-align:center;">
+    <img src="AppIconDark.png" style="width:140px; height:140px; border-radius:31px;">
+    <div style="font-size:12px; margin-top:4px;">Dark</div>
+  </div>
+</div>
+<p><a id="stack"></a><br></p>
+<h2 id="技術スタック"><div style="background-color:#e5e5ff;">技術スタック</div></h2>
+<table>
+  <thead>
+      <tr>
+          <th>分類</th>
+          <th>技術</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>言語</td>
+          <td>Swift</td>
+      </tr>
+      <tr>
+          <td>UI</td>
+          <td>SwiftUI</td>
+      </tr>
+      <tr>
+          <td>データ永続化</td>
+          <td>SwiftData</td>
+      </tr>
+      <tr>
+          <td>通知</td>
+          <td>UserNotifications</td>
+      </tr>
+      <tr>
+          <td>ウィジェット</td>
+          <td>WidgetKit</td>
+      </tr>
+      <tr>
+          <td>サウンド</td>
+          <td>AVAudioEngine</td>
+      </tr>
+      <tr>
+          <td>データ共有</td>
+          <td>App Groups</td>
+      </tr>
+      <tr>
+          <td>対応OS</td>
+          <td>iOS 26.0+</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>SwiftとSwiftUIを選んだ理由</strong></p>
+<p>iOSネイティブ開発のスタンダードな選択肢として選びました。<br>
+使っている人が多い技術を選ぶと、発信されている情報量も多く、エラーに詰まったときに検索で解決策が見つかりやすいというのが理由です。</p>
+<p><strong>SwiftDataを選んだ理由</strong></p>
+<p>同じ理由でスタンダードな選択肢として選びました。</p>
+<p><a id="widget"></a><br></p>
+<h2 id="実装の工夫インタラクティブウィジェット"><div style="background-color:#e5e5ff;">実装の工夫①：インタラクティブウィジェット</div></h2>
+<p>ホーム画面のウィジェット上からタスクを完了できる機能は、個人的にお気に入りの実装の一つです。</p>
+<p>iOS 17から使えるようになったWidgetKitのインタラクティブ機能を活用しています。</p>
+<figure style="text-align:center;">
+<img src="WidgetTap-japanese.png" style="display:block; margin:auto; max-height:500px; width:auto;">
+<figcaption>ホーム画面ウィジェット</figcaption>
+</figure>
+<h3 id="チェックボックス領域のみタップを受け付ける">チェックボックス領域のみタップを受け付ける</h3>
+<p>ウィジェット上のタスクのテキスト部分を押しただけで完了してしまうと誤操作が多発するので、完了トグルの受け付けはチェックボックス領域のみに限定しました。<br>
+（ちなみにテキスト部分を押した場合は、該当のTodoをアプリで開く仕様にしています。）</p>
+<p>インタラクティブウィジェットのタップは <code>AppIntent</code> を介して処理します。<br>
+タップ時に呼ばれる <code>CompleteTodoIntent.perform()</code> でSwiftDataを直接操作しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">CompleteTodoIntent</span>: AppIntent {
+</span></span><span style="display:flex;"><span>    @Parameter(title: <span style="color:#e6db74">&#34;List Title&#34;</span>) <span style="color:#66d9ef">var</span> listTitle: String
+</span></span><span style="display:flex;"><span>    @Parameter(title: <span style="color:#e6db74">&#34;Todo Title&#34;</span>) <span style="color:#66d9ef">var</span> todoTitle: String
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">perform</span>() async <span style="color:#66d9ef">throws</span> -&gt; some IntentResult {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> container = <span style="color:#66d9ef">try</span> makeModelContainer() <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> .result() }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> context = ModelContext(container)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> lists = <span style="color:#66d9ef">try</span> context.fetch(FetchDescriptor&lt;TodoList&gt;())
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> list = lists.first(<span style="color:#66d9ef">where</span>: { $0.title == listTitle }),
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">let</span> todo = list.todos.first(<span style="color:#66d9ef">where</span>: { $0.title == todoTitle <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>$0.isCompleted }) {
+</span></span><span style="display:flex;"><span>            todo.isCompleted = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span> context.save()
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 完了情報を UserDefaults に一時保存（フラッシュ表示に使う）</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">let</span> info = JustCompletedInfo(listTitle: listTitle, todoTitle: todoTitle, timestamp: Date())
+</span></span><span style="display:flex;"><span>            UserDefaults(suiteName: appGroupID)?.<span style="color:#66d9ef">set</span>(<span style="color:#66d9ef">try</span>? JSONEncoder().encode(info), forKey: justCompletedKey)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> .result()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="完了時の即時フィードバック">完了時の即時フィードバック</h3>
+<p>インタラクティブウィジェットはタップしてもすぐには見た目が変わりません。<br>
+データ更新のタイミングでウィジェットが再描画される仕組みのため、操作したのに何も反応しないように見えてしまいます。</p>
+<p>これを解消するため、<code>perform()</code> 内で完了情報をUserDefaultsに一時保存し、Timelineプロバイダーがそれを検知したらFlashエントリとNormalエントリの2段構成のTimelineを返すようにしました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">timeline</span>(...) async -&gt; Timeline&lt;TodoWidgetEntry&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 直近5秒以内に完了されたアイテムがあればフラッシュ表示</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">let</span> data = defaults?.data(forKey: justCompletedKey),
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">let</span> info = <span style="color:#66d9ef">try</span>? JSONDecoder().decode(JustCompletedInfo.<span style="color:#66d9ef">self</span>, from: data),
+</span></span><span style="display:flex;"><span>       now.timeIntervalSince(info.timestamp) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> flashEntry  = fetchEntry(..., justCompleted: info)          <span style="color:#75715e">// チェック済み表示</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> normalEntry = fetchEntry(..., date: now.addingTimeInterval(<span style="color:#ae81ff">1.5</span>))  <span style="color:#75715e">// 通常表示に戻る</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Timeline(entries: [flashEntry, normalEntry], ...)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> Timeline(entries: [fetchEntry(...)], ...)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>「ちゃんと押せた」という即時フィードバックを1.5秒間だけ表示することで、操作感が大きく改善しました💡</p>
+<p>どうしてもウィジェットのサイズ的に指で的確に操作しづらい部分はあると思っていて、仮に間違ったTodoを完了してしまったとしても『違うものを押してしまった』ということをフィードバックで伝えられるので、誤動作があった場合でもカバーできるかと思います。<br>
+（ウィジェット上では完了→未完了の操作は想定していないので、上記の場合はテキストタップでアプリを開いて修正していただくかたちになります）</p>
+<p>本当はウィジェット内でTodoをスクロールできれば、このチェックボックスのタップもより操作しやすくなりそうなのですが、調べた限りではウィジェット内のスクロールは今のところできないようで…🥲<br>
+もしこちらができるようになったら、対応したいなと考えています。</p>
+<p><a id="notification"></a><br></p>
+<h2 id="実装の工夫繰り返し通知の先読みスケジューリング"><div style="background-color:#e5e5ff;">実装の工夫②：繰り返し通知の先読みスケジューリング</div></h2>
+<p>「毎日9時に通知」のような繰り返し通知の実装は、思ったよりも複雑でした。</p>
+<figure style="text-align:center;">
+<img src="Todo-japanese.png" style="display:block; margin:auto; max-height:500px; width:auto;">
+<figcaption>繰り返し通知の設定画面</figcaption>
+</figure>
+<h3 id="問題アプリを長期間開かないと通知が止まる">問題：アプリを長期間開かないと通知が止まる</h3>
+<p>繰り返し通知を「将来の発火日をあらかじめ登録する」方式で実装しようとすると、iOSのUserNotificationsの制約に当たります。<br>
+一度に登録できる通知の上限が64件で、全サイクル分を無制限に先登録することはできません。<br>
+かといって1件しか先登録しないと、その1件が発火した時点で次の通知が途切れてしまいます。<br>
+アプリを起動するたびに補充すればいいのですが、長期間アプリを開かないと通知が止まってしまいます。</p>
+<h3 id="解決策最大7件の先読みスケジューリングフォアグラウンド復帰時の補充">解決策：最大7件の先読みスケジューリング＋フォアグラウンド復帰時の補充</h3>
+<p>繰り返しTodoの通知を最大7件分まとめて事前登録することにしました。<br>
+アプリを開かなくても7サイクル分は通知が継続して発火し、フォアグラウンドに戻ったタイミングで不足分を補充（top-up）します。</p>
+<p>64件という上限がある以上、何かしら取捨選択は必要になります。<br>
+「通知が来るはずなのに来ない」はアプリへの信用問題になりかねないので、できるだけ忠実に通知を届けたいという気持ちがありました。<br>
+一方で、7回通知が来ても反応がないならもうアプリを使っていないと判断できる、という考え方もあり、7件という数はその折り合いとして設定しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#75715e">// 繰り返し: 未来 N サイクル分を先読み登録（完了済みなら現サイクルはスキップ）</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> dates = upcomingCycleDates(<span style="color:#66d9ef">for</span>: todo, count: <span style="color:#66d9ef">Self</span>.maxScheduledOccurrences)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (index, date) <span style="color:#66d9ef">in</span> dates.enumerated() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> content = makeContent(<span style="color:#66d9ef">for</span>: todo, dueDate: date)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> trigger = makeTrigger(<span style="color:#66d9ef">for</span>: date)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> id = <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">\(</span>todo.notificationID<span style="color:#e6db74">)</span><span style="color:#e6db74">_</span><span style="color:#e6db74">\(</span>index<span style="color:#e6db74">)</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>? await center.add(UNNotificationRequest(identifier: id, content: content, trigger: trigger))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>完了時は現サイクルの通知のみキャンセルし、先読みした将来の通知はそのまま維持します。<br>
+「完了したのにまた通知が来た」という事態を防ぎながら、先読み分も無駄にしません。</p>
+<p>また、フォアグラウンド復帰時に期日が過ぎた繰り返しTodoをスキャンし、未完了だったものは <code>missedCount</code> を加算して次の周期へ自動前進させます。<br>
+アプリを開いていない間に過ぎたタスクも、きちんと「やり残した」として記録されます。</p>
+<p><a id="audio"></a><br></p>
+<h2 id="実装の工夫avaudioengineで音声ファイルなし"><div style="background-color:#e5e5ff;">実装の工夫③：AVAudioEngineで音声ファイルなし</div></h2>
+<p>今回の設計方針として、Todoの完了をポジティブなものにしたいという思いがありました。<br>
+やるべきことが完了した喜びといいますか、チェックマークを押したくなるような作りにしたく、その一環として完了時のサウンドを追加しました。<br>
+せっかくならフリー素材を使うのではなく、音も自分で作りたいなと思い、AVAudioEngineというものを見つけました。</p>
+<p>AVAudioEngineを使えばコードだけで波形を生成して音を鳴らせることがわかり、採用しました。<br>
+周波数・音の長さ・減衰をパラメータとして定義し、<code>AVAudioPlayerNode</code> で再生しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SoundPlayer</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">let</span> engine = AVAudioEngine()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">let</span> node = AVAudioPlayerNode()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">init</span>() {
+</span></span><span style="display:flex;"><span>        engine.attach(node)
+</span></span><span style="display:flex;"><span>        engine.connect(node, to: engine.mainMixerNode, format: format)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>? AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>? engine.start()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">play</span>(<span style="color:#66d9ef">_</span> sound: CompletionSound) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">guard</span> <span style="color:#66d9ef">let</span> buffer = makeBuffer(<span style="color:#66d9ef">for</span>: sound, format: format) <span style="color:#66d9ef">else</span> { <span style="color:#66d9ef">return</span> }
+</span></span><span style="display:flex;"><span>        node.scheduleBuffer(buffer)
+</span></span><span style="display:flex;"><span>        node.play()
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>音の種類はGlint・Bubble・Level Upなど計7種類で、それぞれ周波数や時間を細かく調整して作りました。</p>
+<p>音声ファイルが一切不要なので、アプリのバンドルサイズも増えません。</p>
+<p><code>AVAudioSession</code> のカテゴリを <code>.ambient</code> に設定しているので、システムのメディアボリュームに連動します。<br>
+マナーモード中は鳴らないようにも設定できます。</p>
+<p><a id="swiftdata"></a><br></p>
+<h2 id="実装の工夫swiftdata--app-groupでデータ共有"><div style="background-color:#e5e5ff;">実装の工夫④：SwiftData × App Groupでデータ共有</div></h2>
+<p>メインアプリとウィジェットExtensionは、そのままでは別プロセスとして動作するためデータを共有できません。<br>
+つまり、ウィジェットがメインアプリのTodoデータを表示するには、共通のデータストアが必要となります。</p>
+<h3 id="app-group経由の共有ストア">App Group経由の共有ストア</h3>
+<p><code>ModelContainer</code> をApp Group内のURLに向けることで、メインアプリとウィジェットExtensionが同じSwiftDataストアを参照するようにしました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-swift" data-lang="swift"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> sharedURL = FileManager.<span style="color:#66d9ef">default</span>
+</span></span><span style="display:flex;"><span>    .containerURL(forSecurityApplicationGroupIdentifier: <span style="color:#e6db74">&#34;group.com.yourname.tasktune&#34;</span>)<span style="color:#f92672">!</span>  <span style="color:#75715e">// ← 実際のIDに変更</span>
+</span></span><span style="display:flex;"><span>    .appendingPathComponent(<span style="color:#e6db74">&#34;tasktune.store&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> config = ModelConfiguration(url: sharedURL)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">let</span> container = <span style="color:#66d9ef">try</span> ModelContainer(<span style="color:#66d9ef">for</span>: TodoList.<span style="color:#66d9ef">self</span>, configurations: config)
+</span></span></code></pre></div><figure style="text-align:center;">
+<img src="WidgetEdit-japanese.png" style="display:block; margin:auto; max-height:500px; width:auto;">
+<figcaption>ウィジェットテーマの編集画面</figcaption>
+</figure>
+<h3 id="ウィジェットテーマのuserdefaults共有">ウィジェットテーマのUserDefaults共有</h3>
+<p>ウィジェットのテーマ設定（カラーやフォントなど）はApp GroupのUserDefaultsにJSONで保存し、ウィジェットExtensionから直接読み込むようにしました。<br>
+メインアプリでデザインを変更すると、ウィジェットにも自動で反映されます。</p>
+<p><a id="fin"></a><br></p>
+<h2 id="まとめ"><div style="background-color:#e5e5ff;">まとめ</div></h2>
+<p>「欲しいアプリがないなら作る」という、シンプルな動機から始めた個人開発でした。</p>
+<p>Swift・SwiftUI・WidgetKitはすべて初挑戦でしたが、自分の理想とするアプリをかたちにしてリリースまで持っていけたのが何より嬉しかったです。</p>
+<p>よかったらApp Storeからダウンロードしてみてください。<br>
+広告なし・カスタマイズ自由なTodoアプリ、気に入ってもらえると嬉しいです🎉</p>
+<p>App Store: <a href="https://apps.apple.com/jp/app/tasktune/id6776622457">https://apps.apple.com/jp/app/tasktune/id6776622457</a></p>
+<br>
+<br>
+<br>
+<br>
+<div style="background-color:#eff2fc;font-size:13px;line-height:15px">
+<br>
+こちらのブログは個人開発の記録やアウトプットの一環として執筆しております。
+<br>
+内容に誤りがある可能性がありますのでご了承ください。
+<br>
+<br>
+</div>
+
+    </div>
+  </div>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/swift/">Swift</a></li>
+        <li><a href="/tags/swiftui/">SwiftUI</a></li>
+        <li><a href="/tags/swiftdata/">SwiftData</a></li>
+        <li><a href="/tags/widgetkit/">WidgetKit</a></li>
+        <li><a href="/tags/ios/">IOS</a></li>
+    </ul>
+  </div>
+
+
+    </main>
+    <footer>
+      <p>Copyright 2026 Inoue-KK. All rights reserved.</p>
+    </footer>  
+  </div>
+</body>
+</html>
